@@ -1,0 +1,68 @@
+# Inhalt aus der heruntergeladenen docker-compose.yml
+
+version: "3.9"
+
+# CivicOS Platform Stack
+# MariaDB läuft nativ – kein DB-Container
+# Nginx läuft nativ – kein Traefik
+# Provisioning API lauscht auf 127.0.0.1:8080
+
+networks:
+  civicos-net:
+    name: civicos-net
+
+volumes:
+  civicos-drupal-sites:
+  civicos-archive:
+
+services:
+
+  # ── Provisioning Service ──────────────────────────────────
+  provisioning:
+    image: php:8.3-cli
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./provisioning:/app
+      - civicos-drupal-sites:/var/www/civicos-drupal/web/sites
+      - ./traefik/conf.d:/opt/civicos/traefik/conf.d
+      - ./data:/opt/civicos/data
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      - APP_ENV=${APP_ENV}
+      - JWT_SECRET=${JWT_SECRET}
+      - ADMIN_API_KEY=${ADMIN_API_KEY}
+      - METRICS_WEBHOOK_SECRET=${METRICS_WEBHOOK_SECRET}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_ROOT_USER=${DB_ROOT_USER}
+      - DB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - CIVICOS_BASE_DOMAIN=${CIVICOS_BASE_DOMAIN}
+      - NETCUP_CUSTOMER_ID=${NETCUP_CUSTOMER_ID}
+      - NETCUP_API_KEY=${NETCUP_API_KEY}
+      - NETCUP_API_PASSWORD=${NETCUP_API_PASSWORD}
+      - POSTSTACK_API_KEY=${POSTSTACK_API_KEY}
+      - POSTSTACK_FROM_EMAIL=${POSTSTACK_FROM_EMAIL}
+      - POSTSTACK_FROM_NAME=${POSTSTACK_FROM_NAME}
+      - REGISTRY_DB_PATH=/opt/civicos/data/registry.sqlite
+      - TRAEFIK_CONFIG_DIR=/opt/civicos/traefik/conf.d
+      - LOG_PATH=/opt/civicos/data/provisioning.log
+    command: >
+      sh -c "cd /app && php -S 0.0.0.0:8080 -t public"
+    networks:
+      - civicos-net
+
+  # ── Grafana ───────────────────────────────────────────────
+  grafana:
+    image: grafana/grafana:10.4.0
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+      - GF_SERVER_ROOT_URL=https://metrics.${CIVICOS_BASE_DOMAIN}
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+    networks:
+      - civicos-net

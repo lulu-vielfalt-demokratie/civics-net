@@ -1,0 +1,7 @@
+.env
+data/
+*.sqlite
+*.log
+traefik/conf.d/*.yml
+provisioning/vendor/
+drupal/vendor/

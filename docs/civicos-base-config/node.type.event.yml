@@ -1,0 +1,12 @@
+uuid: e627b078-8a92-4617-9421-205fad317d69
+langcode: de
+status: true
+dependencies: {  }
+name: Event
+type: event
+description: 'Veranstaltungen und Termine'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false
+

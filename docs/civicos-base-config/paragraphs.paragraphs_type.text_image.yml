@@ -1,0 +1,11 @@
+uuid: 82ac31a3-da83-4bd8-8500-45109f8ae0dd
+langcode: de
+status: true
+dependencies: {  }
+id: text_image
+label: 'Text & Bild'
+icon_uuid: null
+icon_default: ''
+description: ''
+behavior_plugins: {  }
+

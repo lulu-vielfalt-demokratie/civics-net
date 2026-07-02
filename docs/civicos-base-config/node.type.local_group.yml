@@ -1,0 +1,12 @@
+uuid: 89bf760d-c905-405a-a6e7-d0d28df2059a
+langcode: de
+status: true
+dependencies: {  }
+name: 'Lokale Gruppe'
+type: local_group
+description: 'Lokale Gruppen und Netzwerke'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false
+

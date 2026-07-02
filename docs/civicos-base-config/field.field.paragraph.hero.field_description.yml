@@ -1,0 +1,18 @@
+uuid: 7a04bb00-43ca-4376-ad24-fa7c68f56ecb
+langcode: de
+status: true
+dependencies: {  }
+id: paragraph.hero.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: hero
+label: Beschreibung
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long
+

@@ -1,0 +1,44 @@
+uuid: a258fb66-f374-4771-9c09-cf007833791a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraphs
+    - node.type.landing_page
+    - paragraphs.paragraphs_type.cta
+    - paragraphs.paragraphs_type.hero
+    - paragraphs.paragraphs_type.icon_grid
+    - paragraphs.paragraphs_type.text_image
+id: node.landing_page.field_paragraphs
+field_name: field_paragraphs
+entity_type: node
+bundle: landing_page
+label: Inhalt
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      hero: hero
+      text_image: text_image
+      cta: cta
+      icon_grid: icon_grid
+    target_bundles_drag_drop:
+      cta:
+        weight: 3
+        enabled: true
+      hero:
+        weight: 0
+        enabled: true
+      icon_grid:
+        weight: 2
+        enabled: true
+      text_image:
+        weight: 1
+        enabled: true
+field_type: entity_reference_revisions
+

@@ -1,0 +1,52 @@
+uuid: 57fcf742-2414-41e8-8834-176be4559fdb
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.icon_grid.field_intro
+    - field.field.paragraph.icon_grid.field_items
+    - field.field.paragraph.icon_grid.field_punchline
+    - field.field.paragraph.icon_grid.field_style
+    - field.field.paragraph.icon_grid.field_title
+    - paragraphs.paragraphs_type.icon_grid
+  module:
+    - text
+id: paragraph.icon_grid.default
+targetEntityType: paragraph
+bundle: icon_grid
+mode: default
+content:
+  field_intro:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_items:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_punchline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_style: true
+

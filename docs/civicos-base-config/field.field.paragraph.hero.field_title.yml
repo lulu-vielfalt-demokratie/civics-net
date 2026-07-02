@@ -1,0 +1,17 @@
+uuid: 9f5cefbc-71bb-48b3-8467-11bd24961701
+langcode: de
+status: true
+dependencies: {  }
+id: paragraph.hero.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: hero
+label: Titel
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
+

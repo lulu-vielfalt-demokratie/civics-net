@@ -1,0 +1,42 @@
+uuid: e04c204d-f054-41f7-b00c-0a7a8139dfc2
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.local_group
+  module:
+    - user
+id: node.local_group.default
+targetEntityType: node
+bundle: local_group
+mode: default
+content:
+  field_contact_person:
+    type: string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_email:
+    type: email_mailto
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_location:
+    type: string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+

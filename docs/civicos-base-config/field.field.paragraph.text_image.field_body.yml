@@ -1,0 +1,18 @@
+uuid: 388ac7b4-3de6-4449-8c5c-75eab5fa5eba
+langcode: de
+status: true
+dependencies: {  }
+id: paragraph.text_image.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: text_image
+label: Text
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long
+

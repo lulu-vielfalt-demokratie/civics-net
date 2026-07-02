@@ -1,0 +1,18 @@
+uuid: a290e4e5-f1ae-43b3-baec-5caf72a9f7cc
+langcode: de
+status: true
+dependencies: {  }
+id: node.event.field_description
+field_name: field_description
+entity_type: node
+bundle: event
+label: Beschreibung
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long
+

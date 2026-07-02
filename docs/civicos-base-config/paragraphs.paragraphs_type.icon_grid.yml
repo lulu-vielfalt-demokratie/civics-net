@@ -1,0 +1,11 @@
+uuid: 965bc1d5-e476-49eb-9e75-5d7e8deb7b61
+langcode: de
+status: true
+dependencies: {  }
+id: icon_grid
+label: 'Icon-Grid (4 Punkte)'
+icon_uuid: null
+icon_default: ''
+description: ''
+behavior_plugins: {  }
+

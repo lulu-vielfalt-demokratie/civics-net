@@ -1,0 +1,25 @@
+uuid: cd7f55a5-8fa0-491f-970e-6bec5e3eef91
+langcode: de
+status: true
+dependencies: {  }
+id: paragraph.field_style
+field_name: field_style
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: light
+      label: 'Hell (weiß)'
+    -
+      value: dark
+      label: 'Dunkel (schwarz)'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
+

@@ -1,0 +1,17 @@
+uuid: 4ddce74c-fb26-435a-9771-0ca7fcfdb228
+langcode: de
+status: true
+dependencies: {  }
+id: paragraph.field_cta_secondary
+field_name: field_cta_secondary
+entity_type: paragraph
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
+

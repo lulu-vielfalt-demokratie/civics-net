@@ -1,0 +1,17 @@
+uuid: 62f8ac33-00b7-4fe2-af54-dd557c88bdc0
+langcode: de
+status: true
+dependencies: {  }
+id: node.event.field_location
+field_name: field_location
+entity_type: node
+bundle: event
+label: Ort
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
+

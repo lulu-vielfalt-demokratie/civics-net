@@ -1,0 +1,18 @@
+uuid: ac23ebbf-6523-4c6b-925e-59303fe23db0
+langcode: de
+status: true
+dependencies: {  }
+id: paragraph.cta.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: cta
+label: Text
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long
+

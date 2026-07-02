@@ -1,0 +1,19 @@
+uuid: 8636d7ee-9af1-4bc7-b14e-8efabb6eb4e1
+langcode: de
+status: true
+dependencies: {  }
+id: paragraph.text_image.field_style
+field_name: field_style
+entity_type: paragraph
+bundle: text_image
+label: Hintergrund
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: light
+default_value_callback: ''
+settings: {  }
+field_type: list_string
+

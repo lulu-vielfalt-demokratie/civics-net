@@ -1,0 +1,20 @@
+uuid: 502fb86e-f6dd-48ac-9f83-6413478bc142
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.icon_grid
+id: paragraph.icon_grid.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: icon_grid
+label: 'Items (Format: icon|titel|text)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
+

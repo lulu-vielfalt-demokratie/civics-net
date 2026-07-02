@@ -1,0 +1,18 @@
+uuid: 73f16a47-71f7-4687-8366-abfbc9742ba3
+langcode: de
+status: true
+dependencies: {  }
+id: paragraph.field_punchline
+field_name: field_punchline
+entity_type: paragraph
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
+

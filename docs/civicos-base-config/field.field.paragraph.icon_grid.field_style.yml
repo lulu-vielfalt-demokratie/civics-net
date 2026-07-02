@@ -1,0 +1,22 @@
+uuid: 7f467e65-dd4c-431d-bf45-5ab0bf51ecba
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_style
+    - paragraphs.paragraphs_type.icon_grid
+id: paragraph.icon_grid.field_style
+field_name: field_style
+entity_type: paragraph
+bundle: icon_grid
+label: Hintergrund
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: light
+default_value_callback: ''
+settings: {  }
+field_type: list_string
+

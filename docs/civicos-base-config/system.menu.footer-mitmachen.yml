@@ -1,0 +1,9 @@
+uuid: 4d9d31f5-f7dc-4e4a-bd07-db319ad6f3ba
+langcode: de
+status: true
+dependencies: {  }
+id: footer-mitmachen
+label: 'Footer: Mitmachen'
+description: 'Links im Footer-Bereich Mitmachen'
+locked: false
+

@@ -1,0 +1,9 @@
+uuid: 64736737-2814-4d22-9bcd-3f21bd73f862
+langcode: de
+status: true
+dependencies: {  }
+id: footer-rechtliches
+label: 'Footer: Rechtliches'
+description: 'Links im Footer-Bereich Rechtliches'
+locked: false
+

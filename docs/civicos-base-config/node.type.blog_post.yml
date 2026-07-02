@@ -1,0 +1,12 @@
+uuid: 30339105-5eca-4418-ba12-87d7c6827b57
+langcode: de
+status: true
+dependencies: {  }
+name: 'Blog Post'
+type: blog_post
+description: 'Aktuelles und Berichte'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false
+

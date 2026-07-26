@@ -367,6 +367,9 @@ POST /api/v1/sites
 - Paragraphs + Entity Reference Revisions
 - Simple Sitemap
 - Path / Path Alias
+- View Unpublished (view_unpublished) — Redakteure sehen alle unveröffentlichten Inhalte
+- Editor File Upload (editor_file) — Datei-Upload im CKEditor
+- FullCalendar View (fullcalendar_view) — Kalenderansicht für Events
 
 **Rechtliche Vorlagen:**
 - Datenschutzerklärung (Platzhalter für Name/Adresse)

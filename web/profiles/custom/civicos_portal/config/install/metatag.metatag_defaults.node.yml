@@ -1,0 +1,16 @@
+uuid: ed409387-f326-4481-832d-2b9b666e9d43
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: rpwvgyEURXLz_JjgMCrkS1rUv-0k3L79BpO-ReN7fDI
+id: node
+label: Inhalt
+tags:
+  title: '[node:title] | [site:name]'
+  description: '[node:summary]'
+  og_title: '[node:title]'
+  og_description: '[node:summary]'
+  og_type: article
+  og_url: '[node:url]'
+  canonical_url: '[node:url]'

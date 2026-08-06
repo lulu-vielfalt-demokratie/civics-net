@@ -1,0 +1,142 @@
+uuid: fb704e14-f9f4-4eb3-8e43-db4bccf31bc1
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_datei
+    - field.storage.node.field_materialtyp
+    - system.menu.main
+  module:
+    - file
+    - node
+    - options
+    - user
+id: materialliste
+label: Materialliste
+module: views
+description: 'Downloadmaterialien des Bündnisses'
+tag: wmgr
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Primär
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Material
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          link_to_entity: true
+        field_materialtyp:
+          id: field_materialtyp
+          table: node__field_materialtyp
+          field: field_materialtyp
+          plugin_id: field
+          label: Typ
+        field_datei:
+          id: field_datei
+          table: node__field_datei
+          field: field_datei
+          plugin_id: field
+          label: Download
+          settings:
+            use_description_as_link_text: true
+      pager:
+        type: full
+        options:
+          items_per_page: 24
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          plugin_id: date
+          order: DESC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          value: '1'
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          value:
+            - material
+        field_materialtyp_value:
+          id: field_materialtyp_value
+          table: node__field_materialtyp
+          field: field_materialtyp_value
+          plugin_id: list_field
+          exposed: true
+          expose:
+            operator_id: field_materialtyp_value_op
+            label: Materialtyp
+            identifier: field_materialtyp_value
+            remember: false
+      style:
+        type: html_list
+        options:
+          wrapper_class: item-list
+          class: ''
+          list_type: ul
+      row:
+        type: fields
+        options: {  }
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_datei'
+        - 'config:field.storage.node.field_materialtyp'
+  page_material:
+    id: page_material
+    display_title: 'Seite Material'
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: material
+      menu:
+        type: normal
+        title: Material
+        weight: 4
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_datei'
+        - 'config:field.storage.node.field_materialtyp'

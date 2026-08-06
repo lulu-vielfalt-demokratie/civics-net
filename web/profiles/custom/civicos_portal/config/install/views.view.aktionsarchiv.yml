@@ -1,0 +1,129 @@
+uuid: cf59625f-6e49-4597-a753-330b7e0e6740
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_aktion_datum
+    - field.storage.node.field_aktionstyp
+    - system.menu.main
+  module:
+    - datetime
+    - node
+    - options
+    - user
+id: aktionsarchiv
+label: Aktionsarchiv
+module: views
+description: 'Alle Aktionen des Bündnisses'
+tag: wmgr
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Primär
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Aktionsarchiv
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: node_bulk_form
+          label: ''
+          link_to_entity: true
+        field_aktion_datum:
+          id: field_aktion_datum
+          table: node__field_aktion_datum
+          field: field_aktion_datum
+          plugin_id: field
+          label: Datum
+          settings:
+            format_type: html_date
+        field_aktionstyp:
+          id: field_aktionstyp
+          table: node__field_aktionstyp
+          field: field_aktionstyp
+          plugin_id: field
+          label: Typ
+      pager:
+        type: full
+        options:
+          items_per_page: 12
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      sorts:
+        field_aktion_datum_value:
+          id: field_aktion_datum_value
+          table: node__field_aktion_datum
+          field: field_aktion_datum_value
+          plugin_id: date
+          order: DESC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          value: '1'
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          value:
+            - aktion
+      style:
+        type: html_list
+        options:
+          wrapper_class: item-list
+          class: ''
+          list_type: ul
+      row:
+        type: fields
+        options: {  }
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_aktion_datum'
+        - 'config:field.storage.node.field_aktionstyp'
+  page_aktionen:
+    id: page_aktionen
+    display_title: 'Seite Aktionen'
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: aktionen
+      menu:
+        type: normal
+        title: Aktionen
+        weight: 2
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_aktion_datum'
+        - 'config:field.storage.node.field_aktionstyp'

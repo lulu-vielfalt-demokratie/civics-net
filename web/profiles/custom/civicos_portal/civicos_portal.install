@@ -74,3 +74,28 @@ function civicos_portal_install() {
 
   \Drupal::messenger()->addStatus(t('CivicOS Portal erfolgreich installiert.'));
 }
+
+/**
+ * Hauptmenü-Einträge anlegen.
+ */
+function civicos_portal_install_menu_links() {
+  $links = [
+    ['title' => 'Aktuell',   'uri' => 'internal:/aktuell',   'weight' => 0],
+    ['title' => 'Aktionen',  'uri' => 'internal:/aktionen',  'weight' => 1],
+    ['title' => 'Kalender',  'uri' => 'internal:/kalender',  'weight' => 2],
+    ['title' => 'Material',  'uri' => 'internal:/material',  'weight' => 3],
+    ['title' => 'Netzwerk',  'uri' => 'internal:/netzwerk',  'weight' => 4],
+    ['title' => 'Mitmachen', 'uri' => 'internal:/mitmachen', 'weight' => 5],
+    ['title' => 'Kontakt',   'uri' => 'internal:/kontakt',   'weight' => 6],
+  ];
+
+  foreach ($links as $link) {
+    \Drupal\menu_link_content\Entity\MenuLinkContent::create([
+      'title'     => $link['title'],
+      'link'      => ['uri' => $link['uri']],
+      'menu_name' => 'main',
+      'weight'    => $link['weight'],
+      'expanded'  => FALSE,
+    ])->save();
+  }
+}

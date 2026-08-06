@@ -1,0 +1,160 @@
+uuid: 827569bd-bdbe-4568-b857-4254d49f3fed
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_datum_von
+    - field.storage.node.field_ort
+    - field.storage.node.field_veranstaltungstyp
+    - system.menu.main
+  module:
+    - datetime
+    - node
+    - options
+    - user
+id: kalender
+label: Veranstaltungskalender
+module: views
+description: 'Kommende Veranstaltungen'
+tag: wmgr
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Primär
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Veranstaltungskalender
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          link_to_entity: true
+        field_datum_von:
+          id: field_datum_von
+          table: node__field_datum_von
+          field: field_datum_von
+          plugin_id: field
+          label: Datum
+          settings:
+            format_type: html_datetime
+        field_ort:
+          id: field_ort
+          table: node__field_ort
+          field: field_ort
+          plugin_id: field
+          label: Ort
+        field_veranstaltungstyp:
+          id: field_veranstaltungstyp
+          table: node__field_veranstaltungstyp
+          field: field_veranstaltungstyp
+          plugin_id: field
+          label: Typ
+      pager:
+        type: full
+        options:
+          items_per_page: 20
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      sorts:
+        field_datum_von_value:
+          id: field_datum_von_value
+          table: node__field_datum_von
+          field: field_datum_von_value
+          plugin_id: date
+          order: ASC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          value: '1'
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          value:
+            - veranstaltung
+        field_datum_von_value:
+          id: field_datum_von_value
+          table: node__field_datum_von
+          field: field_datum_von_value
+          plugin_id: datetime
+          operator: '>='
+          value:
+            value: now
+            type: offset
+        field_veranstaltungstyp_value:
+          id: field_veranstaltungstyp_value
+          table: node__field_veranstaltungstyp
+          field: field_veranstaltungstyp_value
+          plugin_id: list_field
+          exposed: true
+          expose:
+            operator_id: field_veranstaltungstyp_value_op
+            label: Veranstaltungstyp
+            identifier: field_veranstaltungstyp_value
+            remember: false
+      style:
+        type: html_list
+        options:
+          wrapper_class: item-list
+          class: ''
+          list_type: ul
+      row:
+        type: fields
+        options: {  }
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_datum_von'
+        - 'config:field.storage.node.field_ort'
+        - 'config:field.storage.node.field_veranstaltungstyp'
+  page_kalender:
+    id: page_kalender
+    display_title: 'Seite Kalender'
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: kalender
+      menu:
+        type: normal
+        title: Kalender
+        weight: 1
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_datum_von'
+        - 'config:field.storage.node.field_ort'
+        - 'config:field.storage.node.field_veranstaltungstyp'

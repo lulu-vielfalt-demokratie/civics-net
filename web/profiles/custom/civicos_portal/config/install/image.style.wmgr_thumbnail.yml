@@ -1,0 +1,15 @@
+uuid: 5def393f-7ca1-48c5-a2c8-7f6a897354c7
+langcode: de
+status: true
+dependencies: {  }
+name: wmgr_thumbnail
+label: 'WMGR Thumbnail (300x200)'
+effects:
+  55fc3fe9-bb15-43e8-9d21-0e8e4926892b:
+    uuid: 55fc3fe9-bb15-43e8-9d21-0e8e4926892b
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 300
+      height: 200
+      anchor: center-center

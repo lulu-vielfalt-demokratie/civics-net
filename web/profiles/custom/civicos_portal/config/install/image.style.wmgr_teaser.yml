@@ -1,0 +1,15 @@
+uuid: ebb7c2d4-7d05-4512-b9b0-9c040058bfc6
+langcode: de
+status: true
+dependencies: {  }
+name: wmgr_teaser
+label: 'WMGR Teaser (600x400)'
+effects:
+  b709de6e-3dcd-4665-be50-0d9476b717fc:
+    uuid: b709de6e-3dcd-4665-be50-0d9476b717fc
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 600
+      height: 400
+      anchor: center-center

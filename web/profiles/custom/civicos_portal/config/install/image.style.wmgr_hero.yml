@@ -1,0 +1,15 @@
+uuid: 3fbda096-0579-4dcb-99c7-e6f98f813cb6
+langcode: de
+status: true
+dependencies: {  }
+name: wmgr_hero
+label: 'WMGR Hero (1200x600)'
+effects:
+  e95fa438-1b8c-413f-807a-28e84790353e:
+    uuid: e95fa438-1b8c-413f-807a-28e84790353e
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 1200
+      height: 600
+      anchor: center-center

@@ -1,0 +1,21 @@
+uuid: 60edf886-c631-4df8-9caf-11fb431a353c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_aktion_datum
+    - node.type.aktion
+  module:
+    - datetime
+id: node.aktion.field_aktion_datum
+field_name: field_aktion_datum
+entity_type: node
+bundle: aktion
+label: 'Datum der Aktion'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,21 @@
+name: Westmecklenburg gegen Rechts
+type: theme
+description: 'Portal-Theme für westmecklenburg-gegen-rechts.de – Mobile First, WCAG AA, Schema.org'
+package: CivicOS
+core_version_requirement: ^11
+base theme: olivero
+
+libraries:
+  - wmgr/global
+
+regions:
+  skip_link: 'Skip Link'
+  header: 'Header'
+  primary_menu: 'Primäre Navigation'
+  breadcrumb: 'Breadcrumb'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Inhalt'
+  sidebar: 'Seitenleiste'
+  footer_top: 'Footer oben'
+  footer_bottom: 'Footer unten'

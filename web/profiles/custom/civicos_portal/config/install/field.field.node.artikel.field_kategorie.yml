@@ -1,0 +1,21 @@
+uuid: 7c047e94-14a1-4909-a939-d2ec1361e18b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_kategorie
+    - node.type.artikel
+  module:
+    - options
+id: node.artikel.field_kategorie
+field_name: field_kategorie
+entity_type: node
+bundle: artikel
+label: Kategorie
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

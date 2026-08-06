@@ -1,0 +1,76 @@
+<?php
+
+/**
+ * @file
+ * CivicOS Portal Installationsprofil.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function civicos_portal_install() {
+  // Standard-Theme setzen
+  \Drupal::configFactory()
+    ->getEditable('system.theme')
+    ->set('default', 'wmgr')
+    ->set('admin', 'gin')
+    ->save();
+
+  // Frontpage auf /aktuell setzen
+  \Drupal::configFactory()
+    ->getEditable('system.site')
+    ->set('page.front', '/aktuell')
+    ->save();
+
+  // Benutzerrollen anlegen
+  $roles = [
+    'redakteur' => 'Redakteur*in',
+    'koordinator' => 'Koordinator*in',
+  ];
+  foreach ($roles as $rid => $label) {
+    if (!\Drupal\user\Entity\Role::load($rid)) {
+      \Drupal\user\Entity\Role::create([
+        'id' => $rid,
+        'label' => $label,
+      ])->save();
+    }
+  }
+
+  // Redakteur-Berechtigungen
+  $redakteur_permissions = [
+    'create artikel content',
+    'edit own artikel content',
+    'create veranstaltung content',
+    'edit own veranstaltung content',
+    'delete own veranstaltung content',
+    'create aktion content',
+    'edit own aktion content',
+    'create material content',
+    'edit own material content',
+    'use text format basic_html',
+    'use text format full_html',
+    'access media overview',
+    'create media',
+    'edit own media',
+  ];
+  user_role_grant_permissions('redakteur', $redakteur_permissions);
+
+  // Koordinator-Berechtigungen (alles was Redakteur kann + mehr)
+  $koordinator_permissions = array_merge($redakteur_permissions, [
+    'edit any artikel content',
+    'delete any artikel content',
+    'edit any veranstaltung content',
+    'delete any veranstaltung content',
+    'edit any aktion content',
+    'delete any aktion content',
+    'edit any material content',
+    'delete any material content',
+    'administer nodes',
+    'administer taxonomy',
+    'edit any media',
+    'delete any media',
+  ]);
+  user_role_grant_permissions('koordinator', $koordinator_permissions);
+
+  \Drupal::messenger()->addStatus(t('CivicOS Portal erfolgreich installiert.'));
+}

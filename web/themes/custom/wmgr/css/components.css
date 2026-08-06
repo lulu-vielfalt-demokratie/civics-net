@@ -1,0 +1,124 @@
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.9rem;
+  border-radius: 100px;
+  font-family: var(--font-sans);
+  font-size: 1rem; font-weight: 500;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--rot); color: var(--white); }
+.btn-primary:hover { background: var(--rot-dunkel); color: var(--white); }
+.btn-outline { background: transparent; color: var(--rot); border-color: var(--rot); }
+.btn-outline:hover { background: var(--rot); color: var(--white); }
+
+/* ── Cards ───────────────────────────────────────────────── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--sp-3);
+  position: relative; overflow: hidden;
+}
+.card--accent::before {
+  content: '';
+  position: absolute; inset: 0 0 auto 0;
+  height: 3px; background: var(--rot);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+/* ── Tags / Labels ───────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  background: var(--rot-pale);
+  color: var(--rot);
+  border: 1px solid var(--rot);
+}
+
+/* ── Navigation ──────────────────────────────────────────── */
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1rem; font-weight: 700;
+  color: var(--white); text-decoration: none;
+  flex-shrink: 0;
+}
+.nav-logo span { color: var(--rot); }
+.primary-nav ul {
+  display: flex; gap: var(--sp-3);
+  align-items: center;
+}
+.primary-nav a {
+  color: var(--grau-hell);
+  text-decoration: none;
+  font-size: var(--text-sm); font-weight: 500;
+  padding: 0.3rem 0.1rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.primary-nav a:hover,
+.primary-nav a.is-active {
+  color: var(--white);
+  border-color: var(--rot);
+}
+
+/* Hamburger */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-radius: var(--radius-sm);
+  color: var(--grau-hell);
+  cursor: pointer;
+  padding: 0.45rem 0.7rem;
+  font-size: 1.1rem; line-height: 1;
+}
+@media (max-width: 750px) {
+  .menu-toggle { display: flex; align-items: center; }
+  .primary-nav ul {
+    display: none;
+    position: absolute; top: 64px; left: 0; right: 0;
+    background: var(--dunkel-mid);
+    flex-direction: column; gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .primary-nav ul.is-open { display: flex; }
+  .primary-nav a {
+    padding: 0.9rem var(--sp-4);
+    font-size: 1rem; width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    border-top: none; border-left: none; border-right: none;
+  }
+}
+
+/* ── Forms ───────────────────────────────────────────────── */
+input[type="text"],
+input[type="email"],
+input[type="search"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  background: var(--white);
+  color: var(--dunkel);
+  transition: border-color 0.15s;
+  appearance: none;
+}
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  border-color: var(--rot);
+  box-shadow: 0 0 0 3px rgba(201,25,30,0.15);
+}

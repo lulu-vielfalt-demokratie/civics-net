@@ -1,0 +1,11 @@
+uuid: b8728688-4178-40e5-a11b-3e54bce5bb8f
+langcode: de
+status: true
+dependencies: {  }
+name: Aktion
+type: aktion
+description: 'Dokumentation eigener Aktionen des Bündnisses'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

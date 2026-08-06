@@ -1,0 +1,36 @@
+uuid: 2c27ad0e-e46a-4195-8aef-098f0abcb507
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_kategorie
+field_name: field_kategorie
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: analyse
+      label: Analyse
+    -
+      value: bericht
+      label: Bericht
+    -
+      value: pressemitteilung
+      label: Pressemitteilung
+    -
+      value: stellungnahme
+      label: Stellungnahme
+    -
+      value: recherche
+      label: Recherche
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

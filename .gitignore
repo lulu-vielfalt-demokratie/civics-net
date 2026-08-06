@@ -1,7 +1,33 @@
-.env
-data/
-*.sqlite
+# Drupal
+web/core/
+web/modules/contrib/
+web/themes/contrib/
+web/profiles/contrib/
+web/libraries/
+vendor/
+web/sites/*/files/
+web/sites/*/private/
+web/sites/*/settings.local.php
+
+# Composer
+composer.phar
+
+# Betriebssystem
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Logs und temporäre Dateien
 *.log
-traefik/conf.d/*.yml
-provisioning/vendor/
-drupal/vendor/
+*.tmp
+/tmp/
+
+# Analyse-Skripte (nicht zum Projekt gehörend)
+analyse.py
+analyse_*.md
+blocklist.py
+netzwerk_vergleich.py
+nius_analyse*.json

@@ -1,0 +1,33 @@
+uuid: 5835001f-3b70-4058-b7cb-d3ecaa106b56
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_titelbild
+    - node.type.material
+  module:
+    - image
+id: node.material.field_titelbild
+field_name: field_titelbild
+entity_type: node
+bundle: material
+label: Vorschaubild
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'jpg jpeg png webp'
+  max_filesize: '5 MB'
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image: {  }
+field_type: image

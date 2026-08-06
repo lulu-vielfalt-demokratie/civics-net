@@ -1,0 +1,21 @@
+uuid: 937ff195-264d-488e-a9b8-e402978e9d50
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_datum_von
+    - node.type.veranstaltung
+  module:
+    - datetime
+id: node.veranstaltung.field_datum_von
+field_name: field_datum_von
+entity_type: node
+bundle: veranstaltung
+label: 'Datum von'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

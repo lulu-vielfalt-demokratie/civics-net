@@ -1,0 +1,39 @@
+uuid: 6e7342a4-5c92-411f-bddf-b48a3c5e43be
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_materialtyp
+field_name: field_materialtyp
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: flyer
+      label: Flyer
+    -
+      value: plakat
+      label: Plakat
+    -
+      value: aufkleber
+      label: Aufkleber
+    -
+      value: social_media
+      label: 'Social Media'
+    -
+      value: pressemappe
+      label: Pressemappe
+    -
+      value: sonstiges
+      label: Sonstiges
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,23 @@
+uuid: bb61b3ef-f1eb-4ab8-b03f-067b4dedf7ae
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.artikel
+  module:
+    - node
+id: artikel
+label: Artikel
+type: 'canonical_entities:node'
+pattern: '/aktuell/[node:title]'
+selection_criteria:
+  bundle:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      artikel: artikel
+selection_logic: and
+weight: 0
+relationships: {  }

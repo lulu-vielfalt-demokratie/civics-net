@@ -1,0 +1,42 @@
+uuid: 12d31266-f3f7-40fe-a8bb-9d7966709874
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_aktionstyp
+field_name: field_aktionstyp
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: symbolaktion
+      label: Symbolaktion
+    -
+      value: kundgebung
+      label: 'Kundgebung / Demo'
+    -
+      value: kampagne
+      label: Kampagne
+    -
+      value: fest
+      label: 'Fest / Feier'
+    -
+      value: protestaktion
+      label: Protestaktion
+    -
+      value: vernetzung
+      label: Vernetzung
+    -
+      value: sonstiges
+      label: Sonstiges
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

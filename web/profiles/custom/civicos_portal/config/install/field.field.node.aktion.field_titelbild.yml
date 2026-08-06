@@ -1,0 +1,33 @@
+uuid: 8d49853e-a359-4e56-9e94-fab93b652f93
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_titelbild
+    - node.type.aktion
+  module:
+    - image
+id: node.aktion.field_titelbild
+field_name: field_titelbild
+entity_type: node
+bundle: aktion
+label: Titelbild
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'jpg jpeg png webp'
+  max_filesize: '5 MB'
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image: {  }
+field_type: image

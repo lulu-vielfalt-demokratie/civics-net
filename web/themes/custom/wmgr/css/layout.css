@@ -1,0 +1,50 @@
+/* ── Layout ─────────────────────────────────────────────── */
+.layout-container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--sp-4);
+}
+@media (max-width: 600px) {
+  .layout-container { padding: 0 var(--sp-2); }
+}
+
+/* Anker-Offset für sticky Nav */
+[id] { scroll-margin-top: 72px; }
+
+/* Header */
+.site-header {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--schwarz);
+  border-bottom: 2px solid var(--rot);
+}
+.site-header .layout-container {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  height: 64px; gap: var(--sp-2);
+}
+
+/* Main content */
+main { min-height: 60vh; }
+.section { padding: var(--sp-8) 0; }
+@media (max-width: 600px) { .section { padding: var(--sp-6) 0; } }
+
+/* Grid-Utilities */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--sp-3);
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: var(--sp-3);
+}
+
+/* Footer */
+.site-footer {
+  background: var(--schwarz);
+  color: var(--grau-hell);
+  padding: var(--sp-6) 0 var(--sp-4);
+  font-size: var(--text-sm);
+}

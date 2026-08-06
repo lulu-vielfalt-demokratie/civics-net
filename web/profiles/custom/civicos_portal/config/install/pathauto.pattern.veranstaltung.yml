@@ -1,0 +1,23 @@
+uuid: b932cd42-70de-4fe2-88ab-c7d023a7ca2f
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.veranstaltung
+  module:
+    - node
+id: veranstaltung
+label: Veranstaltung
+type: 'canonical_entities:node'
+pattern: '/kalender/[node:title]'
+selection_criteria:
+  bundle:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      veranstaltung: veranstaltung
+selection_logic: and
+weight: 1
+relationships: {  }

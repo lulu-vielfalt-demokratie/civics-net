@@ -1,0 +1,23 @@
+uuid: e5b91990-63c0-4047-bdd9-dce9e98bdbfd
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.material
+  module:
+    - node
+id: material
+label: Material
+type: 'canonical_entities:node'
+pattern: '/material/[node:title]'
+selection_criteria:
+  bundle:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      material: material
+selection_logic: and
+weight: 3
+relationships: {  }

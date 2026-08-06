@@ -1,0 +1,27 @@
+uuid: 3ba09c8d-64af-4da6-b167-dc002a4c1dfc
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_datei
+    - node.type.material
+  module:
+    - file
+id: node.material.field_datei
+field_name: field_datei
+entity_type: node
+bundle: material
+label: Datei(en)
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'pdf jpg jpeg png svg zip docx'
+  max_filesize: '20 MB'
+  description_field: true
+field_type: file

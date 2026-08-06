@@ -1,0 +1,11 @@
+uuid: 335f5768-4ec6-4bbd-90f5-0d8da550e7af
+langcode: de
+status: true
+dependencies: {  }
+name: Artikel
+type: artikel
+description: 'Nachrichten, Berichte und Analysen'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

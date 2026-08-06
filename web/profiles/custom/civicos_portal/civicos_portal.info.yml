@@ -1,0 +1,49 @@
+name: CivicOS Portal
+type: profile
+description: 'Prototyp-Portal für zivilgesellschaftliche Bündnisse – Inhaltstypen, Theme, Module vorinstalliert.'
+package: CivicOS
+core_version_requirement: ^11
+
+# Theme
+themes:
+  - wmgr
+
+# Abhängigkeiten – alle Module die das Portal braucht
+dependencies:
+  - drupal:node
+  - drupal:taxonomy
+  - drupal:views
+  - drupal:views_ui
+  - drupal:datetime
+  - drupal:image
+  - drupal:file
+  - drupal:link
+  - drupal:options
+  - drupal:media
+  - drupal:media_library
+  - drupal:layout_builder
+  - drupal:path
+  - drupal:path_alias
+  - drupal:redirect
+  - drupal:menu_ui
+  - drupal:menu_link_content
+  - drupal:block
+  - drupal:block_content
+  - drupal:ckeditor5
+  - drupal:field_ui
+  - drupal:help
+  - pathauto:pathauto
+  - token:token
+  - metatag:metatag
+  - schema_metatag:schema_metatag
+  - simple_sitemap:simple_sitemap
+  - admin_toolbar:admin_toolbar
+  - admin_toolbar:admin_toolbar_tools
+  - field_group:field_group
+  - search_api:search_api
+  - facets:facets
+  - gin:gin
+  - symfony_mailer:symfony_mailer
+  - civicos_mailer:civicos_mailer
+  - mitfahrt:mitfahrt
+  - kleinanzeigen:kleinanzeigen

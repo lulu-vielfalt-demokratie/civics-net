@@ -1,0 +1,11 @@
+uuid: b669563b-d0b4-41ea-8a27-1e6b9f71ba8e
+langcode: de
+status: true
+dependencies: {  }
+name: Veranstaltung
+type: veranstaltung
+description: 'Demos, Kundgebungen, Kulturveranstaltungen'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

@@ -1,0 +1,11 @@
+uuid: bc3d5caf-8d11-49c9-9d48-f7ec9b018b99
+langcode: de
+status: true
+dependencies: {  }
+name: Material
+type: material
+description: 'Downloadmaterialien, Flyer, Plakate'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

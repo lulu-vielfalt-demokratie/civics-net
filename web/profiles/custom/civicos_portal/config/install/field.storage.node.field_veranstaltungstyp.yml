@@ -1,0 +1,39 @@
+uuid: be8cab7d-b7d5-4ad6-960e-e26101036bac
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_veranstaltungstyp
+field_name: field_veranstaltungstyp
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: demo
+      label: 'Demo / Kundgebung'
+    -
+      value: kultur
+      label: Kulturveranstaltung
+    -
+      value: bildung
+      label: 'Bildung / Vortrag'
+    -
+      value: vernetzung
+      label: Vernetzungstreffen
+    -
+      value: aktion
+      label: Aktion
+    -
+      value: sonstiges
+      label: Sonstiges
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

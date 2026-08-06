@@ -1,0 +1,23 @@
+uuid: ff79b1f8-e96f-475d-bd7d-fda555c774ea
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.aktion
+  module:
+    - node
+id: aktion
+label: Aktion
+type: 'canonical_entities:node'
+pattern: '/aktionen/[node:title]'
+selection_criteria:
+  bundle:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      aktion: aktion
+selection_logic: and
+weight: 2
+relationships: {  }

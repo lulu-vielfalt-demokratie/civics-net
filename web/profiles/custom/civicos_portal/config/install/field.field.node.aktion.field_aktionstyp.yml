@@ -1,0 +1,21 @@
+uuid: 4bfccf60-8aa1-4716-9a4b-fd24ed688990
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_aktionstyp
+    - node.type.aktion
+  module:
+    - options
+id: node.aktion.field_aktionstyp
+field_name: field_aktionstyp
+entity_type: node
+bundle: aktion
+label: Aktionstyp
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

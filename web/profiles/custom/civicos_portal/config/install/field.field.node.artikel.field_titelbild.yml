@@ -1,0 +1,33 @@
+uuid: 26ffab83-e145-437a-9fb9-cc9e24047829
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_titelbild
+    - node.type.artikel
+  module:
+    - image
+id: node.artikel.field_titelbild
+field_name: field_titelbild
+entity_type: node
+bundle: artikel
+label: Titelbild
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'jpg jpeg png webp'
+  max_filesize: '5 MB'
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image: {  }
+field_type: image

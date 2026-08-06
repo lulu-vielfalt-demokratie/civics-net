@@ -1,0 +1,21 @@
+uuid: f5906572-c36f-4630-b1cc-b9e927dfcd92
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_datum_bis
+    - node.type.veranstaltung
+  module:
+    - datetime
+id: node.veranstaltung.field_datum_bis
+field_name: field_datum_bis
+entity_type: node
+bundle: veranstaltung
+label: 'Datum bis'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

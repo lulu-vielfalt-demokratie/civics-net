@@ -1,0 +1,21 @@
+uuid: e9e095ed-884e-437f-b7c1-e6d2d85f896e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_veranstaltungstyp
+    - node.type.veranstaltung
+  module:
+    - options
+id: node.veranstaltung.field_veranstaltungstyp
+field_name: field_veranstaltungstyp
+entity_type: node
+bundle: veranstaltung
+label: Veranstaltungstyp
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

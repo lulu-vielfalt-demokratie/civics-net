@@ -42,7 +42,6 @@ dependencies:
   - field_group:field_group
   - search_api:search_api
   - facets:facets
-  - gin:gin
   - symfony_mailer:symfony_mailer
   - civicos_mailer:civicos_mailer
   - mitfahrt:mitfahrt

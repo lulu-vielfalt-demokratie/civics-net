@@ -13,18 +13,19 @@ final class Site {
     public const PLAN_PRO     = 'pro';
 
     public function __construct(
-        public readonly string $slug,
-        public readonly string $name,
-        public readonly string $contactEmail,
-        public readonly string $plan,
-        public string          $status,
-        public readonly string $domain,
-        public readonly string $dbName,
-        public readonly string $apiKey,
-        public readonly int    $createdAt,
-        public ?int            $provisionedAt = null,
-        public ?string         $errorMessage  = null,
-        public ?int            $hetznerServerId = null,
+        public readonly string  $slug,
+        public readonly string  $name,
+        public readonly string  $contactEmail,
+        public readonly string  $plan,
+        public string           $status,
+        public readonly string  $domain,
+        public readonly string  $dbName,
+        public readonly string  $apiKey,
+        public readonly int     $createdAt,
+        public ?int             $provisionedAt   = null,
+        public ?string          $errorMessage    = null,
+        public ?int             $hetznerServerId = null,
+        public ?string          $umamiSiteId     = null,
     ) {}
 
     public static function fromRow(array $row): self {
@@ -38,9 +39,10 @@ final class Site {
             dbName:          $row['db_name'],
             apiKey:          $row['api_key'],
             createdAt:       (int) $row['created_at'],
-            provisionedAt:   isset($row['provisioned_at']) ? (int) $row['provisioned_at'] : null,
-            errorMessage:    $row['error_message'] ?? null,
+            provisionedAt:   isset($row['provisioned_at'])    ? (int) $row['provisioned_at']    : null,
+            errorMessage:    $row['error_message']            ?? null,
             hetznerServerId: isset($row['hetzner_server_id']) ? (int) $row['hetzner_server_id'] : null,
+            umamiSiteId:     $row['umami_site_id']            ?? null,
         );
     }
 
@@ -57,6 +59,10 @@ final class Site {
             'provisioned_at'   => $this->provisionedAt,
             'error_message'    => $this->errorMessage,
             'dedicated_server' => $this->hetznerServerId !== null,
+            'umami_site_id'    => $this->umamiSiteId,
+            'analytics_url'    => $this->umamiSiteId
+                ? "https://analytics.civicos.de/websites/{$this->umamiSiteId}"
+                : null,
         ];
     }
 

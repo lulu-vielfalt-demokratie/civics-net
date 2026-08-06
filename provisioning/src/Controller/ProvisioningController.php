@@ -10,19 +10,21 @@ use CivicOS\Provisioning\Service\DrupalService;
 use CivicOS\Provisioning\Service\NotificationService;
 use CivicOS\Provisioning\Service\SiteRegistry;
 use CivicOS\Provisioning\Service\TraefikService;
+use CivicOS\Provisioning\Service\UmamiService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Log\LoggerInterface;
 
 class ProvisioningController {
     public function __construct(
-        private readonly SiteRegistry       $registry,
-        private readonly DatabaseService    $database,
-        private readonly DrupalService      $drupal,
-        private readonly DnsService         $dns,
-        private readonly TraefikService     $traefik,
+        private readonly SiteRegistry        $registry,
+        private readonly DatabaseService     $database,
+        private readonly DrupalService       $drupal,
+        private readonly DnsService          $dns,
+        private readonly TraefikService      $traefik,
         private readonly NotificationService $notifications,
-        private readonly LoggerInterface    $logger,
+        private readonly UmamiService        $umami,
+        private readonly LoggerInterface     $logger,
     ) {}
 
     public function list(Request $request, Response $response): Response {
@@ -76,13 +78,18 @@ class ProvisioningController {
             $db = $this->database->createForSite($slug);
             $this->logger->info("[{$slug}] DB erstellt");
 
-            $credentials = $this->drupal->provision($slug, $domain, $db, $data['name'], $data['contact_email']);
+            $profile = $data['profile'] ?? 'standard';
+            $credentials = $this->drupal->provision($slug, $domain, $db, $data['name'], $data['contact_email'], $profile);
             $this->logger->info("[{$slug}] Drupal provisioniert");
 
             $this->dns->createCname($slug);
             $this->traefik->addSite($slug, $domain);
 
-            $this->registry->markActive($slug);
+            $umamiSiteId    = $this->umami->createSite($slug, $domain);
+            $trackingScript = $this->umami->getTrackingScript($umamiSiteId);
+            $this->logger->info("[{$slug}] Umami site: {$umamiSiteId}");
+
+            $this->registry->markActive($slug, $umamiSiteId);
 
             $this->notifications->sendWelcome(
                 $data['contact_email'], $data['name'], $domain,
@@ -95,14 +102,21 @@ class ProvisioningController {
             return $this->json($response, ['error' => 'provisioning_failed', 'message' => $e->getMessage()], 500);
         }
 
+        $site = $this->registry->find($slug);
+
         return $this->json($response, [
-            'data'    => $this->registry->find($slug)->toArray(),
-            'api_key' => $rawApiKey,
-            'warning' => 'API-Key nur einmalig angezeigt – sicher speichern.',
-            'drupal'  => [
+            'data'      => $site->toArray(),
+            'api_key'   => $rawApiKey,
+            'warning'   => 'API-Key nur einmalig angezeigt – sicher speichern.',
+            'drupal'    => [
                 'url'        => "https://{$domain}",
                 'admin_user' => $credentials['admin_user'],
                 'admin_pass' => $credentials['admin_password'],
+            ],
+            'analytics' => [
+                'umami_site_id'   => $umamiSiteId,
+                'tracking_script' => $trackingScript,
+                'dashboard'       => "https://analytics.civicos.de/websites/{$umamiSiteId}",
             ],
         ], 201);
     }
@@ -120,6 +134,9 @@ class ProvisioningController {
             $this->database->removeForSite($site->slug);
             $this->dns->removeRecords($site->slug);
             $this->traefik->removeSite($site->slug);
+            if ($site->umamiSiteId) {
+                $this->umami->deleteSite($site->umamiSiteId);
+            }
             $this->registry->setStatus($site->slug, 'deprovisioned');
         } catch (\Throwable $e) {
             return $this->json($response, ['error' => $e->getMessage()], 500);

@@ -9,7 +9,7 @@ version: "3.9"
 
 networks:
   civicos-net:
-    name: civicos-net
+    external: true
 
 volumes:
   civicos-drupal-sites:

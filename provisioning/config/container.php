@@ -9,6 +9,7 @@ use CivicOS\Provisioning\Service\HetznerService;
 use CivicOS\Provisioning\Service\JwtService;
 use CivicOS\Provisioning\Service\NotificationService;
 use CivicOS\Provisioning\Service\SiteRegistry;
+use CivicOS\Provisioning\Service\UmamiService;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Psr\Log\LoggerInterface;
@@ -38,7 +39,7 @@ return [
 
     DatabaseService::class => create(DatabaseService::class)
         ->constructor(
-            host:     value($_ENV['DB_HOST'] ?? '172.17.0.1'),
+            host:     value($_ENV['DB_HOST'] ?? '127.0.0.1'),
             port:     value((int)($_ENV['DB_PORT'] ?? 3306)),
             rootUser: value($_ENV['DB_ROOT_USER'] ?? 'root'),
             rootPass: value($_ENV['DB_ROOT_PASSWORD'] ?? ''),
@@ -46,7 +47,7 @@ return [
 
     DrupalService::class => create(DrupalService::class)
         ->constructor(
-            drupalRoot: value($_ENV['DRUPAL_ROOT'] ?? '/var/www/civicos-drupal'),
+            drupalRoot: value($_ENV['DRUPAL_ROOT'] ?? '/var/www/platformsync'),
             baseDomain: value($_ENV['CIVICOS_BASE_DOMAIN'] ?? 'civicos.de'),
             logger:     get(LoggerInterface::class),
         ),
@@ -88,5 +89,15 @@ return [
             fromName:  value($_ENV['POSTSTACK_FROM_NAME'] ?? 'CivicOS'),
             client:    get(\GuzzleHttp\Client::class),
             logger:    get(LoggerInterface::class),
+        ),
+
+    UmamiService::class => create(UmamiService::class)
+        ->constructor(
+            umamiUrl:      value($_ENV['UMAMI_URL'] ?? 'http://127.0.0.1:3001'),
+            adminUser:     value($_ENV['UMAMI_ADMIN_USER'] ?? 'admin'),
+            adminPassword: value($_ENV['UMAMI_ADMIN_PASSWORD'] ?? ''),
+            teamId:        value($_ENV['UMAMI_TEAM_ID'] ?? ''),
+            client:        get(\GuzzleHttp\Client::class),
+            logger:        get(LoggerInterface::class),
         ),
 ];

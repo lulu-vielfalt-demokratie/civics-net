@@ -36,7 +36,8 @@ class SiteRegistry {
                 created_at        INTEGER NOT NULL,
                 provisioned_at    INTEGER,
                 error_message     TEXT,
-                hetzner_server_id INTEGER
+                hetzner_server_id INTEGER,
+                umami_site_id     TEXT
             );
             CREATE TABLE IF NOT EXISTS metrics (
                 id          INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -70,10 +71,10 @@ class SiteRegistry {
         $this->logger->info("Site registered: {$site->slug}");
     }
 
-    public function markActive(string $slug): void {
+    public function markActive(string $slug, ?string $umamiSiteId = null): void {
         $this->pdo->prepare(
-            'UPDATE sites SET status = ?, provisioned_at = ? WHERE slug = ?'
-        )->execute([Site::STATUS_ACTIVE, time(), $slug]);
+            'UPDATE sites SET status = ?, provisioned_at = ?, umami_site_id = ? WHERE slug = ?'
+        )->execute([Site::STATUS_ACTIVE, time(), $umamiSiteId, $slug]);
     }
 
     public function markError(string $slug, string $message): void {

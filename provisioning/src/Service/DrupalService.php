@@ -17,7 +17,7 @@ class DrupalService {
         $this->drush = '/usr/local/bin/drush';
     }
 
-    public function provision(string $slug, string $domain, array $db, string $siteName, string $adminEmail): array {
+    public function provision(string $slug, string $domain, array $db, string $siteName, string $adminEmail, string $profile = 'standard'): array {
         $this->logger->info("Drupal provisioning: {$domain}");
 
         // 1. Site-Verzeichnis anlegen
@@ -37,7 +37,7 @@ class DrupalService {
         $this->registerSite($domain);
 
         // 5. Drush site:install
-        $adminPass = $this->siteInstall($domain, $siteName, $adminEmail);
+        $adminPass = $this->siteInstall($domain, $siteName, $adminEmail, $profile);
 
         // 6. Berechtigungen setzen
         $this->setPermissions($siteDir);
@@ -104,14 +104,15 @@ PHP;
         }
     }
 
-    private function siteInstall(string $domain, string $siteName, string $adminEmail): string {
+    private function siteInstall(string $domain, string $siteName, string $adminEmail, string $profile = 'standard'): string {
         $adminPass = bin2hex(random_bytes(8));
 
         $cmd = sprintf(
-            '%s --root=%s --uri=%s site:install standard --site-name=%s --account-mail=%s --account-name=admin --account-pass=%s --locale=de -y 2>&1',
+            '%s --root=%s --uri=%s site:install %s --site-name=%s --account-mail=%s --account-name=admin --account-pass=%s --locale=de -y 2>&1',
             escapeshellarg($this->drush),
             escapeshellarg("{$this->drupalRoot}/web"),
             escapeshellarg("https://{$domain}"),
+            escapeshellarg($profile),
             escapeshellarg($siteName),
             escapeshellarg($adminEmail),
             escapeshellarg($adminPass),

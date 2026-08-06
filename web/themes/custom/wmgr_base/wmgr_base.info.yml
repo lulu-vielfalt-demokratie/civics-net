@@ -1,0 +1,22 @@
+name: WMGR Base
+type: theme
+description: 'Olivero-Fork als Basis für das WMGR-Theme'
+package: CivicOS
+core_version_requirement: ^11
+base theme: false
+
+libraries:
+  - wmgr_base/global-styling
+  - wmgr_base/navigation
+
+regions:
+  skip_link: 'Skip Link'
+  header: 'Header'
+  primary_menu: 'Primäre Navigation'
+  breadcrumb: 'Breadcrumb'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Inhalt'
+  sidebar: 'Seitenleiste'
+  footer_top: 'Footer oben'
+  footer_bottom: 'Footer unten'

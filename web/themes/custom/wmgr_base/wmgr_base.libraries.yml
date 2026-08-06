@@ -1,0 +1,23 @@
+global-styling:
+  version: VERSION
+  css:
+    base:
+      css/base/base.css: {}
+    theme:
+      css/wmgr/fonts.css: {}
+      css/wmgr/variables.css: {}
+      css/wmgr/layout.css: {}
+      css/wmgr/header.css: {}
+      css/wmgr/nav.css: {}
+      css/wmgr/hero.css: {}
+      css/wmgr/content.css: {}
+      css/wmgr/footer.css: {}
+      css/wmgr/utilities.css: {}
+
+navigation:
+  version: VERSION
+  js:
+    js/wmgr-nav.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

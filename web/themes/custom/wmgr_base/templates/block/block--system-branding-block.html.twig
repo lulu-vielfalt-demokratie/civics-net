@@ -1,0 +1,18 @@
+{%
+  set classes = [
+    'site-branding',
+    'block',
+    'block-system',
+    'block-system-branding-block',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  <div class="site-branding__inner">
+    <div class="site-branding__name">
+      <a href="{{ path('<front>') }}" rel="home" class="site-branding__link">
+        <span class="site-branding__title">Westmecklenburg</span>
+        <span class="site-branding__sub">gegen Rechts</span>
+      </a>
+    </div>
+  </div>
+</div>

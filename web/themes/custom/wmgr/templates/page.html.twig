@@ -1,0 +1,69 @@
+{#
+  WMGR Page Template
+#}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+<head>
+  <head-placeholder token="{{ placeholder_token }}">
+  <title>{{ head_title|safe_join(' | ') }}</title>
+  <css-placeholder token="{{ placeholder_token }}">
+  <js-placeholder token="{{ placeholder_token }}">
+</head>
+<body{{ attributes.addClass('wmgr-body') }}>
+
+<a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
+<header class="wmgr-header" role="banner">
+  <div class="wmgr-inner wmgr-header__inner">
+    <a href="{{ path('<front>') }}" class="wmgr-logo" rel="home">
+      <span class="wmgr-logo__title">Westmecklenburg</span>
+      <span class="wmgr-logo__sub">gegen Rechts</span>
+    </a>
+    <nav id="wmgr-main-nav" aria-label="Hauptnavigation">
+      {{ page.primary_menu }}
+    </nav>
+    <button class="wmgr-menu-btn" id="wmgr-menu-toggle"
+      aria-controls="wmgr-main-nav"
+      aria-expanded="false"
+      aria-label="Navigationsmenü öffnen">
+      <span class="icon-open" aria-hidden="true">&#9776;</span>
+      <span class="icon-close" aria-hidden="true">&#10005;</span>
+    </button>
+  </div>
+</header>
+
+{% if page.highlighted %}
+  <div class="wmgr-highlighted">
+    <div class="wmgr-inner">
+      {{ page.highlighted }}
+    </div>
+  </div>
+{% endif %}
+
+<main id="main-content" class="wmgr-main">
+  {% if page.breadcrumb %}
+    <div class="wmgr-breadcrumb wmgr-inner">{{ page.breadcrumb }}</div>
+  {% endif %}
+  <div class="wmgr-inner">
+    {{ page.content }}
+  </div>
+</main>
+
+<footer class="wmgr-footer" role="contentinfo">
+  <div class="wmgr-inner">
+    <p class="wmgr-footer__name">Westmecklenburg gegen Rechts</p>
+    <p class="wmgr-footer__region">Mecklenburg-Vorpommern West</p>
+    <nav aria-label="Footer-Links">
+      <ul class="wmgr-footer__links">
+        <li><a href="/kontakt">Kontakt</a></li>
+        <li><a href="/impressum">Impressum</a></li>
+        <li><a href="/datenschutz">Datenschutz</a></li>
+      </ul>
+    </nav>
+    <p class="wmgr-footer__copy">Demokratie braucht Menschen, die für sie eintreten.</p>
+  </div>
+</footer>
+
+<js-bottom-placeholder token="{{ placeholder_token }}">
+</body>
+</html>

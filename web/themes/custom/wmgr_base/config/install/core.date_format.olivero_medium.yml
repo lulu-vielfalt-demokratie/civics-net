@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    theme:
+      - wmgr_base
+id: wmgr_base_medium
+label: 'Olivero Medium'
+locked: false
+pattern: 'j F Y'

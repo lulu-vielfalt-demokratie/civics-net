@@ -1,0 +1,12 @@
+.layout-container,
+.wmgr-inner {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+@media (max-width: 600px) {
+  .layout-container, .wmgr-inner { padding: 0 1rem; }
+}
+[id] { scroll-margin-top: 72px; }
+main { min-height: 60vh; padding: 3rem 0; }

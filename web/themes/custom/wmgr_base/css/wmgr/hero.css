@@ -1,0 +1,31 @@
+.region-highlighted {
+  background: var(--schwarz);
+  padding: 4rem 0 3rem;
+  background-image: none !important;
+}
+.region-highlighted h2 {
+  color: #fff;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+.region-highlighted p {
+  color: var(--grau-hell);
+  font-size: 1.1rem;
+  max-width: 580px;
+}
+
+.wmgr-highlighted,
+.region-highlighted {
+  background: #111827 !important;
+  padding: 4rem 2rem 3rem !important;
+}
+.wmgr-highlighted h1,
+.wmgr-highlighted h2,
+.wmgr-highlighted p,
+.region-highlighted h1,
+.region-highlighted h2,
+.region-highlighted p {
+  color: #ffffff !important;
+  max-width: 680px;
+}

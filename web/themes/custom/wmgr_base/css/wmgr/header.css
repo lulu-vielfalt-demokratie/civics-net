@@ -1,0 +1,70 @@
+.site-header,
+header[role="banner"] {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 200 !important;
+  background: var(--schwarz) !important;
+  border-bottom: 2px solid var(--rot) !important;
+  background-image: none !important;
+}
+.site-header .layout-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: 1rem;
+}
+.site-branding__name a,
+.site-branding a {
+  font-family: var(--font-serif) !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  text-decoration: none !important;
+}
+.site-branding__slogan {
+  font-size: 0.75rem !important;
+  color: var(--rot) !important;
+}
+
+/* Logo-Duplikat verhindern */
+.site-branding__name { line-height: 1.2; }
+.site-branding__slogan { display: none; }
+
+.site-branding__link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none !important;
+  line-height: 1.2;
+}
+.site-branding__title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff !important;
+}
+.site-branding__sub {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #c9191e !important;
+}
+
+.site-branding__link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none !important;
+  line-height: 1.2;
+}
+.site-branding__title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff !important;
+}
+.site-branding__sub {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #c9191e !important;
+}

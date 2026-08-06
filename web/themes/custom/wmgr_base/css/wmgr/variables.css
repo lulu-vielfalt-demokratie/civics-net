@@ -1,0 +1,18 @@
+:root {
+  --rot:          #c9191e;
+  --rot-dunkel:   #9e1015;
+  --rot-pale:     #fce8e8;
+  --schwarz:      #0d0d0d;
+  --dunkel:       #1a1a1a;
+  --dunkel-mid:   #1f2937;
+  --grau:         #4b5563;
+  --grau-hell:    #9ca3af;
+  --border:       #d1cec6;
+  --bg:           #f5f4f0;
+  --white:        #ffffff;
+  --font-sans:    'DM Sans', system-ui, sans-serif;
+  --font-serif:   'Playfair Display', Georgia, serif;
+  --radius:       10px;
+  --radius-sm:    6px;
+  --max-width:    1100px;
+}

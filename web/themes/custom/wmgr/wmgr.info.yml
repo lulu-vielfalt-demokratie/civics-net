@@ -3,10 +3,17 @@ type: theme
 description: 'Portal-Theme für westmecklenburg-gegen-rechts.de – Mobile First, WCAG AA, Schema.org'
 package: CivicOS
 core_version_requirement: ^11
-base theme: olivero
+base theme: wmgr_base
 
 libraries:
   - wmgr/global
+
+libraries-override:
+  olivero/global-styling: false
+  olivero/navigation: false
+  olivero/messages: false
+  olivero/base: false
+  olivero/print: false
 
 regions:
   skip_link: 'Skip Link'

@@ -36,3 +36,55 @@
   /* Barrierefreiheit */
   --focus-ring:   0 0 0 3px var(--rot), 0 0 0 5px var(--white);
 }
+
+/* ── Olivero-Überschreibungen ───────────────────────────── */
+:root {
+  --color-primary-high: #c9191e;
+  --color-primary-mid: #9e1015;
+  --color-primary-low: #fce8e8;
+  --color-base: #1a1a1a;
+  --color-text: #1a1a1a;
+  --color-text-neutral-low: #4b5563;
+  --color-heading: #0d0d0d;
+  --color-link: #c9191e;
+  --color-link-hover: #9e1015;
+  --color-border: #d1cec6;
+  --color-background: #f5f4f0;
+  --color-absolute-black: #0d0d0d;
+  --color-absolute-white: #ffffff;
+  --color-header-bg: #111827;
+  --color-nav-link: #d1d5db;
+}
+
+/* ── Olivero HSL-Überschreibungen ───────────────────────── */
+:root {
+  --color-primary-hue: 357;
+  --color-primary-saturation: 74%;
+  --color-primary-lightness: 45%;
+  --color-secondary-hue: 357;
+  --color-secondary-saturation: 74%;
+  --color-secondary-lightness: 35%;
+  --color-header-background: #111827;
+  --color-site-branding-background: #111827;
+}
+
+/* Direkte Überschreibungen für Header */
+.site-header,
+header[role="banner"] {
+  background-color: #111827 !important;
+}
+
+/* Links rot */
+a, a:visited {
+  color: #c9191e;
+}
+a:hover { color: #9e1015; }
+
+/* Nav-Links */
+.primary-nav__menu-link,
+.primary-nav__menu-link:visited {
+  color: #d1d5db !important;
+}
+.primary-nav__menu-link:hover {
+  color: #ffffff !important;
+}

@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * WMGR Theme functions.
+ */
+
+/**
+ * Implements hook_page_attachments_alter().
+ * Entfernt Olivero CSS das direkt attached wird.
+ */
+function wmgr_page_attachments_alter(array &$attachments) {
+  // Olivero nav-primary-no-js.css entfernen
+  foreach ($attachments['#attached']['html_head'] ?? [] as $key => $item) {
+    if (isset($item[0]['#attributes']['href']) &&
+        str_contains($item[0]['#attributes']['href'], 'olivero')) {
+      unset($attachments['#attached']['html_head'][$key]);
+    }
+  }
+
+  // Alle Olivero-Libraries entfernen
+  if (isset($attachments['#attached']['library'])) {
+    $attachments['#attached']['library'] = array_filter(
+      $attachments['#attached']['library'],
+      fn($lib) => !str_starts_with($lib, 'olivero/')
+    );
+  }
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function wmgr_preprocess_html(&$variables) {
+  $variables['attributes']['class'][] = 'wmgr-body';
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function wmgr_preprocess_page(&$variables) {
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+  $variables['site_slogan'] = \Drupal::config('system.site')->get('slogan');
+}

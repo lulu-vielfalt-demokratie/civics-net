@@ -1,4 +1,4 @@
-/* ── Reset & Basis ──────────────────────────────────────── */
+/* ── WMGR Base – überschreibt Olivero komplett ──────────── */
 @font-face {
   font-family: 'DM Sans';
   font-style: normal;
@@ -30,56 +30,54 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 100%; }
-body {
-  font-family: var(--font-sans);
-  font-size: var(--text-base);
+
+body,
+.wmgr-body {
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  font-size: 1rem;
   line-height: 1.65;
   color: var(--dunkel);
-  background: var(--bg);
+  background: var(--bg) !important;
 }
 
-/* Barrierefreiheit */
-:focus-visible {
-  outline: 3px solid var(--rot);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
-}
-:focus:not(:focus-visible) { outline: none; }
+/* Reset Olivero body styles */
+body { max-width: none !important; padding: 0 !important; }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  line-height: 1.2;
+  color: var(--dunkel);
+}
+h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 900; }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 700; }
+h3 { font-size: 1.1rem; font-weight: 500; }
+
+a { color: var(--rot) !important; text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--rot-dunkel) !important; }
+img { max-width: 100%; height: auto; display: block; }
+ul { list-style: none; }
+
+/* Skip Link */
 .skip-link {
   position: absolute; top: -200%; left: 1rem;
-  background: var(--rot); color: var(--white);
-  padding: 0.6rem 1.2rem; border-radius: var(--radius-sm);
+  background: var(--rot); color: #fff;
+  padding: 0.6rem 1.2rem; border-radius: 6px;
   font-weight: 500; text-decoration: none; z-index: 9999;
 }
 .skip-link:focus { top: 0.75rem; }
 
-.sr-only {
-  position: absolute; width: 1px; height: 1px;
-  padding: 0; margin: -1px; overflow: hidden;
-  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+/* Fokus */
+:focus-visible {
+  outline: 3px solid var(--rot);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
+:focus:not(:focus-visible) { outline: none; }
 
-/* Typografie */
-h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; color: var(--dunkel); }
-h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  font-weight: 900;
-}
-h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-}
-h3 { font-size: 1.1rem; }
-p  { max-width: 68ch; color: var(--grau); }
-a  { color: var(--rot); text-decoration: underline; text-underline-offset: 3px; }
-a:hover { color: var(--rot-dunkel); }
-img { max-width: 100%; height: auto; display: block; }
-ul, ol { list-style: none; }
-
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; animation: none !important; }
-  html { scroll-behavior: auto; }
+/* Olivero Wassertropfen entfernen */
+body,
+.layout-container,
+.site-wrapper {
+  background-image: none !important;
+  background-color: var(--bg) !important;
 }

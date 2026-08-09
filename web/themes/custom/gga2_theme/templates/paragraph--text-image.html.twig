@@ -1,0 +1,11 @@
+{% set is_dark = (paragraph.field_style.value == 'dark') %}
+<section class="text-image-section" style="background:{{ is_dark ? '#241F2B' : '#FFFFFF' }};">
+  <div class="text-image-inner">
+    {% if content.field_title %}
+      <h2 style="color:{{ is_dark ? 'white' : '#241F2B' }};">{{ content.field_title }}</h2>
+    {% endif %}
+    {% if content.field_body %}
+      <div class="body" style="color:{{ is_dark ? 'rgba(255,255,255,0.75)' : 'rgba(36,31,43,0.75)' }};">{{ content.field_body }}</div>
+    {% endif %}
+  </div>
+</section>

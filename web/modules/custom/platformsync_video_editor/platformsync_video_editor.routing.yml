@@ -1,0 +1,18 @@
+platformsync_video_editor.tracks_api:
+  path: '/api/syndikal/tracks'
+  defaults:
+    _controller: '\Drupal\platformsync_video_editor\Controller\TracksApiController::tracks'
+    _title: 'Syndikal Tracks API'
+  requirements:
+    _permission: 'access video editor'
+  options:
+    _auth:
+      - cookie
+
+platformsync_video_editor.page:
+  path: '/video-editor'
+  defaults:
+    _controller: '\Drupal\platformsync_video_editor\Controller\VideoEditorPageController::page'
+    _title: 'Video-Editor'
+  requirements:
+    _permission: 'access video editor'

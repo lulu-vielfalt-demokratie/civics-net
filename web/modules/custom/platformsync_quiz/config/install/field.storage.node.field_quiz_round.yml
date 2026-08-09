@@ -1,0 +1,25 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_quiz_round
+field_name: field_quiz_round
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    - value: knowledge
+      label: 'Runde 1: Wissen (Multiple Choice)'
+    - value: dilemma
+      label: 'Runde 2: Abwaegen (Dilemma, keine eindeutige Antwort)'
+    - value: scenario
+      label: 'Runde 3: Handeln (Team-Szenario)'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

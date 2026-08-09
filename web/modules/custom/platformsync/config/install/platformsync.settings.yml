@@ -1,0 +1,25 @@
+anthropic_api_key: ''
+anthropic_model: 'claude-sonnet-4-20250514'
+default_campaign_context: ''
+token_expiry_seconds: 3600
+plans:
+  free:
+    label: 'Free'
+    credits_monthly: 50
+    max_platforms_per_request: 3
+    price_eur: 0
+  pro:
+    label: 'Pro'
+    credits_monthly: 500
+    max_platforms_per_request: 9
+    price_eur: 9
+  enterprise:
+    label: 'Enterprise'
+    credits_monthly: 5000
+    max_platforms_per_request: 9
+    price_eur: 49
+credit_cost_per_request: 1
+credit_cost_multiplier_platforms: 0
+rate_limit_per_hour: 30
+log_retention_days: 365
+monitoring_alert_email: ''

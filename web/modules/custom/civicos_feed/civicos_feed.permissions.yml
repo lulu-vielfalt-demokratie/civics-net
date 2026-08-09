@@ -1,0 +1,4 @@
+administer civicos feed:
+  title: 'CivicOS Feed Generator verwalten'
+  description: 'Keywords und Einstellungen des Feed Generators verwalten'
+  restrict access: true

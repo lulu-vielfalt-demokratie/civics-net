@@ -1,0 +1,19 @@
+host:
+  version: 1.0
+  js:
+    js/quiz-host.js: {}
+  css:
+    theme:
+      css/quiz-host.css: {}
+  dependencies:
+    - core/drupalSettings
+
+player:
+  version: 1.0
+  js:
+    js/quiz-player.js: {}
+  css:
+    theme:
+      css/quiz-player.css: {}
+  dependencies:
+    - core/drupalSettings

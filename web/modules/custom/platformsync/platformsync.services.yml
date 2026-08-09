@@ -1,0 +1,68 @@
+services:
+  platformsync.model:
+    class: Drupal\platformsync\Service\ModelService
+    arguments:
+      - '@http_client'
+      - '@config.factory'
+      - '@logger.channel.platformsync'
+
+  platformsync.anthropic:
+    alias: platformsync.model
+
+  platformsync.usage:
+    class: Drupal\platformsync\Service\UsageService
+    arguments:
+      - '@database'
+      - '@current_user'
+      - '@datetime.time'
+
+  platformsync.subscription:
+    class: Drupal\platformsync\Service\SubscriptionService
+    arguments:
+      - '@database'
+      - '@config.factory'
+      - '@datetime.time'
+
+  platformsync.oauth:
+    class: Drupal\platformsync\Service\OAuthService
+    arguments:
+      - '@database'
+      - '@datetime.time'
+      - '@password'
+
+  platformsync.feedback:
+    class: Drupal\platformsync\Service\FeedbackService
+    arguments:
+      - '@database'
+      - '@current_user'
+      - '@datetime.time'
+
+  platformsync.metrics_fetcher:
+    class: Drupal\platformsync\Service\MetricsFetcherService
+    arguments:
+      - '@http_client'
+      - '@config.factory'
+      - '@platformsync.feedback'
+      - '@logger.channel.platformsync'
+
+  logger.channel.platformsync:
+    parent: logger.channel_base
+    arguments: ['platformsync']
+
+  platformsync.channel:
+    class: Drupal\platformsync\Service\ChannelService
+    arguments:
+      - '@database'
+      - '@current_user'
+      - '@datetime.time'
+      - '@config.factory'
+      - '@logger.channel.platformsync'
+
+  platformsync.posting:
+    class: Drupal\platformsync\Service\PostingService
+    arguments:
+      - '@http_client'
+      - '@platformsync.channel'
+      - '@datetime.time'
+      - '@database'
+      - '@logger.channel.platformsync'

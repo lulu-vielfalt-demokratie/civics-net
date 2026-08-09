@@ -1,0 +1,11 @@
+name: 'PlatformSync Quiz'
+type: module
+description: 'Interaktives Präsenz-Quiz für demokratiepädagogische Veranstaltungen. Host-Screen + Smartphone-Player via Server-Sent Events.'
+package: PlatformSync
+core_version_requirement: ^10 || ^11
+version: '1.0.0'
+dependencies:
+  - drupal:node
+  - drupal:user
+  - drupal:rest
+  - drupal:serialization

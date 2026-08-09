@@ -1,0 +1,206 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for PlatformSync.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function platformsync_schema(): array {
+  $schema = [];
+
+  // API keys for external CMS (OAuth clients).
+  $schema['platformsync_api_keys'] = [
+    'description' => 'OAuth2 API keys for external CMS integrations.',
+    'fields' => [
+      'kid'         => ['type' => 'serial', 'unsigned' => TRUE, 'not null' => TRUE],
+      'uid'         => ['type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0],
+      'client_id'   => ['type' => 'varchar', 'length' => 128, 'not null' => TRUE],
+      'client_secret_hash' => ['type' => 'varchar', 'length' => 255, 'not null' => TRUE],
+      'label'       => ['type' => 'varchar', 'length' => 255, 'not null' => TRUE, 'default' => ''],
+      'scope'       => ['type' => 'varchar', 'length' => 512, 'not null' => TRUE, 'default' => 'generate'],
+      'plan'        => ['type' => 'varchar', 'length' => 64, 'not null' => TRUE, 'default' => 'free'],
+      'credits'     => ['type' => 'int', 'not null' => TRUE, 'default' => 100],
+      'credits_used'=> ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+      'active'      => ['type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => 1],
+      'created'     => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+      'expires'     => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+    ],
+    'primary key' => ['kid'],
+    'indexes' => [
+      'client_id' => ['client_id'],
+      'uid'       => ['uid'],
+    ],
+  ];
+
+  // OAuth2 access tokens (short-lived).
+  $schema['platformsync_oauth_tokens'] = [
+    'description' => 'Short-lived OAuth2 bearer tokens.',
+    'fields' => [
+      'tid'         => ['type' => 'serial', 'unsigned' => TRUE, 'not null' => TRUE],
+      'kid'         => ['type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE],
+      'token_hash'  => ['type' => 'varchar', 'length' => 255, 'not null' => TRUE],
+      'scope'       => ['type' => 'varchar', 'length' => 512, 'not null' => TRUE, 'default' => 'generate'],
+      'created'     => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+      'expires'     => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+    ],
+    'primary key' => ['tid'],
+    'indexes' => ['token_hash' => ['token_hash'], 'kid' => ['kid']],
+  ];
+
+  // Per-user subscription plans.
+  $schema['platformsync_subscriptions'] = [
+    'description' => 'User subscription plans and credit balances.',
+    'fields' => [
+      'sid'           => ['type' => 'serial', 'unsigned' => TRUE, 'not null' => TRUE],
+      'uid'           => ['type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE],
+      'plan'          => ['type' => 'varchar', 'length' => 64, 'not null' => TRUE, 'default' => 'free'],
+      'credits_total' => ['type' => 'int', 'not null' => TRUE, 'default' => 50],
+      'credits_used'  => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+      'reset_date'    => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+      'valid_until'   => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+      'created'       => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+      'changed'       => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+    ],
+    'primary key' => ['sid'],
+    'unique keys' => ['uid' => ['uid']],
+  ];
+
+  // Usage log — every generation request.
+  $schema['platformsync_usage_log'] = [
+    'description' => 'Immutable log of all generation requests for billing and monitoring.',
+    'fields' => [
+      'lid'          => ['type' => 'serial', 'unsigned' => TRUE, 'not null' => TRUE],
+      'uid'          => ['type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0],
+      'kid'          => ['type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0],
+      'source'       => ['type' => 'varchar', 'length' => 32, 'not null' => TRUE, 'default' => 'drupal'],
+      'platforms'    => ['type' => 'varchar', 'length' => 512, 'not null' => TRUE, 'default' => ''],
+      'tone'         => ['type' => 'varchar', 'length' => 64, 'not null' => TRUE, 'default' => 'informativ'],
+      'input_chars'  => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+      'output_chars' => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+      'tokens_used'  => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+      'credits_cost' => ['type' => 'int', 'not null' => TRUE, 'default' => 1],
+      'status'       => ['type' => 'varchar', 'length' => 32, 'not null' => TRUE, 'default' => 'success'],
+      'error_msg'    => ['type' => 'text', 'size' => 'medium'],
+      'ip_address'   => ['type' => 'varchar', 'length' => 45, 'not null' => TRUE, 'default' => ''],
+      'user_agent'   => ['type' => 'varchar', 'length' => 512, 'not null' => TRUE, 'default' => ''],
+      'created'      => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+    ],
+    'primary key' => ['lid'],
+    'indexes' => [
+      'uid'     => ['uid'],
+      'kid'     => ['kid'],
+      'created' => ['created'],
+      'status'  => ['status'],
+    ],
+  ];
+
+  // Feedback + Performance-Metriken für ML-Training
+  $schema['platformsync_feedback'] = [
+    'description' => 'User feedback and platform engagement metrics for ML training.',
+    'fields' => [
+      'fid'                => ['type' => 'serial', 'unsigned' => TRUE, 'not null' => TRUE],
+      'lid'                => ['type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE],
+      'uid'                => ['type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE],
+      'platform'           => ['type' => 'varchar', 'length' => 32, 'not null' => TRUE],
+      'rating'             => ['type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => 0],
+      'was_used'           => ['type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => 0],
+      'post_url'           => ['type' => 'varchar', 'length' => 512, 'not null' => TRUE, 'default' => ''],
+      'post_text'          => ['type' => 'text', 'size' => 'medium'],
+      'score'              => ['type' => 'float', 'unsigned' => TRUE],
+      'metrics_raw'        => ['type' => 'text', 'size' => 'medium'],
+      'metrics_fetched_at' => ['type' => 'int'],
+      'created'            => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+      'changed'            => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+    ],
+    'primary key' => ['fid'],
+    'indexes' => [
+      'lid'      => ['lid'],
+      'uid'      => ['uid'],
+      'platform' => ['platform'],
+      'score'    => ['score'],
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function platformsync_install(): void {
+  // Insert default plan definitions into config.
+  \Drupal::messenger()->addMessage(t('PlatformSync installed. Configure your Anthropic API key at /admin/config/platformsync/settings.'));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function platformsync_uninstall(): void {
+  \Drupal::configFactory()->getEditable('platformsync.settings')->delete();
+}
+
+/**
+ * Implements hook_update_10001().
+ * Adds platformsync_channels and platformsync_post_queue tables.
+ */
+function platformsync_update_10001(): void {
+  $schema = \Drupal::database()->schema();
+
+  if (!$schema->tableExists('platformsync_channels')) {
+    $schema->createTable('platformsync_channels', [
+      'description' => 'Customer social media channel credentials.',
+      'fields' => [
+        'cid'         => ['type' => 'serial', 'unsigned' => TRUE, 'not null' => TRUE],
+        'uid'         => ['type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE],
+        'kid'         => ['type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0],
+        'platform'    => ['type' => 'varchar', 'length' => 32, 'not null' => TRUE],
+        'label'       => ['type' => 'varchar', 'length' => 255, 'not null' => TRUE, 'default' => ''],
+        'config'      => ['type' => 'text', 'size' => 'medium', 'not null' => TRUE],
+        'active'      => ['type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => 1],
+        'verified'    => ['type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => 0],
+        'verified_at' => ['type' => 'int'],
+        'last_used'   => ['type' => 'int'],
+        'created'     => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+        'changed'     => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+      ],
+      'primary key' => ['cid'],
+      'indexes' => [
+        'uid'      => ['uid'],
+        'kid'      => ['kid'],
+        'platform' => ['platform'],
+      ],
+    ]);
+  }
+
+  if (!$schema->tableExists('platformsync_post_queue')) {
+    $schema->createTable('platformsync_post_queue', [
+      'description' => 'Queue of generated posts pending approval and publishing.',
+      'fields' => [
+        'qid'              => ['type' => 'serial', 'unsigned' => TRUE, 'not null' => TRUE],
+        'lid'              => ['type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE],
+        'uid'              => ['type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE],
+        'cid'              => ['type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE],
+        'platform'         => ['type' => 'varchar', 'length' => 32, 'not null' => TRUE],
+        'post_text'        => ['type' => 'text', 'size' => 'medium', 'not null' => TRUE],
+        'status'           => ['type' => 'varchar', 'length' => 32, 'not null' => TRUE, 'default' => 'pending'],
+        'platform_post_id' => ['type' => 'varchar', 'length' => 512],
+        'platform_post_url'=> ['type' => 'varchar', 'length' => 512],
+        'error_msg'        => ['type' => 'text', 'size' => 'medium'],
+        'scheduled_at'     => ['type' => 'int'],
+        'published_at'     => ['type' => 'int'],
+        'created'          => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+        'changed'          => ['type' => 'int', 'not null' => TRUE, 'default' => 0],
+      ],
+      'primary key' => ['qid'],
+      'indexes' => [
+        'uid'      => ['uid'],
+        'cid'      => ['cid'],
+        'status'   => ['status'],
+        'platform' => ['platform'],
+      ],
+    ]);
+  }
+}

@@ -1,0 +1,35 @@
+{% set is_dark = (paragraph.field_style.value == 'dark') %}
+{% set section_id = is_dark ? 'wie' : 'warum' %}
+{% set modifier = is_dark ? 'is-dark' : 'is-light' %}
+
+<section id="{{ section_id }}" class="icon-grid-section {{ modifier }}">
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <div class="icon-grid-head">
+      <span class="section-label">{{ is_dark ? 'Wie' : 'Warum' }}</span>
+
+      {% if content.field_title %}
+        <h2>{{ content.field_title }}</h2>
+      {% endif %}
+
+      {% if content.field_intro %}
+        <div class="icon-grid-intro">{{ content.field_intro }}</div>
+      {% endif %}
+
+      {% if paragraph.field_punchline.value %}
+        <div class="icon-grid-punchline">{{ paragraph.field_punchline.value }}</div>
+      {% endif %}
+    </div>
+
+    <div class="icon-grid">
+      {% for item in paragraph.field_items %}
+        {% set parts = item.value|split('|') %}
+        <div class="icon-card">
+          <h3>{{ parts[1]|default('') }}</h3>
+          <p>{{ parts[2]|default('') }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

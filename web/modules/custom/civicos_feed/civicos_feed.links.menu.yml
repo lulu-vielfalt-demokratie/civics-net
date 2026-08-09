@@ -1,0 +1,6 @@
+civicos_feed.settings:
+  title: 'Feed Generator'
+  description: 'Bluesky Feed Generator Keywords verwalten'
+  parent: system.admin_config_services
+  route_name: civicos_feed.settings
+  weight: 10

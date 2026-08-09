@@ -1,0 +1,77 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.quiz.field_quiz_questions
+    - field.field.node.quiz.field_quiz_round
+    - field.field.node.quiz.field_quiz_time_limit
+    - node.type.quiz
+  module:
+    - text
+    - options
+id: node.quiz.default
+targetEntityType: node
+bundle: quiz
+mode: default
+content:
+  # Titel ganz oben
+  title:
+    type: string_textfield
+    weight: -10
+    region: content
+    settings:
+      size: 60
+      placeholder: 'z.B. Demokratie-Grundlagen Runde 1'
+    third_party_settings: {  }
+
+  # Rundentyp als Dropdown
+  field_quiz_round:
+    type: options_select
+    weight: -9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+
+  # Zeitlimit als Zahlenfeld
+  field_quiz_time_limit:
+    type: number
+    weight: -8
+    region: content
+    settings:
+      placeholder: '0'
+    third_party_settings: {  }
+
+  # Fragen: je Eintrag ein Textarea mit JSON
+  # Hinweis: In einer spaeteren Version koennte hier ein Custom Widget stehen
+  field_quiz_questions:
+    type: text_textarea
+    weight: -7
+    region: content
+    settings:
+      rows: 8
+      placeholder: |
+        {
+          "category": "Grundlagen",
+          "question": "Was versteht man unter Gemeinwohl?",
+          "answers": ["Antwort A", "Antwort B", "Antwort C"],
+          "correct": 1,
+          "explanation": "Erklaerungstext..."
+        }
+    third_party_settings: {  }
+
+  # Standardfelder ausblenden die wir nicht brauchen
+  langcode:
+    weight: -5
+    region: content
+    type: language_select
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+
+hidden:
+  created: true
+  uid: true
+  promote: true
+  sticky: true
+  path: true
+  comment: true

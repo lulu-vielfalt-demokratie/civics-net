@@ -1,0 +1,9 @@
+access video editor:
+  title: 'Video-Editor verwenden'
+  description: 'Zugriff auf den PlatformSync Video-Editor Block.'
+  restrict access: false
+
+administer syndikal tracks:
+  title: 'Syndikal-Tracks verwalten'
+  description: 'Syndikal-Track-Nodes anlegen, bearbeiten und löschen.'
+  restrict access: true

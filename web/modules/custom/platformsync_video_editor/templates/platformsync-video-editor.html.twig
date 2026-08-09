@@ -1,0 +1,182 @@
+{#
+/**
+ * @file
+ * Template: platformsync-video-editor.html.twig
+ *
+ * Variablen:
+ *   - tracks_api_url: Absolute URL zum JSON-Endpunkt
+ *
+ * Das JavaScript liest die API-URL aus drupalSettings,
+ * nicht aus diesem Template.
+ */
+#}
+<div class="ps-video-editor" id="ps-video-editor" role="application" aria-label="{{ 'Video-Editor'|t }}">
+
+  {# Schritt-Navigation #}
+  <nav class="pve-steps" aria-label="{{ 'Editor-Schritte'|t }}">
+    <div class="pve-step pve-step--active" id="pve-step1">① {{ 'Video laden'|t }}</div>
+    <div class="pve-step" id="pve-step2">② {{ 'Anonymisieren'|t }}</div>
+    <div class="pve-step" id="pve-step3">③ {{ 'Tonspuren'|t }}</div>
+    <div class="pve-step" id="pve-step4">④ {{ 'Export'|t }}</div>
+  </nav>
+
+  {# STEP 1: Video laden #}
+  <div class="pve-card" id="pve-card-load">
+    <div class="pve-label">{{ 'Video laden'|t }}</div>
+    <div class="pve-dropzone" id="pve-dropzone" role="button" tabindex="0"
+      aria-label="{{ 'Video-Datei auswählen oder ablegen'|t }}">
+      <span class="pve-dropzone__icon" aria-hidden="true">▶</span>
+      <p>{{ 'Video hier ablegen oder klicken'|t }}</p>
+      <small>{{ 'MP4, WebM, MOV · bleibt lokal auf deinem Gerät'|t }}</small>
+    </div>
+    <input type="file" id="pve-file-input" accept="video/*" class="pve-hidden"
+      aria-label="{{ 'Video-Datei auswählen'|t }}">
+
+    <div id="pve-video-ui" class="pve-hidden pve-video-ui">
+      <video id="pve-vid" controls></video>
+      <div class="pve-timeline" id="pve-timeline" role="slider" aria-label="{{ 'Trim-Timeline'|t }}">
+        <div class="pve-tl-bg" id="pve-tl-bar"></div>
+        <div class="pve-tl-handle" id="pve-tl-in" style="left:0%"></div>
+        <div class="pve-tl-handle" id="pve-tl-out" style="left:100%"></div>
+        <div class="pve-tl-head" id="pve-tl-head" style="left:0%"></div>
+      </div>
+      <div class="pve-tl-labels">
+        <span id="pve-lbl-s">0:00</span>
+        <span id="pve-lbl-e">0:00</span>
+      </div>
+      <div class="pve-time-row">
+        In: <strong id="pve-v-in">0.0s</strong>
+        &nbsp;Out: <strong id="pve-v-out">0.0s</strong>
+        &nbsp;{{ 'Dauer'|t }}: <strong id="pve-v-dur">0.0s</strong>
+      </div>
+      <div class="pve-controls">
+        <button class="pve-btn" id="pve-btn-play">▶ {{ 'Play'|t }}</button>
+        <button class="pve-btn" id="pve-btn-pause">⏸ {{ 'Pause'|t }}</button>
+        <button class="pve-btn" id="pve-btn-segment">▶ {{ 'Segment vorhören'|t }}</button>
+        <button class="pve-btn pve-btn--primary" id="pve-btn-to-anon">
+          {{ 'Weiter: Anonymisieren'|t }} →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {# STEP 2: Anonymisieren #}
+  <div class="pve-card pve-hidden" id="pve-card-anon">
+    <div class="pve-label">{{ 'Anonymisierung'|t }}</div>
+
+    <div class="pve-anon-header">
+      <span>{{ 'Gesichter verpixeln'|t }}</span>
+      <button class="pve-btn pve-btn--primary" id="pve-btn-detect">
+        {{ 'Gesichter erkennen'|t }}
+      </button>
+    </div>
+    <div class="pve-detect-status" id="pve-detect-status">
+      {{ 'Erkennung noch nicht gestartet'|t }}
+    </div>
+
+    <div class="pve-canvas-wrap pve-hidden" id="pve-canvas-wrap">
+      <canvas id="pve-preview-canvas"></canvas>
+      <canvas id="pve-overlay-canvas"></canvas>
+    </div>
+
+    <div class="pve-pixel-row pve-hidden" id="pve-pixel-row">
+      <label for="pve-pixel-size">{{ 'Verpixelung'|t }}:</label>
+      <input type="range" id="pve-pixel-size" min="4" max="32" step="2" value="12">
+      <span id="pve-pixel-val">12 px</span>
+      <span id="pve-face-count"></span>
+    </div>
+
+    <div class="pve-hint pve-hidden" id="pve-manual-hint">
+      {{ 'Bereich manuell aufziehen für weitere Stellen (Nummernschilder, Schilder, …)'|t }}
+    </div>
+
+    <hr class="pve-divider">
+
+    <div class="pve-anon-header">
+      <span>{{ 'Metadaten entfernen'|t }}</span>
+      <button class="pve-btn pve-btn--danger" id="pve-btn-meta">
+        {{ 'Alle Metadaten entfernen'|t }}
+      </button>
+    </div>
+    <table class="pve-meta-table" id="pve-meta-table">
+      <tr><td colspan="2">{{ 'Video laden, dann werden Metadaten hier angezeigt.'|t }}</td></tr>
+    </table>
+
+    <hr class="pve-divider">
+    <div class="pve-controls">
+      <button class="pve-btn" id="pve-btn-back-load">← {{ 'Zurück'|t }}</button>
+      <button class="pve-btn pve-btn--primary" id="pve-btn-to-audio">
+        {{ 'Weiter: Tonspuren'|t }} →
+      </button>
+    </div>
+  </div>
+
+  {# STEP 3: Tonspuren #}
+  <div class="pve-card pve-hidden" id="pve-card-audio">
+    <div class="pve-label">{{ 'Tonspuren'|t }}</div>
+    <div class="pve-controls" style="margin-bottom:.875rem">
+      <button class="pve-btn" id="pve-btn-add-audio">
+        ♪ {{ 'Eigene Datei laden'|t }}
+      </button>
+      <input type="file" id="pve-audio-input" accept="audio/*" class="pve-hidden">
+    </div>
+
+    <div class="pve-tabs">
+      <div class="pve-tab pve-tab--active" id="pve-tab-btn-tracks" data-tab="tracks">
+        {{ 'Meine Spuren'|t }}
+      </div>
+      <div class="pve-tab" id="pve-tab-btn-syndikal" data-tab="syndikal">
+        ◉ {{ 'Syndikal-Bibliothek'|t }}
+      </div>
+    </div>
+
+    <div id="pve-tab-tracks">
+      <div id="pve-track-list">
+        <div class="pve-empty">{{ 'Noch keine Tonspuren.'|t }}</div>
+      </div>
+    </div>
+
+    <div id="pve-tab-syndikal" class="pve-hidden">
+      <div id="pve-syndikal-status" class="pve-loading">
+        {{ 'Bibliothek wird geladen…'|t }}
+      </div>
+      <div class="pve-syndikal-grid" id="pve-syndikal-grid"></div>
+    </div>
+
+    <hr class="pve-divider">
+    <div class="pve-controls">
+      <button class="pve-btn" id="pve-btn-back-anon">← {{ 'Zurück'|t }}</button>
+      <button class="pve-btn pve-btn--primary" id="pve-btn-to-export">
+        {{ 'Weiter: Export'|t }} →
+      </button>
+    </div>
+  </div>
+
+  {# STEP 4: Export #}
+  <div class="pve-card pve-hidden" id="pve-card-export">
+    <div class="pve-label">{{ 'Export'|t }}</div>
+    <div class="pve-checklist" id="pve-checklist"></div>
+    <div class="pve-controls" style="margin-bottom:.875rem">
+      <select id="pve-export-format">
+        <option value="webm">{{ 'WebM (Browser-nativ)'|t }}</option>
+        <option value="mp4">{{ 'MP4 (via ffmpeg.wasm)'|t }}</option>
+      </select>
+      <button class="pve-btn pve-btn--primary" id="pve-btn-export">
+        ↓ {{ 'Video exportieren'|t }}
+      </button>
+      <button class="pve-btn" id="pve-btn-back-audio">← {{ 'Zurück'|t }}</button>
+    </div>
+    <div id="pve-export-progress" class="pve-hidden">
+      <div id="pve-export-msg" class="pve-export-msg">{{ 'Verarbeitung…'|t }}</div>
+      <div class="pve-prog-wrap"><div class="pve-prog-bar" id="pve-prog-bar"></div></div>
+    </div>
+    <div id="pve-export-result" class="pve-hidden pve-hint" style="margin-top:.875rem">
+      {{ 'Im Produktiv-Build erscheint hier der Download-Link. MP4-Export läuft via ffmpeg.wasm – vollständig lokal, kein Server-Upload.'|t }}
+    </div>
+  </div>
+
+  <div class="pve-footer">
+    {{ 'Alle Verarbeitungen laufen lokal im Browser · Kein Upload auf externe Server'|t }}
+  </div>
+
+</div>{# /.ps-video-editor #}

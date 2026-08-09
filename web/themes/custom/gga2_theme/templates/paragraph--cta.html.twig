@@ -1,0 +1,25 @@
+<section class="cta-section" id="mitmachen">
+  <div class="cta-inner">
+    {% if content.field_title %}
+      <h2>{{ content.field_title }}</h2>
+    {% endif %}
+    {% if content.field_description %}
+      <div class="body">{{ content.field_description }}</div>
+    {% endif %}
+    {% if paragraph.field_links %}
+      {% for link in paragraph.field_links %}
+        {% if loop.first %}
+          <a href="{{ link.uri }}" class="btn-dark" target="_blank" rel="noopener noreferrer">{{ link.title }}</a>
+          {% if paragraph.field_links|length > 1 %}
+            <div class="cta-links">
+          {% endif %}
+        {% else %}
+          <a href="{{ link.uri }}" class="link-pill" target="_blank" rel="noopener noreferrer">{{ link.title }}</a>
+          {% if loop.last %}
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>

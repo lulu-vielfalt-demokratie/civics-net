@@ -1,0 +1,15 @@
+platformsync_analyse.form:
+  path: '/platformsync/analyse'
+  defaults:
+    _form: '\Drupal\platformsync_analyse\Form\AnalyseForm'
+    _title: 'Bluesky Follower-Analyse'
+  requirements:
+    _permission: 'administer site configuration'
+
+platformsync_analyse.vergleich:
+  path: '/platformsync/vergleich'
+  defaults:
+    _form: '\Drupal\platformsync_analyse\Form\VergleichForm'
+    _title: 'Netzwerk-Vergleich'
+  requirements:
+    _permission: 'administer site configuration'

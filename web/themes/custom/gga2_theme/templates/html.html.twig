@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+  <head>
+    <head-placeholder token="{{ placeholder_token }}">
+    <link rel="icon" href="/themes/custom/gga2_theme/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/themes/custom/gga2_theme/favicon.svg" sizes="any" />
+    <title>{{ head_title | safe_join(' | ') }}</title>
+    <meta name="description" content="Dialoge für Demokratie und eine sozial gerechte Zukunft – an Haustüren und Marktplätzen, in Bussen und Zügen." />
+    <meta property="og:title" content="{{ head_title | safe_join(' | ') }}" />
+    <meta property="og:description" content="Dialoge für Demokratie und eine sozial gerechte Zukunft – an Haustüren und Marktplätzen, in Bussen und Zügen." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gerechtgehtanders.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <css-placeholder token="{{ placeholder_token }}">
+    <js-placeholder token="{{ placeholder_token }}">
+  </head>
+  <body{{ attributes.addClass('gga2-body') }}>
+    <div id="gga2-wrapper">
+      {{ page_top }}
+      {{ page }}
+      {{ page_bottom }}
+    </div>
+    <js-bottom-placeholder token="{{ placeholder_token }}">
+  </body>
+</html>

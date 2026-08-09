@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Hauptmoduldatei fuer platformsync_quiz.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function platformsync_quiz_theme(): array {
+  return [
+    'platformsync_quiz_host' => [
+      'variables' => [
+        'session_id' => NULL,
+        'quiz_title' => NULL,
+        'questions'  => NULL,
+        'stream_url' => NULL,
+        'api_base'   => NULL,
+        'player_url' => NULL,
+      ],
+    ],
+    'platformsync_quiz_player' => [
+      'variables' => [
+        'session_id' => NULL,
+        'stream_url' => NULL,
+        'api_base'   => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_cron().
+ * Beendet Sessions die aelter als 24h sind.
+ */
+function platformsync_quiz_cron(): void {
+  $cutoff = time() - 86400;
+  \Drupal::database()->update('platformsync_quiz_session')
+    ->fields(['status' => 'finished', 'changed' => time()])
+    ->condition('created', $cutoff, '<')
+    ->condition('status', 'finished', '!=')
+    ->execute();
+}

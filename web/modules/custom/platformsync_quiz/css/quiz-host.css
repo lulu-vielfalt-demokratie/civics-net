@@ -1,0 +1,48 @@
+/* platformsync_quiz - Host-Screen CSS */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:wght@400;600&display=swap');
+
+html, body { margin: 0; padding: 0; background: #1a1a1a; color: #f5f0e8; font-family: 'Source Serif 4', Georgia, serif; min-height: 100vh; }
+
+#quiz-host-app { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* WAITING */
+.host-waiting { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px; gap: 20px; }
+.host-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 64px); font-weight: 900; }
+.host-subtitle { font-size: clamp(18px, 2.5vw, 28px); color: #8a8070; }
+.host-player-count { font-size: clamp(20px, 3vw, 36px); color: #27ae60; font-weight: 600; }
+.host-qr-area { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 20px 40px; }
+.host-player-url { font-size: clamp(14px, 2vw, 22px); color: #c8c0b0; margin-bottom: 8px; }
+.host-code { font-size: clamp(20px, 3vw, 36px); letter-spacing: 0.15em; }
+
+/* BUTTONS */
+.host-btn { border: none; padding: 16px 48px; font-family: 'Playfair Display', serif; font-size: clamp(16px, 2vw, 24px); font-weight: 700; cursor: pointer; transition: background 0.2s; }
+.host-btn-primary { background: #c0392b; color: #fff; }
+.host-btn-primary:hover { background: #e74c3c; }
+
+/* QUESTION */
+.host-question { flex: 1; display: flex; flex-direction: column; padding: 32px 48px; gap: 16px; }
+.host-progress { font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: #8a8070; }
+.host-q-category { display: inline-block; padding: 4px 14px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: #fff; align-self: flex-start; }
+.host-q-text { font-family: 'Playfair Display', serif; font-size: clamp(24px, 4vw, 48px); font-weight: 700; line-height: 1.2; }
+.host-answers { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.host-answer { display: flex; flex-direction: column; gap: 4px; }
+.host-answer-label { font-size: clamp(14px, 1.8vw, 20px); display: flex; align-items: center; gap: 10px; }
+.host-letter { display: inline-block; background: rgba(255,255,255,0.1); width: 28px; height: 28px; text-align: center; line-height: 28px; font-weight: 700; flex-shrink: 0; }
+.host-bar-wrap { display: flex; align-items: center; gap: 10px; height: 28px; }
+.host-bar { height: 28px; background: #f5f0e8; transition: width 0.4s ease; min-width: 2px; }
+.host-bar-count { font-size: 16px; font-weight: 600; min-width: 24px; }
+.host-answer-correct .host-bar { background: #16a085; }
+.host-answer-wrong .host-bar { background: #c0392b; opacity: 0.5; }
+.host-answer-correct .host-answer-label { color: #2ecc71; }
+
+/* EXPLANATION */
+.host-explanation { background: rgba(255,255,255,0.05); border-left: 4px solid #c0392b; padding: 14px 18px; font-size: clamp(13px, 1.5vw, 17px); line-height: 1.6; color: #c8c0b0; }
+
+/* FOOTER */
+.host-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 16px; }
+.host-answer-total { font-size: 16px; color: #8a8070; }
+
+/* FINISHED */
+.host-finished { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 20px; padding: 40px; }
+.host-thanks { font-size: clamp(16px, 2vw, 24px); color: #c8c0b0; line-height: 1.7; }

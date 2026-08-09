@@ -1,0 +1,64 @@
+{#
+/**
+ * @file platformsync-dashboard.html.twig
+ * Admin monitoring dashboard.
+ *
+ * Variables:
+ * - stats: aggregated usage statistics
+ * - plans: plan definitions from config
+ * - revenue: estimated monthly revenue
+ * - log: rendered table of recent requests
+ */
+#}
+<div class="platformsync-dashboard">
+
+  <h2>{% trans %}Overview — last 30 days{% endtrans %}</h2>
+
+  <div class="platformsync-dashboard__metrics">
+    <div class="metric-card">
+      <span class="metric-label">{% trans %}Total requests{% endtrans %}</span>
+      <span class="metric-value">{{ stats.total_requests }}</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-label">{% trans %}Successful{% endtrans %}</span>
+      <span class="metric-value">{{ stats.successful }}</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-label">{% trans %}Tokens used{% endtrans %}</span>
+      <span class="metric-value">{{ stats.total_tokens|number_format }}</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-label">{% trans %}Credits consumed{% endtrans %}</span>
+      <span class="metric-value">{{ stats.total_credits }}</span>
+    </div>
+    <div class="metric-card metric-card--highlight">
+      <span class="metric-label">{% trans %}Est. revenue (EUR){% endtrans %}</span>
+      <span class="metric-value">{{ revenue }}</span>
+    </div>
+  </div>
+
+  {% if stats.requests_by_plan %}
+  <h3>{% trans %}Requests by plan{% endtrans %}</h3>
+  <div class="platformsync-dashboard__plans">
+    {% for plan_key, count in stats.requests_by_plan %}
+    <div class="plan-bar">
+      <span class="plan-bar__label">{{ plan_key }}</span>
+      <span class="plan-bar__count">{{ count }}</span>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if stats.daily %}
+  <h3>{% trans %}Daily requests{% endtrans %}</h3>
+  <div class="platformsync-dashboard__sparkline">
+    <canvas id="platformsync-daily-chart" height="80"
+      data-values="{{ stats.daily|json_encode }}"
+    ></canvas>
+  </div>
+  {% endif %}
+
+  <h3>{% trans %}Recent requests{% endtrans %}</h3>
+  {{ log }}
+
+</div>

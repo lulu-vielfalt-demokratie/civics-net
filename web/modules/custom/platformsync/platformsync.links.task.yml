@@ -1,0 +1,35 @@
+platformsync.generate_tab:
+  title: 'Generate'
+  route_name: platformsync.user_generate
+  base_route: platformsync.user_generate
+  weight: 0
+
+platformsync.history_tab:
+  title: 'My history'
+  route_name: platformsync.user_history
+  base_route: platformsync.user_generate
+  weight: 10
+
+platformsync.admin_settings_tab:
+  title: 'Settings'
+  route_name: platformsync.admin_settings
+  base_route: platformsync.admin_settings
+  weight: 0
+
+platformsync.admin_dashboard_tab:
+  title: 'Dashboard'
+  route_name: platformsync.admin_dashboard
+  base_route: platformsync.admin_settings
+  weight: 10
+
+platformsync.admin_api_keys_tab:
+  title: 'API Keys'
+  route_name: platformsync.admin_api_keys
+  base_route: platformsync.admin_settings
+  weight: 20
+
+platformsync.channels_tab:
+  title: 'Meine Kanäle'
+  route_name: platformsync.channels
+  base_route: platformsync.user_generate
+  weight: 5

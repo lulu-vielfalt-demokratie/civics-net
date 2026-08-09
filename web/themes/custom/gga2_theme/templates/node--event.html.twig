@@ -1,0 +1,20 @@
+<article class="page-content">
+  <div class="page-content-inner">
+    <div class="event-meta">
+      {% if node.field_event_date.value %}
+        {% set date = node.field_event_date.value|date('d. F Y, H:i') %}
+        <span class="event-meta-date">📅 {{ date }} Uhr</span>
+      {% endif %}
+      {% if node.field_location.value %}
+        <span class="event-meta-location">📍 {{ node.field_location.value }}</span>
+      {% endif %}
+    </div>
+    <h1 class="page-title">{{ node.label }}</h1>
+    {% if content.field_description %}
+      <div class="page-body">{{ content.field_description }}</div>
+    {% endif %}
+    <div class="event-back">
+      <a href="/" class="btn-secondary">← Zurück zur Startseite</a>
+    </div>
+  </div>
+</article>

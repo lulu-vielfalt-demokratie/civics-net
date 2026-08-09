@@ -1,0 +1,39 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.quiz.field_quiz_questions
+    - field.field.node.quiz.field_quiz_round
+    - field.field.node.quiz.field_quiz_time_limit
+    - node.type.quiz
+id: node.quiz.default
+targetEntityType: node
+bundle: quiz
+mode: default
+content:
+  # Nur der Titel wird in der Standard-Ansicht gezeigt.
+  # Das eigentliche Quiz laeuft ueber /quiz/{session_id} (Host/Player-Routen).
+  title:
+    type: string
+    weight: -10
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+
+  field_quiz_round:
+    type: list_default
+    weight: -9
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+
+hidden:
+  field_quiz_questions: true
+  field_quiz_time_limit: true
+  langcode: true
+  uid: true
+  created: true
+  links: true

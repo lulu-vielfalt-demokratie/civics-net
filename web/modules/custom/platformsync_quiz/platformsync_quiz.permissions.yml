@@ -1,0 +1,8 @@
+administer platformsync quiz:
+  title: 'Quizze verwalten'
+  description: 'Quizfragen, Runden und Kategorien verwalten.'
+  restrict access: true
+
+host platformsync quiz:
+  title: 'Quiz hosten'
+  description: 'Eine Quiz-Session starten und steuern.'

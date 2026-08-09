@@ -1,0 +1,8 @@
+name: 'CivicOS Social'
+type: module
+description: 'Inhalte direkt aus Drupal auf Bluesky veröffentlichen'
+core_version_requirement: '>=11'
+package: CivicOS
+dependencies:
+  - drupal:system
+  - civicos_feed

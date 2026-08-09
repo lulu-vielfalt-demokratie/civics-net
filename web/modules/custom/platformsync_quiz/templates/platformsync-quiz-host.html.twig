@@ -1,0 +1,28 @@
+{#
+  Host-Interface fuer den Beamer-Screen.
+  Vollbild, grosse Schrift, Live-Antwort-Balken.
+#}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ quiz_title }} &ndash; Host</title>
+  <style>
+    /* Inline-Basis-CSS damit der Host-Screen auch ohne Drupal-Theme funktioniert */
+    body { margin: 0; background: #1a1a1a; color: #f5f0e8;
+           font-family: 'Source Serif 4', Georgia, serif; }
+  </style>
+</head>
+<body>
+
+<div id="quiz-host-app"
+     data-session="{{ session_id }}"
+     data-stream="{{ stream_url }}"
+     data-api="{{ api_base }}"
+     data-player-url="{{ player_url }}"
+     data-questions="{{ questions }}">
+</div>
+
+{{ attach_library('platformsync_quiz/host') }}
+</body>
+</html>

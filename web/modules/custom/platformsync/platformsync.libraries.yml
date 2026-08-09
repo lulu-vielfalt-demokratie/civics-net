@@ -1,0 +1,22 @@
+generate:
+  version: VERSION
+  js:
+    js/generate.js: {}
+  css:
+    component:
+      css/platformsync.css: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+
+admin:
+  version: VERSION
+  js:
+    js/admin.js:
+      attributes:
+        defer: true
+  css:
+    component:
+      css/platformsync.css: {}
+  dependencies:
+    - core/drupal

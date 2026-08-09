@@ -1,0 +1,7 @@
+name: 'CivicOS Feed Generator'
+type: module
+description: 'Verwaltet Keywords für den Bluesky Feed Generator'
+core_version_requirement: '>=11'
+package: CivicOS
+dependencies:
+  - drupal:system

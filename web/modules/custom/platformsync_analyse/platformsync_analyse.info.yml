@@ -1,0 +1,7 @@
+name: PlatformSync Analyse
+type: module
+description: Bluesky Follower-Analyse und Bot-Netzwerk-Erkennung
+package: PlatformSync
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:node

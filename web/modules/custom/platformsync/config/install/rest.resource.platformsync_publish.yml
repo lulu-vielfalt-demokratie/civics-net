@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - platformsync
+    - serialization
+id: platformsync_publish
+plugin_id: platformsync_publish
+granularity: resource
+configuration:
+  methods:
+    - POST
+  formats:
+    - json
+  authentication:
+    - basic_auth

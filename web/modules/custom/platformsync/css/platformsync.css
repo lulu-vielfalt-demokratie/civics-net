@@ -1,0 +1,186 @@
+/* PlatformSync — module styles */
+
+/* ── Dashboard ─────────────────────────────────────── */
+.platformsync-dashboard__metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.metric-card {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+
+.metric-card--highlight {
+  border-color: #378add;
+  background: #e6f1fb;
+}
+
+.metric-label {
+  font-size: .8rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.metric-value {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.platformsync-dashboard__plans {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.plan-bar {
+  background: #e8f4fd;
+  border-radius: 4px;
+  padding: .4rem .8rem;
+  font-size: .9rem;
+}
+
+.plan-bar__label { font-weight: 600; margin-right: .4rem; }
+
+.platformsync-dashboard__sparkline {
+  max-width: 700px;
+  margin-bottom: 2rem;
+}
+
+/* ── Generate page ──────────────────────────────────── */
+.platformsync-generate { max-width: 760px; }
+
+.platformsync-generate__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  font-size: .9rem;
+}
+
+.platformsync-plan-badge {
+  display: inline-block;
+  padding: .2rem .6rem;
+  border-radius: 3px;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  background: #ddd;
+  color: #333;
+}
+.platformsync-plan-badge--pro        { background: #378add; color: #fff; }
+.platformsync-plan-badge--enterprise { background: #185fa5; color: #fff; }
+
+.platformsync-credits { color: #444; }
+.platformsync-history-link { margin-left: auto; font-size: .85rem; }
+
+.platformsync-generate__input,
+.platformsync-generate__tone { margin-bottom: 1.25rem; }
+
+.platformsync-generate__platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1.25rem;
+}
+
+.platformsync-platform-toggle {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .35rem .75rem;
+  border: 1px solid #bbb;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: .85rem;
+  user-select: none;
+  transition: background .15s, border-color .15s;
+}
+
+.platformsync-platform-toggle:has(input:checked) {
+  background: #e6f1fb;
+  border-color: #378add;
+  color: #185fa5;
+  font-weight: 600;
+}
+
+.platformsync-platform-toggle input { display: none; }
+
+.platformsync-generate__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.platformsync-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-top-color: #378add;
+  border-radius: 50%;
+  animation: cp-spin .7s linear infinite;
+  display: inline-block;
+}
+@keyframes cp-spin { to { transform: rotate(360deg); } }
+
+.platformsync-error { color: #c0392b; font-size: .9rem; }
+
+/* ── Result cards ───────────────────────────────────── */
+.platformsync-generate__results {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.platformsync-result-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.platformsync-result-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem 1rem;
+  background: #f7f7f7;
+  border-bottom: 1px solid #eee;
+  font-size: .8rem;
+}
+
+.platformsync-result-card__platform { font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+
+.platformsync-result-card__count { color: #888; }
+.platformsync-result-card__count.warn { color: #e67e22; }
+.platformsync-result-card__count.over { color: #c0392b; }
+
+.platformsync-result-card__body { padding: .75rem 1rem; }
+
+.platformsync-result-card__text {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: inherit;
+  font-size: .9rem;
+  line-height: 1.55;
+  margin: 0 0 .75rem;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.platformsync-copy-btn {
+  font-size: .8rem;
+  padding: .3rem .8rem;
+}

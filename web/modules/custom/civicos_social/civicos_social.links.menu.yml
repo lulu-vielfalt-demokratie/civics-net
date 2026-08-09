@@ -1,0 +1,6 @@
+civicos_social.post:
+  title: 'Auf Bluesky veröffentlichen'
+  description: 'Inhalte direkt auf Bluesky posten'
+  parent: system.admin_config_services
+  route_name: civicos_social.post
+  weight: 11

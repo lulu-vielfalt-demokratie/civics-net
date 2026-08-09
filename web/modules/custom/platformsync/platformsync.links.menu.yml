@@ -1,0 +1,18 @@
+platformsync.admin:
+  title: 'PlatformSync'
+  description: 'Configure the PlatformSync module.'
+  parent: system.admin_config_services
+  route_name: platformsync.admin_settings
+  weight: 10
+
+platformsync.admin_dashboard:
+  title: 'Dashboard & Monitoring'
+  parent: platformsync.admin
+  route_name: platformsync.admin_dashboard
+  weight: 20
+
+platformsync.admin_api_keys:
+  title: 'API Keys'
+  parent: platformsync.admin
+  route_name: platformsync.admin_api_keys
+  weight: 30

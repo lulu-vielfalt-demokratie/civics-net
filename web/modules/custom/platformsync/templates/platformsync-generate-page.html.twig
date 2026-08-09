@@ -1,0 +1,74 @@
+{#
+/**
+ * @file platformsync-generate-page.html.twig
+ * Frontend generation UI for logged-in Drupal users.
+ *
+ * Variables:
+ * - remaining: integer credits remaining
+ * - plan: string plan key
+ */
+#}
+<div class="platformsync-generate" id="platformsync-app">
+
+  <div class="platformsync-generate__header">
+    <span class="platformsync-plan-badge platformsync-plan-badge--{{ plan }}">{{ plan|upper }}</span>
+    <span class="platformsync-credits" id="platformsync-credits-remaining">
+      {% trans %}Credits remaining: {% endtrans %}<strong>{{ remaining }}</strong>
+    </span>
+    <a href="{{ path('platformsync.user_history') }}" class="platformsync-history-link">
+      {% trans %}My history{% endtrans %}
+    </a>
+  </div>
+
+  <div class="platformsync-generate__input">
+    <label for="platformsync-text" class="form-item__label">
+      {% trans %}Source text{% endtrans %}
+    </label>
+    <textarea id="platformsync-text" class="form-textarea"
+      placeholder="{{ 'Article, press release, announcement…'|t }}"
+      rows="6"></textarea>
+  </div>
+
+  <div class="platformsync-generate__tone">
+    <label for="platformsync-tone" class="form-item__label">{% trans %}Tone{% endtrans %}</label>
+    <select id="platformsync-tone" class="form-select">
+      <option value="informativ">{% trans %}informativ{% endtrans %}</option>
+      <option value="mobilisierend">{% trans %}mobilisierend{% endtrans %}</option>
+      <option value="persönlich">{% trans %}persönlich{% endtrans %}</option>
+      <option value="nüchtern-sachlich">{% trans %}nüchtern-sachlich{% endtrans %}</option>
+    </select>
+  </div>
+
+  <div class="platformsync-generate__platforms">
+    <p class="form-item__label">{% trans %}Platforms{% endtrans %}</p>
+    {% set platforms = [
+      {id: 'bluesky',   label: 'Bluesky',    limit: 300},
+      {id: 'mastodon',  label: 'Mastodon',   limit: 500},
+      {id: 'threads',   label: 'Threads',    limit: 500},
+      {id: 'instagram', label: 'Instagram',  limit: 2200},
+      {id: 'telegram',  label: 'Telegram',   limit: 4096},
+      {id: 'whatsapp',  label: 'WhatsApp',   limit: 4096},
+      {id: 'signal',    label: 'Signal',     limit: 4096},
+      {id: 'twitter',   label: 'X / Twitter',limit: 280},
+      {id: 'linkedin',  label: 'LinkedIn',   limit: 3000},
+    ] %}
+    {% for p in platforms %}
+    <label class="platformsync-platform-toggle" data-platform="{{ p.id }}" data-limit="{{ p.limit }}">
+      <input type="checkbox" value="{{ p.id }}" class="platformsync-platform-cb"
+        {% if p.id in ['bluesky','mastodon','telegram','whatsapp'] %}checked{% endif %}>
+      {{ p.label }}
+    </label>
+    {% endfor %}
+  </div>
+
+  <div class="platformsync-generate__actions">
+    <button id="platformsync-submit" class="button button--primary">
+      {% trans %}Generate posts{% endtrans %}
+    </button>
+    <span id="platformsync-spinner" class="platformsync-spinner" hidden></span>
+    <span id="platformsync-error" class="platformsync-error" hidden></span>
+  </div>
+
+  <div id="platformsync-results" class="platformsync-generate__results"></div>
+
+</div>

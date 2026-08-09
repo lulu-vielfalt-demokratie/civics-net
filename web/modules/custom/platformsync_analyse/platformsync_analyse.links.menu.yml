@@ -1,0 +1,13 @@
+platformsync_analyse.form:
+  title: 'Follower-Analyse'
+  description: 'Bluesky Account analysieren'
+  route_name: platformsync_analyse.form
+  parent: system.admin
+  weight: 10
+
+platformsync_analyse.vergleich:
+  title: 'Netzwerk-Vergleich'
+  description: 'Mehrere Bluesky-Accounts vergleichen'
+  route_name: platformsync_analyse.vergleich
+  parent: system.admin
+  weight: 11

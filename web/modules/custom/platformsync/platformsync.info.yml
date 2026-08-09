@@ -1,0 +1,11 @@
+name: 'PlatformSync'
+type: module
+description: 'AI-powered social media post generation with multi-user support, REST API, OAuth2, usage logging and monetization.'
+package: 'Social Media'
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:user
+  - drupal:rest
+  - drupal:serialization
+  - drupal:key
+  - drupal:token

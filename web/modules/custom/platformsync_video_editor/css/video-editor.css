@@ -1,0 +1,318 @@
+/**
+ * PlatformSync Video-Editor – Block CSS
+ * Präfix: pve- (PlatformSync Video Editor)
+ * Alle Styles sind auf .ps-video-editor gescoped – kein Konflikt mit dem Theme.
+ */
+
+.ps-video-editor {
+  --pve-bg:       #0e0f11;
+  --pve-bg2:      #16181c;
+  --pve-bg3:      #1e2026;
+  --pve-border:   rgba(255,255,255,.08);
+  --pve-border2:  rgba(255,255,255,.14);
+  --pve-text:     #e8e9eb;
+  --pve-text2:    #8a8f9a;
+  --pve-text3:    #555a65;
+  --pve-blue:     #3d8ef0;
+  --pve-blue-bg:  rgba(61,142,240,.12);
+  --pve-blue-dim: rgba(61,142,240,.25);
+  --pve-red:      #e25340;
+  --pve-red-bg:   rgba(226,83,64,.12);
+  --pve-green:    #3db87a;
+  --pve-amber:    #e8a535;
+  --pve-r:        8px;
+  --pve-rl:       12px;
+
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  color: var(--pve-text);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 860px;
+}
+
+/* ── Hilfklassen ── */
+.ps-video-editor .pve-hidden { display: none !important; }
+
+/* ── Schritte ── */
+.ps-video-editor .pve-steps {
+  display: flex;
+  border-bottom: .5px solid var(--pve-border);
+}
+.ps-video-editor .pve-step {
+  font-size: 12px;
+  padding: .5rem .875rem;
+  color: var(--pve-text3);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+.ps-video-editor .pve-step--active {
+  color: var(--pve-blue);
+  border-bottom-color: var(--pve-blue);
+  font-weight: 500;
+}
+.ps-video-editor .pve-step--done { color: var(--pve-green); }
+
+/* ── Card ── */
+.ps-video-editor .pve-card {
+  background: var(--pve-bg2);
+  border: .5px solid var(--pve-border);
+  border-radius: var(--pve-rl);
+  padding: 1.125rem 1.25rem;
+}
+.ps-video-editor .pve-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--pve-text3);
+  margin-bottom: .875rem;
+}
+
+/* ── Dropzone ── */
+.ps-video-editor .pve-dropzone {
+  border: 1.5px dashed var(--pve-border2);
+  border-radius: var(--pve-rl);
+  padding: 2.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.ps-video-editor .pve-dropzone:hover,
+.ps-video-editor .pve-dropzone.over {
+  background: var(--pve-bg3);
+  border-color: var(--pve-blue);
+}
+.ps-video-editor .pve-dropzone__icon { font-size: 2rem; color: var(--pve-text3); display: block; }
+.ps-video-editor .pve-dropzone p { color: var(--pve-text2); margin-top: .5rem; }
+.ps-video-editor .pve-dropzone small { color: var(--pve-text3); font-size: 12px; }
+
+/* ── Video ── */
+.ps-video-editor video {
+  width: 100%;
+  border-radius: var(--pve-r);
+  background: #000;
+  max-height: 240px;
+  object-fit: contain;
+  display: block;
+}
+.ps-video-editor .pve-video-ui {
+  flex-direction: column;
+  gap: .875rem;
+  margin-top: .875rem;
+}
+.ps-video-editor .pve-video-ui:not(.pve-hidden) { display: flex; }
+
+/* ── Timeline ── */
+.ps-video-editor .pve-timeline {
+  position: relative;
+  height: 48px;
+  border-radius: var(--pve-r);
+  background: var(--pve-bg3);
+  border: .5px solid var(--pve-border);
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+}
+.ps-video-editor .pve-tl-bg {
+  position: absolute; top: 0; height: 100%;
+  background: var(--pve-blue-dim); pointer-events: none;
+}
+.ps-video-editor .pve-tl-handle {
+  position: absolute; top: 0; width: 5px; height: 100%;
+  background: var(--pve-blue); cursor: ew-resize; z-index: 3;
+  border-radius: 2px;
+}
+.ps-video-editor .pve-tl-head {
+  position: absolute; top: 0; width: 2px; height: 100%;
+  background: var(--pve-red); pointer-events: none; z-index: 4;
+}
+.ps-video-editor .pve-tl-labels {
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: var(--pve-text3); margin-top: 4px;
+  font-family: monospace;
+}
+.ps-video-editor .pve-time-row {
+  font-size: 13px; color: var(--pve-text2); display: flex; gap: 1rem; flex-wrap: wrap;
+}
+.ps-video-editor .pve-time-row strong { color: var(--pve-text); font-family: monospace; }
+
+/* ── Buttons ── */
+.ps-video-editor .pve-controls { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
+.ps-video-editor .pve-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; padding: 6px 12px;
+  border-radius: var(--pve-r);
+  border: .5px solid var(--pve-border2);
+  background: transparent; color: var(--pve-text);
+  cursor: pointer; font-family: inherit;
+  white-space: nowrap; transition: background .12s;
+}
+.ps-video-editor .pve-btn:hover { background: var(--pve-bg3); }
+.ps-video-editor .pve-btn:active { transform: scale(.98); }
+.ps-video-editor .pve-btn:disabled { opacity: .4; cursor: not-allowed; }
+.ps-video-editor .pve-btn--primary {
+  background: var(--pve-blue-bg); color: var(--pve-blue);
+  border-color: var(--pve-blue-dim);
+}
+.ps-video-editor .pve-btn--primary:hover { background: var(--pve-blue-dim); }
+.ps-video-editor .pve-btn--danger {
+  background: var(--pve-red-bg); color: var(--pve-red); border-color: transparent;
+}
+
+/* ── Canvas ── */
+.ps-video-editor .pve-canvas-wrap {
+  position: relative; background: #000;
+  border-radius: var(--pve-r); overflow: hidden; line-height: 0;
+  margin-top: .75rem;
+}
+.ps-video-editor .pve-canvas-wrap:not(.pve-hidden) { display: block; }
+.ps-video-editor #pve-preview-canvas { width: 100%; display: block; }
+.ps-video-editor #pve-overlay-canvas {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; cursor: crosshair;
+}
+
+/* ── Detect status ── */
+.ps-video-editor .pve-detect-status { font-size: 13px; color: var(--pve-text2); margin-bottom: .5rem; }
+.ps-video-editor .pve-detect-status--running { color: var(--pve-blue); }
+.ps-video-editor .pve-detect-status--done { color: var(--pve-green); }
+
+/* ── Pixel row ── */
+.ps-video-editor .pve-pixel-row {
+  display: flex; align-items: center; gap: .75rem;
+  flex-wrap: wrap; margin-top: .75rem;
+}
+.ps-video-editor .pve-pixel-row:not(.pve-hidden) { display: flex; }
+.ps-video-editor .pve-pixel-row label { font-size: 13px; color: var(--pve-text2); }
+.ps-video-editor .pve-pixel-row input[type="range"] { width: 100px; accent-color: var(--pve-blue); }
+.ps-video-editor .pve-pixel-row span { font-size: 13px; color: var(--pve-text); min-width: 36px; font-family: monospace; }
+
+/* ── Hint ── */
+.ps-video-editor .pve-hint {
+  font-size: 12px; color: var(--pve-text2);
+  padding: .5rem .75rem; background: var(--pve-bg3);
+  border-radius: var(--pve-r); border: .5px solid var(--pve-border);
+}
+.ps-video-editor .pve-hint:not(.pve-hidden) { display: block; }
+
+/* ── Anon header ── */
+.ps-video-editor .pve-anon-header {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: .5rem; margin-bottom: .75rem;
+  font-size: 14px; font-weight: 500;
+}
+
+/* ── Meta table ── */
+.ps-video-editor .pve-meta-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.ps-video-editor .pve-meta-table td {
+  padding: 6px 8px; border-bottom: .5px solid var(--pve-border); color: var(--pve-text2);
+}
+.ps-video-editor .pve-meta-table td:first-child { color: var(--pve-text); font-weight: 500; width: 42%; }
+.ps-video-editor .pve-meta-table td.removed { color: var(--pve-red); text-decoration: line-through; }
+.ps-video-editor .pve-meta-table td.cleared { color: var(--pve-green); }
+
+/* ── Divider ── */
+.ps-video-editor .pve-divider { border: none; border-top: .5px solid var(--pve-border); margin: .875rem 0; }
+
+/* ── Tabs ── */
+.ps-video-editor .pve-tabs { display: flex; border-bottom: .5px solid var(--pve-border); margin-bottom: .875rem; }
+.ps-video-editor .pve-tab {
+  font-size: 13px; padding: .5rem .875rem; cursor: pointer;
+  color: var(--pve-text3); border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.ps-video-editor .pve-tab--active { color: var(--pve-blue); border-bottom-color: var(--pve-blue); font-weight: 500; }
+
+/* ── Tracks ── */
+.ps-video-editor .pve-track {
+  display: flex; align-items: center; gap: .75rem;
+  padding: .6rem .875rem; background: var(--pve-bg3);
+  border-radius: var(--pve-r); border: .5px solid var(--pve-border);
+  margin-bottom: .4rem;
+}
+.ps-video-editor .pve-track-name {
+  flex: 1; color: var(--pve-text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;
+}
+.ps-video-editor .pve-track-meta { font-size: 11px; color: var(--pve-text3); }
+.ps-video-editor .pve-track-vol { display: flex; align-items: center; gap: .4rem; }
+.ps-video-editor .pve-track-vol label { font-size: 11px; color: var(--pve-text3); }
+.ps-video-editor .pve-track-vol input { width: 72px; accent-color: var(--pve-blue); }
+.ps-video-editor .pve-track-vol span { font-size: 12px; color: var(--pve-text2); min-width: 28px; text-align: right; font-family: monospace; }
+.ps-video-editor .pve-track-rm {
+  background: none; border: none; cursor: pointer;
+  color: var(--pve-text3); font-size: 16px; padding: 0 4px;
+  display: flex; align-items: center;
+}
+.ps-video-editor .pve-track-rm:hover { color: var(--pve-red); }
+
+/* ── Syndikal grid ── */
+.ps-video-editor .pve-syndikal-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: .5rem;
+}
+.ps-video-editor .pve-syndikal-item {
+  display: flex; align-items: center; gap: .5rem;
+  padding: .5rem .75rem; border-radius: var(--pve-r);
+  border: .5px solid var(--pve-border); background: var(--pve-bg3);
+  cursor: pointer; transition: background .1s, border-color .1s;
+}
+.ps-video-editor .pve-syndikal-item:hover { background: var(--pve-bg2); border-color: var(--pve-blue-dim); }
+.ps-video-editor .pve-s-title { font-size: 13px; color: var(--pve-text); line-height: 1.3; }
+.ps-video-editor .pve-s-meta { font-size: 11px; color: var(--pve-text3); }
+.ps-video-editor .pve-loading { font-size: 13px; color: var(--pve-text3); padding: .75rem 0; text-align: center; }
+.ps-video-editor .pve-empty { font-size: 13px; color: var(--pve-text3); text-align: center; padding: .75rem 0; }
+
+/* ── Checklist ── */
+.ps-video-editor .pve-checklist { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+.ps-video-editor .pve-check-item { display: flex; align-items: center; gap: .5rem; font-size: 13px; }
+.ps-video-editor .pve-check-item.ok { color: var(--pve-green); }
+.ps-video-editor .pve-check-item.no { color: var(--pve-text3); }
+
+/* ── Progress ── */
+.ps-video-editor .pve-prog-wrap {
+  background: var(--pve-bg3); border-radius: 99px; height: 5px; overflow: hidden; margin-top: .5rem;
+}
+.ps-video-editor .pve-prog-bar {
+  height: 100%; background: var(--pve-blue); border-radius: 99px; transition: width .35s; width: 0%;
+}
+.ps-video-editor .pve-export-msg { font-size: 13px; color: var(--pve-text2); }
+.ps-video-editor .pve-export-msg--done { color: var(--pve-green); }
+
+/* ── Select ── */
+.ps-video-editor select {
+  font-size: 13px; padding: 6px 10px; border-radius: var(--pve-r);
+  border: .5px solid var(--pve-border2); background: var(--pve-bg3);
+  color: var(--pve-text); font-family: inherit; cursor: pointer;
+}
+
+/* ── Footer ── */
+.ps-video-editor .pve-footer {
+  text-align: center; font-size: 11px; color: var(--pve-text3);
+  padding-top: 1rem; border-top: .5px solid var(--pve-border);
+}
+
+/* ── Audio-Modus Auswahl ── */
+.ps-video-editor .pve-audio-mode {
+  display: flex; gap: .5rem; margin-bottom: .875rem; flex-wrap: wrap;
+}
+.ps-video-editor .pve-mode-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; padding: 6px 12px; border-radius: var(--pve-r);
+  border: .5px solid var(--pve-border2); background: transparent;
+  color: var(--pve-text2); cursor: pointer; font-family: inherit;
+  transition: all .12s;
+}
+.ps-video-editor .pve-mode-btn.active {
+  background: var(--pve-blue-bg); color: var(--pve-blue);
+  border-color: var(--pve-blue-dim);
+}
+.ps-video-editor .pve-mode-btn:hover:not(.active) { background: var(--pve-bg3); }
+.ps-video-editor .pve-orig-vol {
+  display: flex; align-items: center; gap: .75rem;
+  padding: .6rem .875rem; background: var(--pve-bg3);
+  border-radius: var(--pve-r); border: .5px solid var(--pve-border);
+  margin-bottom: .75rem; font-size: 13px; color: var(--pve-text2);
+}
+.ps-video-editor .pve-orig-vol input { width: 80px; accent-color: var(--pve-blue); }
+.ps-video-editor .pve-orig-vol span { font-family: monospace; color: var(--pve-text); min-width: 36px; }

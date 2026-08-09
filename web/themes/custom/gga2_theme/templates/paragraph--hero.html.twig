@@ -1,0 +1,61 @@
+<section class="hero-section">
+  <div class="hero-grid">
+
+    <div>
+      {% if paragraph.field_tag.value %}
+        <div class="hero-tag">{{ paragraph.field_tag.value }}</div>
+      {% endif %}
+
+      {% if content.field_title %}
+        <h1 class="hero-title">{{ content.field_title }}</h1>
+      {% endif %}
+
+      {% if content.field_description %}
+        <div class="hero-desc">{{ content.field_description }}</div>
+      {% endif %}
+
+      <div class="hero-buttons">
+        {% if paragraph.field_cta_primary.uri %}
+          <a href="{{ paragraph.field_cta_primary.uri|replace({'internal:/': ''}) }}" class="btn-primary">{{ paragraph.field_cta_primary.title }}</a>
+        {% else %}
+          <a href="#mitmachen" class="btn-primary">Jetzt mitmachen</a>
+        {% endif %}
+
+        {% if paragraph.field_cta_secondary.uri %}
+          <a href="{{ paragraph.field_cta_secondary.uri|replace({'internal:/': ''}) }}" class="btn-secondary">{{ paragraph.field_cta_secondary.title }}</a>
+        {% else %}
+          <a href="#warum" class="btn-secondary">Mehr erfahren</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div>
+      <div class="event-card">
+        {% if countdown_tage is defined %}
+        <div class="countdown-block">
+          <div class="countdown-zahl">{{ countdown_tage }}</div>
+          <div class="countdown-label">{{ countdown_label }}</div>
+        </div>
+        {% endif %}
+        <div class="event-card-label">Nächste Termine</div>
+
+        {% for event in naechste_termine_events %}
+          <a href="{{ event.url }}" class="event-item">
+            <div class="event-date">
+              <div class="event-date-day">{{ event.day }}</div>
+              <div class="event-date-month">{{ event.month }}</div>
+            </div>
+            <div class="event-info">
+              <h4>{{ event.title }}</h4>
+              {% if event.time %}<p>{{ event.time }}{% if event.location %} · {{ event.location }}{% endif %}</p>{% endif %}
+            </div>
+          </a>
+        {% else %}
+          <p>Keine kommenden Termine</p>
+        {% endfor %}
+
+      </div>
+    </div>
+
+  </div>
+</section>

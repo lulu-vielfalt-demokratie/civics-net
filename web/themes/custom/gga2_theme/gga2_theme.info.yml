@@ -1,0 +1,16 @@
+name: 'Gerecht geht anders'
+type: theme
+description: 'Custom theme für gga2.civicos.de - Mobile First, WCAG 2.1 AA'
+core_version_requirement: '>=11'
+base theme: false
+
+regions:
+  header: Header
+  primary_menu: Primary Menu
+  content: Content
+  footer: Footer
+
+libraries:
+  - gga2_theme/global
+
+favicon: favicon.svg

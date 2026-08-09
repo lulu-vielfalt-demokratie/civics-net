@@ -1,0 +1,122 @@
+platformsync.admin_settings:
+  path: '/admin/config/platformsync/settings'
+  defaults:
+    _form: '\Drupal\platformsync\Form\SettingsForm'
+    _title: 'PlatformSync Settings'
+  requirements:
+    _permission: 'administer platformsync'
+
+platformsync.admin_dashboard:
+  path: '/admin/config/platformsync/dashboard'
+  defaults:
+    _controller: '\Drupal\platformsync\Controller\DashboardController::overview'
+    _title: 'PlatformSync Dashboard'
+  requirements:
+    _permission: 'administer platformsync'
+
+platformsync.admin_api_keys:
+  path: '/admin/config/platformsync/api-keys'
+  defaults:
+    _controller: '\Drupal\platformsync\Controller\ApiKeyController::list'
+    _title: 'API Keys'
+  requirements:
+    _permission: 'administer platformsync'
+
+platformsync.admin_api_key_add:
+  path: '/admin/config/platformsync/api-keys/add'
+  defaults:
+    _form: '\Drupal\platformsync\Form\ApiKeyForm'
+    _title: 'Add API Key'
+  requirements:
+    _permission: 'administer platformsync'
+
+platformsync.admin_api_key_delete:
+  path: '/admin/config/platformsync/api-keys/{kid}/delete'
+  defaults:
+    _form: '\Drupal\platformsync\Form\ApiKeyDeleteForm'
+    _title: 'Delete API Key'
+  requirements:
+    _permission: 'administer platformsync'
+    kid: \d+
+
+platformsync.user_generate:
+  path: '/platformsync/generate'
+  defaults:
+    _controller: '\Drupal\platformsync\Controller\GenerateController::page'
+    _title: 'PlatformSync'
+  requirements:
+    _permission: 'use platformsync'
+
+platformsync.user_history:
+  path: '/platformsync/history'
+  defaults:
+    _controller: '\Drupal\platformsync\Controller\GenerateController::history'
+    _title: 'My Crosspost History'
+  requirements:
+    _permission: 'use platformsync'
+platformsync.ajax_generate:
+  path: '/platformsync/generate/ajax'
+  defaults:
+    _controller: '\Drupal\platformsync\Controller\GenerateController::ajax'
+    _title: 'Generate'
+  requirements:
+    _permission: 'use platformsync'
+  methods: [POST]
+  options:
+    no_cache: true
+
+platformsync.channels:
+  path: '/platformsync/channels'
+  defaults:
+    _controller: '\Drupal\platformsync\Controller\ChannelController::page'
+    _title: 'Meine Kanäle'
+  requirements:
+    _permission: 'use platformsync'
+  options:
+    no_cache: true
+
+platformsync.channel_add:
+  path: '/platformsync/channels/add'
+  defaults:
+    _form: '\Drupal\platformsync\Form\ChannelForm'
+    _title: 'Kanal hinzufügen'
+  requirements:
+    _permission: 'use platformsync'
+
+platformsync.channel_edit:
+  path: '/platformsync/channels/{cid}/edit'
+  defaults:
+    _form: '\Drupal\platformsync\Form\ChannelForm'
+    _title: 'Kanal bearbeiten'
+  requirements:
+    _permission: 'use platformsync'
+    cid: \d+
+
+platformsync.channel_verify:
+  path: '/platformsync/channels/{cid}/verify'
+  defaults:
+    _controller: '\Drupal\platformsync\Controller\ChannelController::verify'
+    _title: 'Kanal testen'
+  requirements:
+    _permission: 'use platformsync'
+    cid: \d+
+
+platformsync.channel_delete:
+  path: '/platformsync/channels/{cid}/delete'
+  defaults:
+    _form: '\Drupal\platformsync\Form\ChannelDeleteForm'
+    _title: 'Kanal löschen'
+  requirements:
+    _permission: 'use platformsync'
+    cid: \d+
+
+platformsync.ajax_post:
+  path: '/platformsync/post/ajax'
+  defaults:
+    _controller: '\Drupal\platformsync\Controller\ChannelController::postToChannel'
+    _title: 'Post veröffentlichen'
+  requirements:
+    _permission: 'use platformsync'
+  methods: [POST]
+  options:
+    no_cache: true

@@ -1,0 +1,15 @@
+civicos_social.post:
+  path: '/admin/config/services/civicos-social/post'
+  defaults:
+    _form: '\Drupal\civicos_social\Form\SocialPostForm'
+    _title: 'Auf Bluesky veröffentlichen'
+  requirements:
+    _permission: 'post to social media'
+
+civicos_social.settings:
+  path: '/admin/config/services/civicos-social'
+  defaults:
+    _form: '\Drupal\civicos_social\Form\SocialSettingsForm'
+    _title: 'Social Media Einstellungen'
+  requirements:
+    _permission: 'administer civicos feed'

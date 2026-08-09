@@ -1,0 +1,48 @@
+<a href="#main-content" class="sr-only">Direkt zum Inhalt</a>
+
+<header role="banner" class="site-header">
+  <a href="{{ base_path }}" class="site-logo">
+    {% if logo_image_url %}
+      <div class="logo-grafik">
+        <img src="{{ logo_image_url }}" alt="Logo Gerecht geht anders" />
+      </div>
+    {% endif %}
+    <div class="logo-text-wrap">
+      <span class="logo-text">gerecht geht <span class="logo-anders">anders</span></span>
+      <span class="logo-sub">Demokratiedialoge</span>
+    </div>
+  </a>
+  <div class="header-right">
+    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Navigation öffnen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="main-nav" id="main-nav">
+      {{ page.primary_menu }}
+    </div>
+    <a href="/#mitmachen" class="btn-nav">Mitmachen</a>
+  </div>
+</header>
+
+<main id="main-content" role="main">
+  {{ page.content }}
+</main>
+
+<footer role="contentinfo" class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-brand">Gerecht geht <span>anders</span></div>
+        {% if footer_description %}
+          <p class="footer-desc">{{ footer_description }}</p>
+        {% endif %}
+      </div>
+      {{ page.footer }}
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; {{ "now"|date("Y") }} Gerecht geht anders</span>
+      <span>gerechtgehtanders@ik.me</span>
+    </div>
+  </div>
+</footer>

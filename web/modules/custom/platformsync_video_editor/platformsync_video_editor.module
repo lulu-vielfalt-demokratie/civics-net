@@ -1,0 +1,158 @@
+<?php
+
+/**
+ * @file
+ * PlatformSync Video-Editor Modul.
+ *
+ * Stellt einen Browser-basierten Video-Editor als Drupal-Block bereit.
+ * Features:
+ *  - Video trimmen (In/Out-Punkte)
+ *  - Gesichter automatisch verpixeln (face-api.js, lokal im Browser)
+ *  - Metadaten entfernen (ffmpeg.wasm, lokal im Browser)
+ *  - Tonspuren hinzufügen (eigene Dateien + Syndikal-Bibliothek)
+ *  - Export als WebM/MP4
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\Entity\NodeType;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\field\Entity\FieldConfig;
+
+/**
+ * Implements hook_help().
+ */
+function platformsync_video_editor_help(string $route_name, RouteMatchInterface $route_match): string {
+  if ($route_name === 'help.page.platformsync_video_editor') {
+    return '<p>' . t('Browser-basierter Video-Editor. Als Block auf beliebigen Seiten platzierbar. Alle Verarbeitungen (Gesichtserkennung, Metadaten-Entfernung, Export) laufen lokal im Browser – kein Upload auf externe Server.') . '</p>';
+  }
+  return '';
+}
+
+/**
+ * Implements hook_install().
+ *
+ * Legt den Content-Type 'syndikal_track' an falls noch nicht vorhanden.
+ */
+function platformsync_video_editor_install(): void {
+  _platformsync_video_editor_create_track_content_type();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function platformsync_video_editor_uninstall(): void {
+  // Content-Type und Felder werden beim Deinstallieren NICHT gelöscht,
+  // um Datenverlust zu vermeiden. Manuell löschen falls gewünscht.
+  \Drupal::messenger()->addWarning(t(
+    'Der Content-Type "syndikal_track" und seine Inhalte wurden nicht gelöscht. Bitte manuell entfernen unter /admin/structure/types falls gewünscht.'
+  ));
+}
+
+/**
+ * Legt den syndikal_track Content-Type mit allen nötigen Feldern an.
+ */
+function _platformsync_video_editor_create_track_content_type(): void {
+  // Nicht anlegen wenn bereits vorhanden
+  if (NodeType::load('syndikal_track')) {
+    return;
+  }
+
+  // Content-Type anlegen
+  $node_type = NodeType::create([
+    'type'        => 'syndikal_track',
+    'name'        => 'Syndikal Track',
+    'description' => 'Musiktrack für die Syndikal-Bibliothek im Video-Editor.',
+    'help'        => '',
+    'new_revision' => FALSE,
+    'display_submitted' => FALSE,
+  ]);
+  $node_type->save();
+
+  // Felder definieren
+  $fields = [
+    'field_track_audio' => [
+      'type'     => 'file',
+      'label'    => 'Audio-Datei (MP3)',
+      'settings' => ['file_extensions' => 'mp3 ogg wav', 'max_filesize' => '50 MB'],
+    ],
+    'field_track_genre' => [
+      'type'  => 'string',
+      'label' => 'Genre',
+    ],
+    'field_track_duration' => [
+      'type'  => 'string',
+      'label' => 'Dauer (z.B. 3:42)',
+    ],
+    'field_track_artist' => [
+      'type'  => 'string',
+      'label' => 'Künstler / Artist',
+    ],
+    'field_track_year' => [
+      'type'  => 'string',
+      'label' => 'Jahr',
+    ],
+    'field_track_license' => [
+      'type'    => 'list_string',
+      'label'   => 'Lizenz',
+      'settings' => [
+        'allowed_values' => [
+          'cc0'      => 'CC0 (Public Domain)',
+          'cc-by'    => 'CC BY 4.0',
+          'cc-by-sa' => 'CC BY-SA 4.0',
+          'syndikal' => 'Syndikal intern',
+        ],
+      ],
+    ],
+    'field_track_mood' => [
+      'type'  => 'string',
+      'label' => 'Stimmung (z.B. energetisch, ruhig)',
+    ],
+  ];
+
+  foreach ($fields as $field_name => $config) {
+    // Field Storage anlegen falls nicht vorhanden
+    if (!FieldStorageConfig::loadByName('node', $field_name)) {
+      $storage_config = [
+        'field_name'  => $field_name,
+        'entity_type' => 'node',
+        'type'        => $config['type'],
+      ];
+      if (!empty($config['settings'])) {
+        $storage_config['settings'] = $config['settings'];
+      }
+      FieldStorageConfig::create($storage_config)->save();
+    }
+
+    // Field Instance anlegen falls nicht vorhanden
+    if (!FieldConfig::loadByName('node', 'syndikal_track', $field_name)) {
+      $field_config = [
+        'field_name'  => $field_name,
+        'entity_type' => 'node',
+        'bundle'      => 'syndikal_track',
+        'label'       => $config['label'],
+        'required'    => FALSE,
+      ];
+      FieldConfig::create($field_config)->save();
+    }
+  }
+
+  \Drupal::messenger()->addStatus(t(
+    'Content-Type "Syndikal Track" wurde angelegt. Tracks unter <a href="/node/add/syndikal_track">Inhalt hinzufügen → Syndikal Track</a> anlegen.'
+  ));
+}
+
+/**
+ * Implements hook_theme().
+ */
+function platformsync_video_editor_theme(): array {
+  return [
+    'platformsync_video_editor' => [
+      'variables' => [
+        'tracks_api_url' => NULL,
+      ],
+      'template' => 'platformsync-video-editor',
+    ],
+  ];
+}

@@ -1,0 +1,169 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for platformsync_quiz.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function platformsync_quiz_schema() {
+  $schema = [];
+
+  $schema['platformsync_quiz_session'] = [
+    'description' => 'Aktive Quiz-Sessions.',
+    'fields' => [
+      'session_id' => [
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'description' => 'Eindeutige Session-ID (kurzer Code für QR).',
+      ],
+      'quiz_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Referenz auf den Quiz-Knoten.',
+      ],
+      'host_uid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Drupal-User-ID des Hosts.',
+      ],
+      'status' => [
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => TRUE,
+        'default' => 'waiting',
+        'description' => 'waiting | question | revealed | finished',
+      ],
+      'current_question' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Index der aktuellen Frage (0-basiert).',
+      ],
+      'created' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'changed' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['session_id'],
+    'indexes' => [
+      'quiz_id' => ['quiz_id'],
+      'status' => ['status'],
+    ],
+  ];
+
+  $schema['platformsync_quiz_player'] = [
+    'description' => 'Spieler:innen einer Session.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'session_id' => [
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+      ],
+      'player_token' => [
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'description' => 'Browser-seitiger Token (localStorage) zur Identifikation.',
+      ],
+      'nickname' => [
+        'type' => 'varchar',
+        'length' => 40,
+        'not null' => TRUE,
+      ],
+      'score' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'joined' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['id'],
+    'unique keys' => [
+      'token_session' => ['session_id', 'player_token'],
+    ],
+    'indexes' => [
+      'session_id' => ['session_id'],
+    ],
+  ];
+
+  $schema['platformsync_quiz_answer'] = [
+    'description' => 'Abgegebene Antworten.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'session_id' => [
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+      ],
+      'question_index' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'player_token' => [
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+      ],
+      'answer_index' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => '0, 1 oder 2',
+      ],
+      'is_correct' => [
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'answered' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['id'],
+    'unique keys' => [
+      'one_answer_per_question' => ['session_id', 'question_index', 'player_token'],
+    ],
+    'indexes' => [
+      'session_question' => ['session_id', 'question_index'],
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function platformsync_quiz_uninstall() {
+  \Drupal::database()->schema()->dropTable('platformsync_quiz_session');
+  \Drupal::database()->schema()->dropTable('platformsync_quiz_player');
+  \Drupal::database()->schema()->dropTable('platformsync_quiz_answer');
+}

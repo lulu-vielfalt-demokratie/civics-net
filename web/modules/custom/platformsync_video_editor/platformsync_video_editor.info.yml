@@ -1,0 +1,12 @@
+name: 'PlatformSync Video-Editor'
+type: module
+description: 'Browser-basierter Video-Editor mit Gesichtsverpixelung, Metadaten-Entfernung und Syndikal-Musikbibliothek. Als Block auf beliebigen Seiten platzierbar.'
+package: 'PlatformSync'
+core_version_requirement: ^11
+version: '1.0.0'
+
+dependencies:
+  - drupal:block
+  - drupal:node
+  - drupal:file
+  - drupal:user

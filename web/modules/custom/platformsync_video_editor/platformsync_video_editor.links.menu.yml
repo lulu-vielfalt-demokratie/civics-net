@@ -1,0 +1,6 @@
+platformsync_video_editor.page:
+  title: 'Video-Editor'
+  route_name: platformsync_video_editor.page
+  menu_name: main
+  weight: 50
+  description: 'Browser-basierter Video-Editor mit Anonymisierung und Syndikal-Bibliothek'

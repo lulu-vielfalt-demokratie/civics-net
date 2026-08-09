@@ -1,0 +1,23 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_quiz_time_limit
+    - node.type.quiz
+id: node.quiz.field_quiz_time_limit
+field_name: field_quiz_time_limit
+entity_type: node
+bundle: quiz
+label: 'Zeitlimit pro Frage (Sekunden)'
+description: 'Optional. 0 = kein Zeitlimit. Empfohlen: 30 fuer Runde 1, 60 fuer Runde 2.'
+required: false
+translatable: false
+default_value:
+  - value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: 300
+  prefix: ''
+  suffix: ' Sekunden'
+field_type: integer

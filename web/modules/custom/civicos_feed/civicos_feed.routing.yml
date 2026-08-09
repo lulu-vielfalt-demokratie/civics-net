@@ -1,0 +1,7 @@
+civicos_feed.settings:
+  path: '/admin/config/services/civicos-feed'
+  defaults:
+    _form: '\Drupal\civicos_feed\Form\FeedSettingsForm'
+    _title: 'Feed Generator Einstellungen'
+  requirements:
+    _permission: 'administer civicos feed'

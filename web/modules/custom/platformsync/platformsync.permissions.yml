@@ -1,0 +1,16 @@
+platformsync.permissions:
+  title: 'PlatformSync'
+  description: 'Permissions for the PlatformSync module.'
+
+administer platformsync:
+  title: 'Administer PlatformSync'
+  description: 'Manage settings, API keys, plans, and view all usage logs.'
+  restrict access: true
+
+use platformsync:
+  title: 'Use PlatformSync'
+  description: 'Generate PlatformSync content via the UI.'
+
+use platformsync api:
+  title: 'Use PlatformSync REST API'
+  description: 'Access the REST API endpoints (external CMS).'

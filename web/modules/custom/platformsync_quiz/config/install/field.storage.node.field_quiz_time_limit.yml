@@ -1,0 +1,19 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_quiz_time_limit
+field_name: field_quiz_time_limit
+entity_type: node
+type: integer
+settings:
+  unsigned: true
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

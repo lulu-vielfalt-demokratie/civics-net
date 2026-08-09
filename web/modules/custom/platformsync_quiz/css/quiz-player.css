@@ -1,0 +1,44 @@
+/* platformsync_quiz - Player CSS (Smartphone) */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:wght@400;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; background: #f5f0e8; font-family: 'Source Serif 4', Georgia, serif; }
+#quiz-player-app { min-height: 100vh; }
+
+.player-screen { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 20px; gap: 20px; text-align: center; }
+
+/* NICKNAME */
+.player-nickname { background: #1a1a1a; color: #f5f0e8; }
+.player-input { width: 100%; max-width: 320px; padding: 14px 16px; font-family: 'Source Serif 4', serif; font-size: 18px; border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.06); color: #f5f0e8; outline: none; }
+.player-input:focus { border-color: #c0392b; }
+
+/* WAITING */
+.player-waiting { background: #1a1a1a; color: #f5f0e8; }
+.player-logo { font-size: 64px; }
+.player-nickname-display { font-size: 16px; color: #8a8070; margin-top: 12px; }
+
+/* QUESTION - grosse farbige Buttons */
+.player-question { background: #f5f0e8; gap: 16px; }
+.player-progress { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #8a8070; }
+.player-prompt { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: #1a1a1a; }
+.player-answer-btn { width: 100%; max-width: 320px; height: 72px; border: none; font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; cursor: pointer; transition: transform 0.1s, opacity 0.2s; color: #fff; }
+.player-answer-btn:active { transform: scale(0.96); opacity: 0.85; }
+.player-answer-a { background: #c0392b; }
+.player-answer-b { background: #2980b9; }
+.player-answer-c { background: #27ae60; }
+
+/* REVEALED */
+.player-revealed { background: #1a1a1a; color: #f5f0e8; }
+.player-correct-badge { font-family: 'Playfair Display', serif; font-size: 96px; font-weight: 900; color: #2ecc71; line-height: 1; }
+
+/* FINISHED */
+.player-finished { background: #1a1a1a; color: #f5f0e8; }
+.player-cta { font-size: 15px; color: #8a8070; line-height: 1.6; max-width: 280px; }
+
+/* SHARED */
+.player-title { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; }
+.player-sub { font-size: 16px; color: #8a8070; line-height: 1.5; }
+.player-btn { border: none; padding: 14px 36px; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; cursor: pointer; transition: background 0.2s; width: 100%; max-width: 320px; }
+.player-btn-primary { background: #c0392b; color: #fff; }
+.player-btn-primary:hover { background: #e74c3c; }

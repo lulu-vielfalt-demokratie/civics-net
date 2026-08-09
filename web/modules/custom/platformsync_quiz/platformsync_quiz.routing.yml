@@ -1,0 +1,62 @@
+platformsync_quiz.admin:
+  path: '/admin/platformsync/quiz'
+  defaults:
+    _controller: '\Drupal\platformsync_quiz\Controller\QuizAdminController::overview'
+    _title: 'Quiz-Verwaltung'
+  requirements:
+    _permission: 'administer platformsync quiz'
+
+platformsync_quiz.session.create:
+  path: '/api/quiz/session'
+  defaults:
+    _controller: '\Drupal\platformsync_quiz\Controller\QuizSessionController::createSession'
+  methods: [POST]
+  requirements:
+    _permission: 'host platformsync quiz'
+
+platformsync_quiz.session.advance:
+  path: '/api/quiz/session/{session_id}/advance'
+  defaults:
+    _controller: '\Drupal\platformsync_quiz\Controller\QuizSessionController::advance'
+  methods: [POST]
+  requirements:
+    _permission: 'host platformsync quiz'
+
+platformsync_quiz.session.reveal:
+  path: '/api/quiz/session/{session_id}/reveal'
+  defaults:
+    _controller: '\Drupal\platformsync_quiz\Controller\QuizSessionController::reveal'
+  methods: [POST]
+  requirements:
+    _permission: 'host platformsync quiz'
+
+platformsync_quiz.answer.submit:
+  path: '/api/quiz/session/{session_id}/answer'
+  defaults:
+    _controller: '\Drupal\platformsync_quiz\Controller\QuizAnswerController::submit'
+  methods: [POST]
+  requirements:
+    _access: 'TRUE'
+
+platformsync_quiz.sse:
+  path: '/api/quiz/session/{session_id}/stream'
+  defaults:
+    _controller: '\Drupal\platformsync_quiz\Controller\QuizSseController::stream'
+  requirements:
+    _access: 'TRUE'
+
+platformsync_quiz.host:
+  path: '/quiz/{session_id}/host'
+  defaults:
+    _controller: '\Drupal\platformsync_quiz\Controller\QuizPageController::host'
+    _title: 'Quiz Host'
+  requirements:
+    _permission: 'host platformsync quiz'
+
+platformsync_quiz.player:
+  path: '/quiz/{session_id}'
+  defaults:
+    _controller: '\Drupal\platformsync_quiz\Controller\QuizPageController::player'
+    _title: 'Quiz'
+  requirements:
+    _access: 'TRUE'

@@ -1,0 +1,18 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_quiz_questions
+    - node.type.quiz
+id: node.quiz.field_quiz_questions
+field_name: field_quiz_questions
+entity_type: node
+bundle: quiz
+label: 'Fragen'
+description: 'Jede Frage als JSON-Objekt. Pflichtfelder: category, question, answers (Array mit 3 Eintraegen), correct (0/1/2), explanation.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

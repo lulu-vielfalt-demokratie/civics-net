@@ -1,0 +1,19 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_quiz_round
+    - node.type.quiz
+id: node.quiz.field_quiz_round
+field_name: field_quiz_round
+entity_type: node
+bundle: quiz
+label: 'Rundentyp'
+description: 'Bestimmt den Modus des Quiz: Wissen, Abwaegen oder Handeln.'
+required: true
+translatable: false
+default_value:
+  - value: knowledge
+default_value_callback: ''
+settings: {  }
+field_type: list_string

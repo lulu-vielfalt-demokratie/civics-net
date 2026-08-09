@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for PlatformSync.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function platformsync_help(string $route_name, RouteMatchInterface $route_match): string {
+  if ($route_name === 'help.page.platformsync') {
+    return '<p>' . t('The PlatformSync module converts source text into platform-specific social media posts using the Anthropic Claude API. It supports multi-user operation with subscription plans and credit-based billing, and exposes an OAuth2-secured REST API for external CMS integrations.') . '</p>';
+  }
+  return '';
+}
+
+/**
+ * Implements hook_cron().
+ * Purges log entries older than the configured retention period.
+ */
+function platformsync_cron(): void {
+  $config = \Drupal::config('platformsync.settings');
+  $days   = (int) ($config->get('log_retention_days') ?: 365);
+  $purged = \Drupal::service('platformsync.usage')->purgeOldLogs($days);
+  if ($purged > 0) {
+    \Drupal::logger('platformsync')->info('Purged @n log entries older than @days days.', ['@n' => $purged, '@days' => $days]);
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function platformsync_theme(): array {
+  return [
+    'platformsync_dashboard' => [
+      'variables' => ['stats' => [], 'plans' => [], 'revenue' => 0, 'log' => []],
+      'template'  => 'platformsync-dashboard',
+    ],
+    'platformsync_generate_page' => [
+      'variables' => ['remaining' => 0, 'plan' => 'free'],
+      'template'  => 'platformsync-generate-page',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ * Adds tabs to the generate page.
+ */
+function platformsync_menu_local_tasks_alter(array &$data, string $route_name): void {
+  if (in_array($route_name, ['platformsync.user_generate', 'platformsync.user_history'])) {
+    // Local tasks are defined via platformsync.links.task.yml.
+  }
+}

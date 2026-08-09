@@ -1,0 +1,105 @@
+{#
+/**
+ * @file
+ * page.html.twig – Westmecklenburg gegen Rechts
+ * Basierend auf Times-Template von WebThemez
+ */
+#}
+<!doctype html>
+<html lang="de">
+<head>
+  <head-placeholder token="{{ placeholder_token }}">
+  <title>{{ head_title|safe_join(' | ') }}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <css-placeholder token="{{ placeholder_token }}">
+  <js-placeholder token="{{ placeholder_token }}">
+</head>
+<body{{ attributes }}>
+
+{# Skip Link #}
+<a href="#main-content" class="skip-link">{{ 'Zum Hauptinhalt springen'|t }}</a>
+
+{# Header #}
+<header id="header" role="banner">
+  <div class="container">
+    <nav class="navbar navbar-inverse" role="navigation" aria-label="{{ 'Hauptnavigation'|t }}">
+      <div class="navbar-header">
+        <button type="button" id="nav-toggle" class="navbar-toggle"
+          data-toggle="collapse" data-target="#main-nav"
+          aria-expanded="false" aria-controls="main-nav"
+          aria-label="{{ 'Navigationsmenü öffnen'|t }}">
+          <span class="sr-only">{{ 'Navigation öffnen'|t }}</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="{{ path('<front>') }}" class="navbar-brand scroll-top logo animated bounceInLeft"
+           aria-label="{{ site_name }} – {{ 'Startseite'|t }}">
+          <b>{{ site_name }}</b>
+        </a>
+      </div>
+      <div id="main-nav" class="collapse navbar-collapse">
+        {{ page.primary_menu }}
+      </div>
+    </nav>
+  </div>
+</header>
+
+{# Hero #}
+{% if page.hero %}
+  <section id="home" aria-label="{{ 'Einleitung'|t }}">
+    <div class="banner-container{% if hero_bg_url %} hero-bg-image{% endif %}"
+         {% if hero_bg_url %}style="background-image: url('{{ hero_bg_url }}')"{% endif %}>
+      <div class="container banner-content">
+        {{ page.hero }}
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{# Main Content #}
+<main id="main-content" role="main">
+  {{ page.content }}
+</main>
+
+{# Footer #}
+<footer role="contentinfo">
+  <div class="container">
+    <div class="row">
+      {% if page.footer_first %}
+        <div class="col-md-3">
+          <div class="col">{{ page.footer_first }}</div>
+        </div>
+      {% endif %}
+      {% if page.footer_second %}
+        <div class="col-md-3">
+          <div class="col">{{ page.footer_second }}</div>
+        </div>
+      {% endif %}
+      {% if page.footer_third %}
+        <div class="col-md-3">
+          <div class="col col-social-icons">{{ page.footer_third }}</div>
+        </div>
+      {% endif %}
+      {% if page.footer_fourth %}
+        <div class="col-md-3">
+          <div class="col">{{ page.footer_fourth }}</div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  {% if page.footer_bottom %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          {{ page.footer_bottom }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</footer>
+
+<js-bottom-placeholder token="{{ placeholder_token }}">
+</body>
+</html>

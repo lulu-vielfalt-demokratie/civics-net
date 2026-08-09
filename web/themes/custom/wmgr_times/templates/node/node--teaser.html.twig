@@ -1,0 +1,10 @@
+<article{{ attributes.addClass('node--teaser') }}>
+  <h3><a href="{{ url }}" style="color:#c9191e;text-decoration:none;">{{ label }}</a></h3>
+  <div style="font-size:0.8rem;color:#666;margin:0.4rem 0 0.75rem;">
+    <time>{{ node.createdtime|date('d.m.Y') }}</time>
+    <span style="margin-left:0.5rem;background:#c9191e;color:#fff;padding:0.1rem 0.5rem;border-radius:100px;font-size:0.75rem;">{{ node.type.entity.label }}</span>
+  </div>
+  {% if content.body %}
+    <div style="font-size:0.9rem;color:#444;">{{ content.body|render|striptags|slice(0,150) }}…</div>
+  {% endif %}
+</article>

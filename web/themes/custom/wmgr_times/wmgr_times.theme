@@ -1,0 +1,74 @@
+<?php
+
+/**
+ * @file
+ * wmgr_times.theme – Theme-Funktionen für Westmecklenburg gegen Rechts
+ */
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function wmgr_times_preprocess_html(&$variables) {
+  // Sprache auf Deutsch setzen
+  $variables['html_attributes']['lang'] = 'de';
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function wmgr_times_preprocess_page(&$variables) {
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+  $variables['site_slogan'] = \Drupal::config('system.site')->get('slogan');
+
+  // Hero-Block: Hintergrundbild aus Block-Feld laden
+  $hero_block = \Drupal::entityTypeManager()
+    ->getStorage('block_content')
+    ->loadByProperties(['info' => 'Hero WGR']);
+  if ($hero_block) {
+    $hero = reset($hero_block);
+    if ($hero->hasField('field_hero_bild') && !$hero->get('field_hero_bild')->isEmpty()) {
+      $file = $hero->get('field_hero_bild')->entity;
+      if ($file) {
+        $variables['hero_bg_url'] = \Drupal::service('file_url_generator')
+          ->generateAbsoluteString($file->getFileUri());
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function wmgr_times_preprocess_node(&$variables) {
+  $node = $variables['node'];
+
+  // Aktion: Datum formatieren
+  if ($node->bundle() === 'aktion' && $node->hasField('field_aktion_datum')) {
+    if (!$node->get('field_aktion_datum')->isEmpty()) {
+      $datum = $node->get('field_aktion_datum')->value;
+      $variables['aktion_datum_formatted'] = \Drupal::service('date.formatter')
+        ->format(strtotime($datum), 'custom', 'd. F Y');
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function wmgr_times_preprocess_block(&$variables) {
+  $variables['base_path'] = base_path();
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ * Entfernt unerwünschte Core-Libraries.
+ */
+function wmgr_times_page_attachments_alter(array &$attachments) {
+  // stable9 CSS entfernen falls nötig
+  if (isset($attachments['#attached']['library'])) {
+    $attachments['#attached']['library'] = array_filter(
+      $attachments['#attached']['library'],
+      fn($lib) => !in_array($lib, ['stable9/stable9'])
+    );
+  }
+}

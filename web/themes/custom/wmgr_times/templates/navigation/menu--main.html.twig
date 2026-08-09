@@ -1,0 +1,22 @@
+{% import _self as menus %}
+{{ menus.menu_links(items, attributes, 0) }}
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    <ul class="{{ menu_level == 0 ? 'nav navbar-nav' : 'dropdown-menu' }}" id="{{ menu_level == 0 ? 'mainNav' : '' }}">
+      {% for item in items %}
+        <li class="{{ item.is_expanded ? 'dropdown' : '' }}{{ item.in_active_trail ? ' active' : '' }}">
+          <a href="{{ item.url }}"
+             class="{{ menu_level == 0 ? 'scroll-link' : '' }}{{ item.is_expanded ? ' dropdown-toggle' : '' }}"
+             {{ item.is_expanded ? 'data-toggle="dropdown"' : '' }}
+             {{ item.in_active_trail ? 'aria-current="page"' : '' }}>
+            {{ item.title }}
+          </a>
+          {% if item.below %}
+            {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}

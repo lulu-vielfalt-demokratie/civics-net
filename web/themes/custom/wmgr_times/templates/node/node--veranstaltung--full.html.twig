@@ -1,0 +1,34 @@
+<article{{ attributes.addClass('node--type-veranstaltung') }} role="article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <header style="margin:2rem 0 1.5rem;border-bottom:2px solid #c9191e;padding-bottom:1rem;">
+          <h1>{{ label }}</h1>
+          <div style="color:#666;font-size:0.9rem;margin-top:0.75rem;">
+            {% if content.field_veranstaltungstyp %}
+              <span style="background:#c9191e;color:#fff;padding:0.2rem 0.6rem;border-radius:100px;font-size:0.75rem;margin-right:0.5rem;">{{ content.field_veranstaltungstyp }}</span>
+            {% endif %}
+            {% if content.field_datum_von %}
+              <strong>{{ content.field_datum_von }}</strong>
+            {% endif %}
+            {% if content.field_ort %}
+              <span style="margin-left:0.5rem;">📍 {{ content.field_ort }}</span>
+            {% endif %}
+          </div>
+          {% if content.field_adresse %}
+            <div style="color:#888;font-size:0.85rem;margin-top:0.5rem;">{{ content.field_adresse }}</div>
+          {% endif %}
+        </header>
+        <div class="node__content">{{ content.body }}</div>
+        {% if content.field_externer_link %}
+          <div style="margin-top:1.5rem;">
+            <strong>{{ 'Mehr Infos'|t }}:</strong> {{ content.field_externer_link }}
+          </div>
+        {% endif %}
+        <div style="margin-top:2rem;padding-top:1rem;border-top:1px solid #ddd;">
+          <a href="/kalender" style="color:#c9191e;text-decoration:none;">← {{ 'Alle Veranstaltungen'|t }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

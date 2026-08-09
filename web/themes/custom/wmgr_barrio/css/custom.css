@@ -1,0 +1,31 @@
+/* WGR Farbschema */
+:root {
+  --blue: #c9191e;
+  --primary: #c9191e;
+}
+
+/* Navbar */
+.navbar { background-color: #111827 !important; }
+.navbar-dark .navbar-brand,
+.navbar-dark .nav-link { color: #fff !important; }
+.navbar-dark .nav-link:hover,
+.navbar-dark .nav-link.active { color: #c9191e !important; }
+.nav-link.active { border-bottom: 2px solid #c9191e; }
+
+/* Links */
+a { color: #c9191e; }
+a:hover { color: #9e1015; }
+
+/* Buttons */
+.btn-primary { background-color: #c9191e; border-color: #c9191e; }
+.btn-primary:hover { background-color: #9e1015; border-color: #9e1015; }
+
+/* Hero */
+.hero, #home, .banner-container {
+  background: #111827 !important;
+  color: #fff;
+}
+
+/* Footer */
+footer { background: #111827; color: #9ca3af; }
+footer a { color: #74c69d; }

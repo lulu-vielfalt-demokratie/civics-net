@@ -1,0 +1,21 @@
+<article{{ attributes.addClass('node--type-artikel') }} role="article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <header style="margin: 2rem 0 1.5rem; border-bottom: 2px solid #c9191e; padding-bottom: 1rem;">
+          <h1>{{ label }}</h1>
+          <div style="color:#666;font-size:0.85rem;margin-top:0.5rem;">
+            {% if content.field_kategorie %}<span style="background:#c9191e;color:#fff;padding:0.2rem 0.6rem;border-radius:100px;font-size:0.75rem;">{{ content.field_kategorie }}</span>{% endif %}
+            <time>{{ node.createdtime|date('d. F Y') }}</time>
+          </div>
+        </header>
+        {% if content.field_titelbild %}<div style="margin-bottom:2rem;">{{ content.field_titelbild }}</div>{% endif %}
+        <div class="node__content">{{ content.body }}</div>
+        {% if content.field_externer_link %}<div style="margin-top:1.5rem;">{{ content.field_externer_link }}</div>{% endif %}
+        <div style="margin-top:2rem;padding-top:1rem;border-top:1px solid #ddd;">
+          <a href="/aktuell" style="color:#c9191e;text-decoration:none;">← {{ 'Alle Artikel'|t }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

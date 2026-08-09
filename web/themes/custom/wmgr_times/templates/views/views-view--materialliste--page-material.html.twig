@@ -1,0 +1,13 @@
+<section id="material" class="page-section">
+  <div class="container">
+    <div class="heading text-center">
+      <h2>{{ 'Material'|t }}</h2>
+      <p>{{ 'Flyer, Plakate, Aufkleber und weitere Materialien zum Download.'|t }}</p>
+    </div>
+    {% if rows %}
+      <div class="row">{{ rows }}</div>
+    {% else %}
+      <p class="text-center">{{ 'Noch keine Materialien vorhanden.'|t }}</p>
+    {% endif %}
+  </div>
+</section>

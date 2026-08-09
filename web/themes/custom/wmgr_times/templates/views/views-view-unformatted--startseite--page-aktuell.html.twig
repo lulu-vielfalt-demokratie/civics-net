@@ -1,0 +1,9 @@
+<div class="row">
+  {% for row in rows %}
+    <div class="col-md-4">
+      <div class="card" style="background:#fff;border-radius:8px;padding:1.5rem;margin-bottom:1.5rem;border-top:3px solid #c9191e;">
+        {{ row.content }}
+      </div>
+    </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,13 @@
+<section id="kalender" class="page-section">
+  <div class="container">
+    <div class="heading text-center">
+      <h2>{{ 'Veranstaltungen'|t }}</h2>
+      <p>{{ 'Kommende Demos, Kundgebungen und Kulturveranstaltungen.'|t }}</p>
+    </div>
+    {% if rows %}
+      <div class="row">{{ rows }}</div>
+    {% else %}
+      <p class="text-center">{{ 'Aktuell sind keine Veranstaltungen eingetragen.'|t }}</p>
+    {% endif %}
+  </div>
+</section>

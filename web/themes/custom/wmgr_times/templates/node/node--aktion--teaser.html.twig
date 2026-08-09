@@ -1,0 +1,12 @@
+<li class="item {{ node.field_aktionstyp.value }}">
+  <a href="{{ url }}" class="fancybox">
+    {% if content.field_titelbild %}
+      {{ content.field_titelbild }}
+    {% else %}
+      <img src="/themes/custom/wmgr_times/images/aktion-placeholder.jpg" alt="{{ label }}" />
+    {% endif %}
+    <div class="overlay">
+      <span>{{ label }}</span>
+    </div>
+  </a>
+</li>

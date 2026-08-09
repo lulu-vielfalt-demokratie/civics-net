@@ -1,0 +1,22 @@
+name: Westmecklenburg gegen Rechts
+type: theme
+description: 'Theme für westmecklenburg-gegen-rechts.de – basierend auf Times-Template, Mobile First, WCAG AA, Schema.org ready'
+package: CivicOS
+core_version_requirement: ^11
+base theme: stable9
+
+libraries:
+  - wmgr_times/global
+
+regions:
+  skip_link: 'Skip Link'
+  header: 'Header'
+  primary_menu: 'Primäre Navigation'
+  hero: 'Hero'
+  content: 'Inhalt'
+  sidebar: 'Seitenleiste'
+  footer_first: 'Footer Kontakt'
+  footer_second: 'Footer Newsletter'
+  footer_third: 'Footer Social'
+  footer_fourth: 'Footer Aktuell'
+  footer_bottom: 'Footer Copyright'

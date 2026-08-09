@@ -1,0 +1,34 @@
+global:
+  version: VERSION
+  css:
+    base:
+      css/bootstrap.min.css: {}
+      css/animate.css: {}
+      css/base.css: {}
+    theme:
+      css/times-base.css: {}
+      css/wmgr-overrides.css: {}
+  js:
+    js/vendor/jquery-1.8.2.min.js: { weight: -100 }
+    js/vendor/bootstrap.min.js: { weight: -90 }
+    js/vendor/waypoints.js: { weight: -80 }
+    js/vendor/jquery.nav.js: { weight: -70 }
+    js/vendor/modernizr-latest.js: { weight: -60 }
+    js/vendor/custom.js: { weight: -50 }
+    js/wmgr_times.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+isotope:
+  version: VERSION
+  js:
+    js/vendor/jquery.isotope.min.js: {}
+
+owl:
+  version: VERSION
+  css:
+    theme:
+      css/owl.carousel.css: {}
+  js:
+    js/vendor/owl.carousel.min.js: {}

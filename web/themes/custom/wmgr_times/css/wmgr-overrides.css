@@ -1,0 +1,103 @@
+/* === WGR Overrides für Times-Template === */
+
+/* Hero dunkel */
+.banner-container {
+  background: var(--schwarz) !important;
+  border-bottom: 2px solid var(--rot) !important;
+}
+.banner-container > img { display: none !important; }
+.banner-content {
+  position: relative !important;
+  padding: 80px 15px 60px !important;
+}
+.hero-text h1 { color: #ffffff !important; }
+.hero-text2 h3 { color: #9ca3af !important; font-weight: 300 !important; }
+
+/* Navbar */
+.navbar-inverse {
+  background: var(--schwarz) !important;
+  border-color: var(--schwarz) !important;
+}
+
+/* DSGVO Checkbox */
+.dsgvo-wrapper {
+  margin: 1rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.dsgvo-wrapper input[type="checkbox"] {
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--rot);
+}
+.dsgvo-wrapper label {
+  font-size: 0.875rem;
+  color: #fff;
+  line-height: 1.5;
+}
+.dsgvo-wrapper a { color: #f89f9f; }
+
+/* Aktions-Detailseite */
+.node--type-aktion .node__header {
+  border-bottom: 2px solid var(--rot);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+}
+.node--type-aktion .aktion-meta {
+  font-size: 0.85rem;
+  color: var(--grau);
+  margin-bottom: 1.5rem;
+}
+.node--type-aktion .aktion-meta .aktion-typ {
+  background: var(--rot);
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+}
+.node--type-aktion .node__back {
+  margin-top: 2rem;
+}
+.node--type-aktion .node__back a {
+  color: var(--rot);
+  text-decoration: none;
+}
+.node--type-aktion .node__back a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Region */
+.region-hero {
+  padding: 5rem 2rem 4rem;
+}
+.region-hero h1 {
+  color: #ffffff !important;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+.region-hero p {
+  color: #9ca3af !important;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+.region-hero .btn-danger {
+  background: #c9191e;
+  border-color: #c9191e;
+  padding: 0.85rem 2rem;
+  border-radius: 100px;
+}
+
+/* Header rundet nicht ab */
+#header .navbar {
+  border-radius: 0 !important;
+}
+
+/* Header volle Breite */
+#header {
+  margin: 0;
+  padding: 0;
+}

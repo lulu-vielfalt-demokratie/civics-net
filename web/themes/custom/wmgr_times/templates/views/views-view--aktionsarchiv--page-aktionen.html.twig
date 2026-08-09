@@ -1,0 +1,24 @@
+<section id="work" class="page-section page">
+  <div class="container text-center">
+    <div class="heading">
+      <h2>Unsere <span class="id-color">Aktionen</span></h2>
+      <p>{{ 'Sichtbar werden, Zeichen setzen, Räume besetzen.'|t }}</p>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="portfolio">
+          <ul class="filters list-inline">
+            <li><a class="active" data-filter="*" href="#">{{ 'Alle'|t }}</a></li>
+            <li><a data-filter=".symbolaktion" href="#">{{ 'Symbolaktionen'|t }}</a></li>
+            <li><a data-filter=".kundgebung" href="#">{{ 'Kundgebungen'|t }}</a></li>
+            <li><a data-filter=".kampagne" href="#">{{ 'Kampagnen'|t }}</a></li>
+            <li><a data-filter=".fest" href="#">{{ 'Feste'|t }}</a></li>
+          </ul>
+          <ul class="items list-unstyled clearfix animated fadeInRight showing">
+            {{ rows }}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

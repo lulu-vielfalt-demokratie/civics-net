@@ -121,33 +121,3 @@ function gga2_theme_preprocess_page(&$variables) {
     }
   }
 }
-
-/**
- * Implements hook_preprocess_field().
- * Entfernt feste width/height-Attribute von img-Tags für responsives Bildhandling.
- */
-function gga2_theme_preprocess_field(&$variables) {
-  $text_fields = ['body', 'field_body', 'field_description', 'field_desc'];
-  if (in_array($variables['field_name'], $text_fields)) {
-    foreach ($variables['items'] as &$item) {
-      if (isset($item['content']['#text'])) {
-        $item['content']['#text'] = preg_replace(
-          '/(<img[^>]*?)\s(?:width|height)="\d+"([^>]*?>)/i',
-          '$1$2',
-          $item['content']['#text']
-        );
-      }
-    }
-  }
-}
-
-/**
- * Implements hook_preprocess_html().
- * Fügt pfadbasierte Body-Klasse für /kalender hinzu.
- */
-function gga2_theme_preprocess_html(&$variables) {
-  $path = \Drupal::service('path.current')->getPath();
-  if ($path === '/kalender') {
-    $variables['attributes']['class'][] = 'page-kalender';
-  }
-}

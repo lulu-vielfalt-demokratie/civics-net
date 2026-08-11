@@ -437,7 +437,7 @@ a:focus-visible, button:focus-visible {
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
   .icon-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 36px; }
-  .hero-desc { font-size: 16px; }
+  .hero-desc { font-size: 15px; text-align: left; padding-right: 16px; }
 }
 
 /* ===== FORMS (Login, etc.) ===== */
@@ -821,7 +821,7 @@ a.event-item:last-child { border-bottom: none; }
 .countdown-zahl {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 800;
-  font-size: 48px;
+  font-size: 64px;
   color: var(--orange);
   line-height: 1;
   min-width: 80px;
@@ -829,7 +829,7 @@ a.event-item:last-child { border-bottom: none; }
 
 .countdown-label {
   font-family: 'Space Mono', monospace;
-  font-size: 11px;
+  font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: var(--black);
@@ -996,23 +996,153 @@ a.event-item:last-child { border-bottom: none; }
 /* ===== FULLCALENDAR STYLING ===== */
 .fc-time {
   display: block;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
 }
 
 .fc-title {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
 }
 
-/* ===== FULLCALENDAR STYLING ===== */
-.fc-time {
-  display: block;
+/* Social Link mit Icon + Text */
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+
+.footer-social-link:hover { color: white; }
+
+.footer-social-link span {
+  font-family: 'Space Mono', monospace;
   font-size: 11px;
-  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.fc-title {
+/* Infografik: responsiv, zentriert (gga-infografik) */
+.gga-infografik {
+  width: 100%;
+  max-width: 540px;
+  height: auto;
   display: block;
-  font-size: 12px;
+  margin: 0 auto;
+}
+
+/* Drupal CKEditor-Bilder responsiv */
+.text-formatted img.align-center {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 540px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Globales responsives Bildhandling */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ===== MOBILE HEADER + LOGO FIX ===== */
+@media (max-width: 768px) {
+  .site-header {
+    min-height: 72px;
+    padding: 0 16px;
+  }
+  .logo-grafik img {
+    height: 48px;
+    width: 80px;
+  }
+  .logo-text {
+    font-size: 16px;
+  }
+  .logo-sub {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  .site-logo {
+    gap: 8px;
+  }
+  .hero-desc {
+    font-size: 15px !important;
+    padding-right: 0;
+  }
+}
+
+/* ===== FULLCALENDAR ANPASSUNGEN (v3 + v4) ===== */
+
+/* Wochentage sichtbar (v3) */
+.fc-day-header {
+  display: table-cell !important;
+  visibility: visible !important;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--black);
+  padding: 8px 4px;
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Wochentage sichtbar (v4+) */
+.fc-col-header-cell-cushion {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--black);
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Desktop: Kalender nicht bis zum Rand */
+.fc {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Terminflächen: lila statt blau (v3 + v4) */
+.fc-event {
+  background-color: var(--purple) !important;
+  border-color: var(--purple-light) !important;
+  color: white !important;
+}
+
+.fc-event:hover {
+  background-color: var(--purple-light) !important;
+}
+
+/* Termintexte größer */
+.fc-time,
+.fc-title,
+.fc-event-title,
+.fc-event-time {
+  font-size: 14px !important;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Tageszahlen größer */
+.fc-day-number,
+.fc-daygrid-day-number {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+/* Heute hervorheben */
+.fc-today,
+.fc-day-today {
+  background-color: var(--purple-pale) !important;
+}
+
+/* Kalender-Seite: Abstand zum fixed Header */
+.page-kalender main#main-content {
+  margin-top: 100px;
 }

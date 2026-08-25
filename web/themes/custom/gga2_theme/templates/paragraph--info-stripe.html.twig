@@ -1,0 +1,7 @@
+{% if paragraph.field_stripe_body.value %}
+<section class="info-stripe-section">
+  <div class="info-stripe-inner">
+    {{ paragraph.field_stripe_body.value|raw }}
+  </div>
+</section>
+{% endif %}

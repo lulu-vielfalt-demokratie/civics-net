@@ -1146,3 +1146,32 @@ img {
 .page-kalender main#main-content {
   margin-top: 100px;
 }
+
+/* ===== INFO STRIPE ===== */
+.info-stripe-section {
+  background: var(--purple);
+  padding: 48px 24px;
+}
+
+.info-stripe-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  color: white;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.info-stripe-inner p { margin: 0 0 16px; }
+.info-stripe-inner p:last-child { margin-bottom: 0; }
+.info-stripe-inner a { color: var(--orange); }
+
+/* Info-Stripe als erste Section nach Header */
+.info-stripe-section:first-child,
+.field--name-field-paragraphs > div:first-child .info-stripe-section {
+  padding-top: 120px;
+}
+
+/* Info-Stripe Abstand zum Header */
+.field--name-field-paragraphs > div:first-child .info-stripe-section {
+  padding-top: 120px;
+}

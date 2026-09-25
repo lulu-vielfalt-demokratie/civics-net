@@ -31,3 +31,7 @@ analyse_*.md
 blocklist.py
 netzwerk_vergleich.py
 nius_analyse*.json
+
+# Zugangsdaten – nie versionieren
+web/sites/*/settings.php
+config.env

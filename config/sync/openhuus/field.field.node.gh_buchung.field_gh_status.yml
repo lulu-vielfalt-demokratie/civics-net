@@ -1,0 +1,23 @@
+uuid: 4db610ba-abd4-4ec7-a754-08f938e359ab
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gh_status
+    - node.type.gh_buchung
+  module:
+    - options
+_core:
+  default_config_hash: '-N45JlkKeRYQ2VK9NJ9-QFbkKgVM3bO-keuqlwfyqcg'
+id: node.gh_buchung.field_gh_status
+field_name: field_gh_status
+entity_type: node
+bundle: gh_buchung
+label: Status
+description: 'Stornierte Buchungen geben den Zeitraum wieder frei.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

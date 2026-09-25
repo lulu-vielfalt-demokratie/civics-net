@@ -1,0 +1,166 @@
+uuid: 96f72e82-5f01-4afa-bf88-bb76ddcb7cc4
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.gh_buchung.field_gh_booking_type
+    - field.field.node.gh_buchung.field_gh_date_end
+    - field.field.node.gh_buchung.field_gh_date_start
+    - field.field.node.gh_buchung.field_gh_discount_note
+    - field.field.node.gh_buchung.field_gh_guest_email
+    - field.field.node.gh_buchung.field_gh_guest_name
+    - field.field.node.gh_buchung.field_gh_guest_phone
+    - field.field.node.gh_buchung.field_gh_notes
+    - field.field.node.gh_buchung.field_gh_persons
+    - field.field.node.gh_buchung.field_gh_price_total
+    - field.field.node.gh_buchung.field_gh_room_number
+    - field.field.node.gh_buchung.field_gh_source
+    - field.field.node.gh_buchung.field_gh_status
+    - field.field.node.gh_buchung.field_gh_tariff
+    - field.field.node.gh_buchung.field_gh_weekend_saturday
+    - node.type.gh_buchung
+  module:
+    - options
+    - text
+    - user
+id: node.gh_buchung.default
+targetEntityType: node
+bundle: gh_buchung
+mode: default
+content:
+  field_gh_booking_type:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_gh_date_end:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_gh_date_start:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_gh_discount_note:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_gh_guest_email:
+    type: email_mailto
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_gh_guest_name:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_gh_guest_phone:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_gh_notes:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_gh_persons:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_gh_price_total:
+    type: number_decimal
+    label: inline
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_gh_room_number:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_gh_source:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_gh_status:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_gh_tariff:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_gh_weekend_saturday:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

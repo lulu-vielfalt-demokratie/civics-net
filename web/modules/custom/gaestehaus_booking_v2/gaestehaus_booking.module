@@ -1,0 +1,118 @@
+<?php
+
+/**
+ * @file
+ * Hook-Implementierungen für gaestehaus_booking.
+ */
+
+use Drupal\Core\Hook\Attribute\Hook;
+
+/**
+ * Implements hook_theme().
+ */
+function gaestehaus_booking_theme(): array {
+  return [
+    'gaestehaus_buchung_page' => [
+      'variables' => [],
+      'template'  => 'gaestehaus-buchung-page',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_mail().
+ */
+function gaestehaus_booking_mail(string $key, array &$message, array $params): void {
+  $node = $params['node'] ?? NULL;
+  if (!$node) return;
+
+  $typeLabels = [
+    'weekend'    => 'Event (Ganzes Haus)',
+    'tagesplatz' => 'Tagesplatz Coworking',
+    'zimmer_desk'=> 'Zimmer + Desk',
+    'woche'      => 'Wochenpauschale',
+  ];
+
+  $type      = $node->get('field_gh_booking_type')->value ?? '';
+  $typeLabel = $typeLabels[$type] ?? $type;
+  $guest     = $node->get('field_gh_guest_name')->value ?? '';
+  $email     = $node->get('field_gh_guest_email')->value ?? '';
+  $persons   = $node->get('field_gh_persons')->value ?? '';
+  $price     = number_format((float)($node->get('field_gh_price_total')->value ?? 0), 2, ',', '.');
+  $notes     = $node->get('field_gh_notes')->value ?? '';
+  $id        = $node->id();
+
+  if ($type === 'weekend') {
+    $sat = $node->get('field_gh_weekend_saturday')->value ?? '';
+    $sun = $sat ? date('Y-m-d', strtotime($sat . ' +1 day')) : '';
+    $dateInfo = "Samstag: $sat\nSonntag: $sun";
+  } else {
+    $start = $node->get('field_gh_date_start')->value ?? '';
+    $end   = $node->get('field_gh_date_end')->value ?? '';
+    $dateInfo = "Von: $start\nBis: $end";
+    if (in_array($type, ['zimmer_desk', 'woche'])) {
+      $room = $node->get('field_gh_room_number')->value ?? '';
+      $dateInfo .= "\nZimmer: $room";
+    }
+  }
+
+  $body = "Buchungsdetails\n" . str_repeat('─', 40) . "\n"
+    . "Tarif:     $typeLabel\n$dateInfo\n"
+    . "Gast:      $guest\nE-Mail:    $email\n"
+    . "Personen:  $persons\nPreis:     $price €\n"
+    . ($notes ? "Nachricht: $notes\n" : '')
+    . str_repeat('─', 40) . "\nBuchungs-ID: $id";
+
+  switch ($key) {
+    case 'booking_confirmation_guest':
+      $message['subject'] = t('Buchungsbestätigung — openhuus');
+      $message['body'][]  = t("Vielen Dank für Ihre Buchung!\n\n@body", ['@body' => $body]);
+      break;
+    case 'booking_confirmation_admin':
+      $message['subject'] = t('Neue Buchung: @type — @guest', ['@type' => $typeLabel, '@guest' => $guest]);
+      $message['body'][]  = $body;
+      break;
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for node_form.
+ *
+ * Datumsfelder (Textfelder, Format Y-m-d) als HTML5-Datepicker darstellen.
+ */
+function gaestehaus_booking_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, string $form_id): void {
+  if (!in_array($form_id, ['node_gh_buchung_form', 'node_gh_buchung_edit_form'], TRUE)) {
+    return;
+  }
+  foreach (['field_gh_date_start', 'field_gh_date_end', 'field_gh_weekend_saturday'] as $field) {
+    if (!isset($form[$field]['widget'][0]['value'])) {
+      continue;
+    }
+    $el = &$form[$field]['widget'][0]['value'];
+    $el['#type'] = 'date';
+    unset($el['#size'], $el['#maxlength'], $el['#placeholder']);
+
+    if ($field === 'field_gh_weekend_saturday') {
+      // Picker auf Samstage beschränken: min = ein Samstag, Schrittweite 7 Tage.
+      $el['#attributes']['min']  = (new \DateTime('saturday'))->format('Y-m-d');
+      $el['#attributes']['step'] = 7;
+    }
+    unset($el);
+  }
+}
+
+/**
+ * Implements hook_node_access().
+ *
+ * Buchungen enthalten Gastdaten: nur mit Modulrecht zugänglich.
+ * Die Buchungs-API speichert programmatisch und ist davon nicht betroffen.
+ */
+function gaestehaus_booking_node_access(\Drupal\node\NodeInterface $node, string $op, \Drupal\Core\Session\AccountInterface $account): \Drupal\Core\Access\AccessResultInterface {
+  if ($node->bundle() !== 'gh_buchung') {
+    return \Drupal\Core\Access\AccessResult::neutral();
+  }
+  $perm = $op === 'view' ? 'view gaestehaus bookings' : 'administer gaestehaus bookings';
+  return ($account->hasPermission($perm)
+    ? \Drupal\Core\Access\AccessResult::allowed()
+    : \Drupal\Core\Access\AccessResult::forbidden())->cachePerPermissions();
+}

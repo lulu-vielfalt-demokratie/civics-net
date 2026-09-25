@@ -1,0 +1,48 @@
+gaestehaus_booking.availability:
+  path: '/api/gaestehaus/availability'
+  defaults:
+    _controller: '\Drupal\gaestehaus_booking\Controller\AvailabilityController::get'
+  requirements:
+    _access: 'TRUE'
+  methods: [GET]
+
+gaestehaus_booking.book:
+  path: '/api/gaestehaus/book'
+  defaults:
+    _controller: '\Drupal\gaestehaus_booking\Controller\BookingController::book'
+  requirements:
+    _access: 'TRUE'
+  methods: [POST]
+
+gaestehaus_booking.config_public:
+  path: '/api/gaestehaus/config'
+  defaults:
+    _controller: '\Drupal\gaestehaus_booking\Controller\ConfigController::get'
+  requirements:
+    _access: 'TRUE'
+  methods: [GET]
+
+gaestehaus_booking.buchung_page:
+  path: '/buchen'
+  defaults:
+    _controller: '\Drupal\gaestehaus_booking\Controller\BookingPageController::page'
+    _title: 'Zimmer buchen — openhuus'
+  requirements:
+    _permission: 'access content'
+
+gaestehaus_booking.settings:
+  path: '/admin/config/gaestehaus-booking/settings'
+  defaults:
+    _form: '\Drupal\gaestehaus_booking\Form\SettingsForm'
+    _title: 'openhuus Buchungs-Einstellungen'
+  requirements:
+    _permission: 'administer gaestehaus bookings'
+
+
+gaestehaus_booking.list:
+  path: '/admin/content/buchungen'
+  defaults:
+    _controller: '\Drupal\gaestehaus_booking\Controller\BookingListController::list'
+    _title: 'Buchungen'
+  requirements:
+    _permission: 'view gaestehaus bookings'

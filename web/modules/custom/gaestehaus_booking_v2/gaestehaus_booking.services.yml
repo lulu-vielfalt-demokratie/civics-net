@@ -1,0 +1,25 @@
+services:
+  gaestehaus_booking.availability_service:
+    class: Drupal\gaestehaus_booking\Service\AvailabilityService
+    arguments:
+      - '@entity_type.manager'
+      - '@config.factory'
+
+  gaestehaus_booking.pricing_service:
+    class: Drupal\gaestehaus_booking\Service\PricingService
+    arguments:
+      - '@config.factory'
+
+  gaestehaus_booking.booking_service:
+    class: Drupal\gaestehaus_booking\Service\BookingService
+    arguments:
+      - '@entity_type.manager'
+      - '@config.factory'
+      - '@logger.factory'
+      - '@plugin.manager.mail'
+      - '@language_manager'
+  gaestehaus_booking.theme_negotiator:
+    class: Drupal\gaestehaus_booking\Theme\BookingAdminThemeNegotiator
+    arguments: ['@config.factory']
+    tags:
+      - { name: theme_negotiator, priority: 100 }

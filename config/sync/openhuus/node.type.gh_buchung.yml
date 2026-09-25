@@ -1,0 +1,13 @@
+uuid: 9e97a01d-e4ab-4d20-bb79-d76d1e5d6694
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: zdq7SAPaST9yvjIT--1z-wX5wy-XCMJnFnqr3Dnt4YQ
+name: Buchung
+type: gh_buchung
+description: 'openhuus Buchung'
+help: null
+new_revision: false
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,14 @@
+uuid: d687c57d-b1df-42e0-9074-14af6906a8e7
+langcode: de
+status: true
+dependencies:
+  config:
+    - user.role.gaestehaus_verwaltung
+  module:
+    - user
+id: user_add_role_action.gaestehaus_verwaltung
+label: 'Den ausgewählten Benutzern die Rolle openhuus Verwaltung zuweisen'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: gaestehaus_verwaltung

@@ -1,0 +1,9 @@
+buchung:
+  version: VERSION
+  css:
+    theme:
+      css/buchung.css: {}
+  js:
+    js/buchung.js: {}
+  dependencies:
+    - core/drupalSettings

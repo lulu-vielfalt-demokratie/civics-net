@@ -1,0 +1,18 @@
+uuid: 7b913b3e-c689-441b-9cbe-7cfc0dbce4cf
+langcode: de
+status: true
+dependencies: {  }
+id: smtp
+label: SMTP
+plugin: smtp
+configuration:
+  user: a896c6001@smtp-brevo.com
+  pass: ''
+  host: smtp-relay.brevo.com
+  port: 587
+  query:
+    verify_peer: true
+    local_domain: ''
+    restart_threshold: null
+    restart_threshold_sleep: null
+    ping_threshold: null

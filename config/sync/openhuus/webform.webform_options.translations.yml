@@ -1,0 +1,14 @@
+uuid: a4c2e0d2-b7f1-4014-9ff6-f8b53360ed8e
+langcode: de
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: Mb_L3vE-0IBZH5s2rjpk2LNn0QHClQP9AARQdCmVLt4
+id: translations
+label: Übersetzungen
+category: Sprache
+likert: false
+options: ''

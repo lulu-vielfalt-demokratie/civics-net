@@ -1,0 +1,18 @@
+global:
+  css:
+    theme:
+      css/openhuus.css: {}
+  js:
+    js/openhuus.js: {}
+  dependencies:
+    - core/drupal
+
+buchung:
+  css:
+    theme:
+      css/buchung.css: {}
+  js:
+    js/buchung.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings

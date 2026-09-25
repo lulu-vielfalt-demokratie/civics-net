@@ -1,0 +1,25 @@
+uuid: 38181459-3862-4d3e-aef4-704293df3bbf
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gh_price_total
+    - node.type.gh_buchung
+_core:
+  default_config_hash: s-6Ku-QL2r3GUTxN-DCkcPdjfenlXZwL0RI8PeUmoyw
+id: node.gh_buchung.field_gh_price_total
+field_name: field_gh_price_total
+entity_type: node
+bundle: gh_buchung
+label: 'Gesamtpreis (€)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

@@ -1,0 +1,25 @@
+uuid: fce15c0c-5e8b-4648-98f2-a4d92c343784
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gh_room_number
+    - node.type.gh_buchung
+_core:
+  default_config_hash: RhNdqm7UK5XeIOKn5-IXP7UpMfiFoHr7VxgXqcYuwAo
+id: node.gh_buchung.field_gh_room_number
+field_name: field_gh_room_number
+entity_type: node
+bundle: gh_buchung
+label: Zimmer
+description: 'Nur bei Zimmer + Desk und Wochenpauschale (1–9).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

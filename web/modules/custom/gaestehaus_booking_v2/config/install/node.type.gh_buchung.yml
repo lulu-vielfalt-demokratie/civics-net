@@ -1,0 +1,9 @@
+langcode: de
+status: true
+dependencies: {}
+name: Buchung
+type: gh_buchung
+description: 'openhuus Buchung'
+new_revision: false
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,21 @@
+uuid: d8370629-8b6c-4342-b1b7-06f50cc31a83
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gh_discount_note
+    - node.type.gh_buchung
+_core:
+  default_config_hash: 6qdMBLCuca2aOG09h1o0zlZIfsLgSVFC0qT-7GDkvZU
+id: node.gh_buchung.field_gh_discount_note
+field_name: field_gh_discount_note
+entity_type: node
+bundle: gh_buchung
+label: 'Rabatt / Code'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,23 @@
+uuid: fc5b6f39-d9ad-4dda-a4c3-ab1de60b7613
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 8bH4qrTRr9VEBX8YTGf1pwM0RCF36ns2DJd1MEipq5Q
+id: node.field_gh_guest_phone
+field_name: field_gh_guest_phone
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

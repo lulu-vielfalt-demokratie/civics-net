@@ -1,0 +1,249 @@
+<?php
+
+/**
+ * @file
+ * Install-Hooks für gaestehaus_booking.
+ *
+ * Felder werden über die Entity API angelegt (nicht als YAML in config/install),
+ * damit provider, dependencies und settings von Drupal korrekt gesetzt werden.
+ * Modul-Einstellungen kommen ausschließlich aus
+ * config/install/gaestehaus_booking.settings.yml.
+ */
+
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\node\Entity\Node;
+use Drupal\user\Entity\Role;
+
+/**
+ * Implements hook_install().
+ *
+ * Bei einer Installation aus bestehender Config ($is_syncing, z. B.
+ * drush site:install --existing-config) kommen Felder, Displays und Rollen
+ * aus dem Sync-Verzeichnis; die Zimmer legt dann der Deploy-Hook in
+ * gaestehaus_booking.deploy.php an (drush deploy).
+ */
+function gaestehaus_booking_install(bool $is_syncing): void {
+  if ($is_syncing) {
+    return;
+  }
+  _gaestehaus_booking_create_fields();
+  _gaestehaus_booking_configure_displays();
+  _gaestehaus_booking_create_roles();
+  _gaestehaus_booking_create_rooms();
+}
+
+/**
+ * Feld-Definitionen: Storages und Instanzen je Inhaltstyp.
+ */
+function _gaestehaus_booking_field_definitions(): array {
+  return [
+    'storages' => [
+      'field_gh_booking_type' => [
+        'type' => 'list_string',
+        'settings' => ['allowed_values' => [
+          'weekend'     => 'Event / Feier (Sa–So)',
+          'tagesplatz'  => 'Tagesplatz',
+          'zimmer_desk' => 'Zimmer + Desk',
+          'woche'       => 'Wochenpauschale',
+          'haus'        => 'Hausbelegung (ganzes Haus)',
+        ]],
+      ],
+      'field_gh_status' => [
+        'type' => 'list_string',
+        'settings' => ['allowed_values' => [
+          'pending'   => 'Offen',
+          'confirmed' => 'Bestätigt',
+          'cancelled' => 'Storniert',
+        ]],
+      ],
+      'field_gh_source'           => ['type' => 'string'],
+      'field_gh_date_start'       => ['type' => 'string'],
+      'field_gh_date_end'         => ['type' => 'string'],
+      'field_gh_weekend_saturday' => ['type' => 'string'],
+      'field_gh_room_number'      => ['type' => 'integer'],
+      'field_gh_persons'          => ['type' => 'integer'],
+      'field_gh_guest_name'       => ['type' => 'string'],
+      'field_gh_guest_email'      => ['type' => 'email'],
+      'field_gh_guest_phone'      => ['type' => 'string'],
+      'field_gh_tariff'           => ['type' => 'string'],
+      'field_gh_price_total'      => ['type' => 'decimal', 'settings' => ['precision' => 10, 'scale' => 2]],
+      'field_gh_discount_note'    => ['type' => 'string'],
+      'field_gh_notes'            => ['type' => 'text_long'],
+      'field_gh_max_persons'      => ['type' => 'integer'],
+      'field_gh_min_stay'         => ['type' => 'integer'],
+    ],
+    'instances' => [
+      'gh_buchung' => [
+        'field_gh_booking_type'     => ['Buchungstyp', ''],
+        'field_gh_source'           => ['Quelle', '„direkt“ für Buchungen über Joan, sonst leer lassen.'],
+        'field_gh_status'           => ['Status', 'Stornierte Buchungen geben den Zeitraum wieder frei.'],
+        'field_gh_date_start'       => ['Anreise', 'Nicht bei Events.'],
+        'field_gh_date_end'         => ['Abreise', 'Bei Tagesplätzen: Tag nach dem letzten Nutzungstag.'],
+        'field_gh_weekend_saturday' => ['Event-Samstag', 'Nur bei Event/Feier: Samstag des Wochenendes.'],
+        'field_gh_room_number'      => ['Zimmer', 'Nur bei Zimmer + Desk und Wochenpauschale.'],
+        'field_gh_persons'          => ['Personen', ''],
+        'field_gh_guest_name'       => ['Name', 'Bei Direktbuchungen optional.'],
+        'field_gh_guest_email'      => ['E-Mail', 'Bei Direktbuchungen optional.'],
+        'field_gh_guest_phone'      => ['Telefon', ''],
+        'field_gh_tariff'           => ['Tarif', ''],
+        'field_gh_price_total'      => ['Gesamtpreis (€)', ''],
+        'field_gh_discount_note'    => ['Rabatt / Code', ''],
+        'field_gh_notes'            => ['Notizen', 'Intern, erscheint nicht im öffentlichen Kalender.'],
+      ],
+      'gh_zimmer' => [
+        'field_gh_room_number' => ['Zimmernummer', ''],
+        'field_gh_max_persons' => ['Max. Personen', ''],
+        'field_gh_min_stay'    => ['Mindestaufenthalt (Nächte)', ''],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Legt Feld-Storages und -Instanzen über die Entity API an (idempotent).
+ */
+function _gaestehaus_booking_create_fields(): void {
+  $defs = _gaestehaus_booking_field_definitions();
+
+  foreach ($defs['storages'] as $name => $def) {
+    if (!FieldStorageConfig::loadByName('node', $name)) {
+      FieldStorageConfig::create([
+        'field_name'  => $name,
+        'entity_type' => 'node',
+        'type'        => $def['type'],
+        'settings'    => $def['settings'] ?? [],
+        'cardinality' => 1,
+      ])->save();
+    }
+  }
+
+  foreach ($defs['instances'] as $bundle => $fields) {
+    foreach ($fields as $name => [$label, $description]) {
+      if (!FieldConfig::loadByName('node', $bundle, $name)) {
+        FieldConfig::create([
+          'field_name'  => $name,
+          'entity_type' => 'node',
+          'bundle'      => $bundle,
+          'label'       => $label,
+          'description' => $description,
+          'required'    => FALSE,
+        ])->save();
+      }
+    }
+  }
+}
+
+/**
+ * Formular- und Anzeige-Konfiguration für Buchungen und Zimmer.
+ *
+ * Datumsfelder sind Textfelder (Format Y-m-d); der Datepicker kommt aus
+ * gaestehaus_booking_form_node_form_alter().
+ */
+function _gaestehaus_booking_configure_displays(): void {
+  $repo = \Drupal::service('entity_display.repository');
+  $date = ['size' => 20, 'placeholder' => 'JJJJ-MM-TT'];
+
+  // Feld => [Widget, Widget-Settings, Formatter].
+  $layout = [
+    'gh_buchung' => [
+      'field_gh_booking_type'     => ['options_select', [], 'list_default'],
+      'field_gh_status'           => ['options_select', [], 'list_default'],
+      'field_gh_source'           => ['string_textfield', ['size' => 20, 'placeholder' => 'direkt'], 'string'],
+      'field_gh_date_start'       => ['string_textfield', $date, 'string'],
+      'field_gh_date_end'         => ['string_textfield', $date, 'string'],
+      'field_gh_weekend_saturday' => ['string_textfield', $date, 'string'],
+      'field_gh_room_number'      => ['number', [], 'number_integer'],
+      'field_gh_persons'          => ['number', [], 'number_integer'],
+      'field_gh_guest_name'       => ['string_textfield', [], 'string'],
+      'field_gh_guest_email'      => ['email_default', [], 'email_mailto'],
+      'field_gh_guest_phone'      => ['string_textfield', [], 'string'],
+      'field_gh_tariff'           => ['string_textfield', [], 'string'],
+      'field_gh_price_total'      => ['number', [], 'number_decimal'],
+      'field_gh_discount_note'    => ['string_textfield', [], 'string'],
+      'field_gh_notes'            => ['text_textarea', [], 'text_default'],
+    ],
+    'gh_zimmer' => [
+      'field_gh_room_number' => ['number', [], 'number_integer'],
+      'field_gh_max_persons' => ['number', [], 'number_integer'],
+      'field_gh_min_stay'    => ['number', [], 'number_integer'],
+    ],
+  ];
+
+  foreach ($layout as $bundle => $fields) {
+    $form = $repo->getFormDisplay('node', $bundle, 'default');
+    $view = $repo->getViewDisplay('node', $bundle, 'default');
+    $weight = 1;
+    foreach ($fields as $name => [$widget, $widgetSettings, $formatter]) {
+      $form->setComponent($name, ['type' => $widget, 'weight' => $weight, 'settings' => $widgetSettings]);
+      $view->setComponent($name, ['type' => $formatter, 'label' => 'inline', 'weight' => $weight]);
+      $weight++;
+    }
+    $form->save();
+    $view->save();
+  }
+}
+
+/**
+ * Rollen für Verwaltung und Admin des Gästehauses.
+ */
+function _gaestehaus_booking_create_roles(): void {
+  $roles = [
+    'gaestehaus_admin' => [
+      'label' => 'openhuus Admin',
+      'permissions' => [
+        'administer gaestehaus bookings',
+        'view gaestehaus bookings',
+        'access content',
+        'access toolbar',
+        'view the administration theme',
+        'create gh_buchung content',
+        'edit any gh_buchung content',
+        'delete any gh_buchung content',
+      ],
+    ],
+    'gaestehaus_verwaltung' => [
+      'label' => 'openhuus Verwaltung',
+      'permissions' => [
+        'view gaestehaus bookings',
+        'access content',
+        'access toolbar',
+        'view the administration theme',
+      ],
+    ],
+  ];
+
+  foreach ($roles as $rid => $data) {
+    $role = Role::load($rid) ?? Role::create(['id' => $rid, 'label' => $data['label']]);
+    foreach ($data['permissions'] as $perm) {
+      $role->grantPermission($perm);
+    }
+    $role->save();
+  }
+}
+
+/**
+ * Legt die Zimmer-Nodes an (Anzahl aus gaestehaus_booking.settings:room_count).
+ */
+function _gaestehaus_booking_create_rooms(): void {
+  $count = (int) (\Drupal::config('gaestehaus_booking.settings')->get('room_count') ?? 9);
+
+  for ($i = 1; $i <= $count; $i++) {
+    $existing = \Drupal::entityQuery('node')
+      ->condition('type', 'gh_zimmer')
+      ->condition('field_gh_room_number', $i)
+      ->accessCheck(FALSE)
+      ->execute();
+    if (empty($existing)) {
+      Node::create([
+        'type'                 => 'gh_zimmer',
+        'title'                => "Zimmer $i",
+        'field_gh_room_number' => $i,
+        'field_gh_max_persons' => 2,
+        'field_gh_min_stay'    => 1,
+        'status'               => 1,
+        'uid'                  => 1,
+      ])->save();
+    }
+  }
+}

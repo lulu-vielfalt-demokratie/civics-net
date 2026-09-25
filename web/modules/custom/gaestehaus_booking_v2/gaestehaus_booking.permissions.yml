@@ -1,0 +1,6 @@
+administer gaestehaus bookings:
+  title: 'openhuus-Buchungen verwalten'
+  restrict access: true
+
+view gaestehaus bookings:
+  title: 'openhuus-Buchungen einsehen'

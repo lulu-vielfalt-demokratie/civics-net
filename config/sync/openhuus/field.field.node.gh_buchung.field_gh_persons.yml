@@ -1,0 +1,25 @@
+uuid: 4ccd019d-6842-488c-9116-a1c81f4caf78
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gh_persons
+    - node.type.gh_buchung
+_core:
+  default_config_hash: lBl3wus4sqhlDv7K1tNN889-upIrLnVyzQuLXLDWHbo
+id: node.gh_buchung.field_gh_persons
+field_name: field_gh_persons
+entity_type: node
+bundle: gh_buchung
+label: Personen
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

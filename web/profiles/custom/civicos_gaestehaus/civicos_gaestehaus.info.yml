@@ -1,0 +1,33 @@
+name: CivicOS Gästehaus
+type: profile
+description: 'Profil für Gästehaus-/Hospitality-Sites – Buchungssystem, Theme, Module vorinstalliert.'
+package: CivicOS
+core_version_requirement: ^11
+themes:
+  - olivero
+dependencies:
+  - drupal:node
+  - drupal:taxonomy
+  - drupal:views
+  - drupal:views_ui
+  - drupal:datetime
+  - drupal:image
+  - drupal:file
+  - drupal:link
+  - drupal:options
+  - drupal:layout_builder
+  - drupal:path
+  - drupal:path_alias
+  - drupal:redirect
+  - drupal:menu_ui
+  - drupal:menu_link_content
+  - drupal:block
+  - drupal:block_content
+  - drupal:ckeditor5
+  - drupal:field_ui
+  - pathauto:pathauto
+  - token:token
+  - metatag:metatag
+  - admin_toolbar:admin_toolbar
+  - admin_toolbar:admin_toolbar_tools
+  - webform:webform

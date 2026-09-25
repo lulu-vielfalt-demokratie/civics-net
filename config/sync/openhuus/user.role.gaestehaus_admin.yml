@@ -1,0 +1,15 @@
+uuid: 9834febe-ce1d-45d8-873d-c613eee3e245
+langcode: de
+status: true
+dependencies:
+  module:
+    - gaestehaus_booking
+    - system
+id: gaestehaus_admin
+label: 'openhuus Admin'
+weight: 2
+is_admin: false
+permissions:
+  - 'access content'
+  - 'administer gaestehaus bookings'
+  - 'view gaestehaus bookings'

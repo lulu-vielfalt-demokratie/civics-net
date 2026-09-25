@@ -1,0 +1,54 @@
+_core:
+  default_config_hash: 4GIX5Esnc_umpXUBj4IIocRX7Mt5fPhm4AgXfE3E56E
+module:
+  admin_toolbar: 0
+  admin_toolbar_tools: 0
+  block: 0
+  block_content: 0
+  breakpoint: 0
+  ckeditor5: 0
+  contextual: 0
+  datetime: 0
+  editor: 0
+  field: 0
+  field_ui: 0
+  file: 0
+  filter: 0
+  gaestehaus_booking: 0
+  image: 0
+  language: 0
+  layout_builder: 0
+  layout_discovery: 0
+  link: 0
+  locale: 0
+  mailer_override: 0
+  mailer_policy: 0
+  mailer_transport: 0
+  menu_link_content: 0
+  menu_ui: 0
+  metatag: 0
+  mysql: 0
+  node: 0
+  options: 0
+  path: 0
+  path_alias: 0
+  redirect: 0
+  symfony_mailer: 0
+  system: 0
+  taxonomy: 0
+  text: 0
+  token: 0
+  toolbar: 0
+  update: 0
+  user: 0
+  views_ui: 0
+  webform: 0
+  pathauto: 1
+  views: 10
+  civicos_gaestehaus: 1000
+theme:
+  olivero: 0
+  openhuus: 0
+  claro: 0
+  gin: 0
+profile: civicos_gaestehaus

@@ -1,0 +1,38 @@
+uuid: 1d0fbc12-5487-4fc7-a851-15fd3991c319
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - options
+_core:
+  default_config_hash: 83PvP7kOzgdbYtF2P0WxR0AJhYifmUV1VrIe_ZyYPRY
+id: node.field_gh_booking_type
+field_name: field_gh_booking_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: weekend
+      label: 'Event / Feier (Sa–So)'
+    -
+      value: tagesplatz
+      label: Tagesplatz
+    -
+      value: zimmer_desk
+      label: 'Zimmer + Desk'
+    -
+      value: woche
+      label: Wochenpauschale
+    -
+      value: haus
+      label: 'Hausbelegung (ganzes Haus)'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

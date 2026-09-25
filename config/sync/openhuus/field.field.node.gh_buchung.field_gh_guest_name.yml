@@ -1,0 +1,21 @@
+uuid: 5343361e-144d-4ee0-95d1-0454a76c6912
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gh_guest_name
+    - node.type.gh_buchung
+_core:
+  default_config_hash: 3ByAouH0Q10ptalT17L4vNd3y73t_h-KfOPXQ7WtyGU
+id: node.gh_buchung.field_gh_guest_name
+field_name: field_gh_guest_name
+entity_type: node
+bundle: gh_buchung
+label: Name
+description: 'Bei Direktbuchungen optional.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

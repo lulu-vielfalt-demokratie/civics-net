@@ -1,0 +1,14 @@
+uuid: d7a907e4-12cf-41e6-830d-4f04a6b02bea
+langcode: de
+status: true
+dependencies:
+  module:
+    - gaestehaus_booking
+    - system
+id: gaestehaus_verwaltung
+label: 'openhuus Verwaltung'
+weight: 3
+is_admin: false
+permissions:
+  - 'access content'
+  - 'view gaestehaus bookings'

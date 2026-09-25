@@ -1,0 +1,21 @@
+uuid: 9d6721e0-d8d4-43db-bfdf-d327740e276c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gh_tariff
+    - node.type.gh_buchung
+_core:
+  default_config_hash: siR2keRKwnRHLIJjSccUjYPcNIk1Q0g7DYEywNmWLeQ
+id: node.gh_buchung.field_gh_tariff
+field_name: field_gh_tariff
+entity_type: node
+bundle: gh_buchung
+label: Tarif
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

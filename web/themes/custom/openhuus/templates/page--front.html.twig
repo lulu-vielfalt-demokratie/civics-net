@@ -1,0 +1,321 @@
+{#
+/**
+ * @file
+ * openhuus Startseite.
+ */
+#}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>openhuus — Rückzugsort zwischen Berlin und Hamburg</title>
+  <meta name="description" content="openhuus in Karrenzin: Coworking, Übernachtung und echte Gemeinschaft im Gründerzeit-Backsteinhaus. Eröffnung 12.10.2026.">
+  {{ head }}
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="oh-front"{{ attributes }}>
+{{ page_top }}
+
+{# NAV #}
+<nav class="oh-nav oh-nav--dark" id="oh-nav">
+  <a href="{{ path('<front>') }}" class="oh-nav__logo">open<span>huus</span></a>
+  <ul class="oh-nav__links">
+    <li><a href="#angebote">{{ 'Angebote'|t }}</a></li>
+    <li><a href="#haus">{{ 'Das Haus'|t }}</a></li>
+    <li><a href="#umgebung">{{ 'Umgebung'|t }}</a></li>
+    <li><a href="#anreise">{{ 'Anreise'|t }}</a></li>
+  </ul>
+  <a href="{{ path('gaestehaus_booking.buchung_page') }}" class="oh-nav__cta">{{ 'Buchen'|t }}</a>
+</nav>
+
+{# HERO #}
+<section class="oh-hero">
+  <div class="oh-hero__brick"></div>
+  <div class="oh-hero__overlay"></div>
+  <div class="oh-hero__glow"></div>
+  <div class="oh-hero__content">
+    <div class="oh-badge">
+      <span class="oh-badge__dot"></span>
+      {{ 'Eröffnung 12. Oktober 2026'|t }}
+    </div>
+    <h1 class="oh-hero__title">
+      {{ 'Raus aus dem Homeoffice.'|t }}<br>
+      <em>{{ 'Rein ins Leben.'|t }}</em>
+    </h1>
+    <p class="oh-hero__sub">{{ 'Coworking, echte Gemeinschaft und Natur — im Gründerzeit-Backsteinhaus zwischen Berlin und Hamburg.'|t }}</p>
+    <p class="oh-hero__loc">📍 <strong>{{ 'Karrenzin'|t }}</strong>, Ludwigslust-Parchim</p>
+
+    <div class="oh-countdown" id="oh-countdown">
+      <div class="oh-cd"><span class="oh-cd__num" id="cd-d">--</span><span class="oh-cd__lbl">{{ 'Tage'|t }}</span></div>
+      <div class="oh-cd"><span class="oh-cd__num" id="cd-h">--</span><span class="oh-cd__lbl">{{ 'Std.'|t }}</span></div>
+      <div class="oh-cd"><span class="oh-cd__num" id="cd-m">--</span><span class="oh-cd__lbl">{{ 'Min.'|t }}</span></div>
+      <div class="oh-cd"><span class="oh-cd__num" id="cd-s">--</span><span class="oh-cd__lbl">{{ 'Sek.'|t }}</span></div>
+    </div>
+
+    <div class="oh-hero__actions">
+      <a href="#vormerk" class="oh-btn oh-btn--primary">{{ 'Jetzt vormerken →'|t }}</a>
+      <a href="#haus" class="oh-btn oh-btn--ghost">{{ 'Das Haus entdecken'|t }}</a>
+    </div>
+  </div>
+</section>
+
+{# ROUTE #}
+<div class="oh-route">
+  <strong>Berlin</strong>
+  <span>2 Std.</span>
+  <div class="oh-route__dot"></div>
+  <strong>openhuus</strong>
+  <div class="oh-route__dot"></div>
+  <span>2 Std.</span>
+  <strong>Hamburg</strong>
+</div>
+
+{# VORMERK #}
+<section class="oh-section oh-section--brick" id="vormerk">
+  <div class="oh-section__inner">
+    <p class="oh-eyebrow">{{ 'Interesse anmelden'|t }}</p>
+    <h2 class="oh-section__title">{{ 'Als Erste dabei sein.'|t }}</h2>
+    <p class="oh-section__body">{{ 'openhuus öffnet am 12. Oktober 2026. Trag dich ein — du bekommst als Erste*r Bescheid.'|t }}</p>
+    <div class="oh-vormerk" id="oh-vormerk-form">
+      <input type="text" id="oh-vn-name" placeholder="{{ 'Dein Name'|t }}" autocomplete="given-name">
+      <input type="email" id="oh-vn-email" placeholder="{{ 'Deine E-Mail'|t }}" autocomplete="email">
+      <button type="button" onclick="ohSubmitVormerk()" class="oh-btn oh-btn--white">{{ 'Vormerken'|t }}</button>
+    </div>
+    <div class="oh-vormerk__success" id="oh-vormerk-success" hidden>
+      ✓ {{ 'Super — wir melden uns!'|t }}
+    </div>
+    <p class="oh-vormerk__note">{{ 'Kein Newsletter-Spam. Nur eine Nachricht wenn es losgeht.'|t }}</p>
+  </div>
+</section>
+
+{# WARUM #}
+<section class="oh-section" id="warum">
+  <div class="oh-section__inner">
+    <p class="oh-eyebrow">{{ 'Warum openhuus'|t }}</p>
+    <h2 class="oh-section__title">{{ 'Homeoffice war gestern.'|t }}<br><em>{{ 'Gemeinschaft ist heute.'|t }}</em></h2>
+    <div class="oh-grid oh-grid--2">
+      <div class="oh-card">
+        <div class="oh-card__ico">🤝</div>
+        <h3>{{ 'Echte Gemeinschaft'|t }}</h3>
+        <p>{{ 'Kein anonymes Coworking-Space. Ein Haus, in dem man sich kennt — abends am Kaminofen.'|t }}</p>
+      </div>
+      <div class="oh-card">
+        <div class="oh-card__ico">🧠</div>
+        <h3>{{ 'Deep Work möglich'|t }}</h3>
+        <p>{{ 'Glasfaser, ruhige Zimmer, keine Großstadtablenkung. Coworking-Kernzeit Mo–Fr 7–18 Uhr.'|t }}</p>
+      </div>
+      <div class="oh-card">
+        <div class="oh-card__ico">🌿</div>
+        <h3>{{ 'Natur nach Feierabend'|t }}</h3>
+        <p>{{ 'SUP auf dem See, Fahrradtour durch die Prignitz, Sternenhimmel ohne Lichtverschmutzung.'|t }}</p>
+      </div>
+      <div class="oh-card">
+        <div class="oh-card__ico">🚆</div>
+        <h3>{{ 'Genau in der Mitte'|t }}</h3>
+        <p>{{ '2 Stunden von Berlin, 2 Stunden von Hamburg. Wochenweise pendeln macht plötzlich Sinn.'|t }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# DAS HAUS #}
+<section class="oh-section oh-section--cream" id="haus">
+  <div class="oh-section__inner">
+    <p class="oh-eyebrow">{{ 'Das Haus'|t }}</p>
+    <h2 class="oh-section__title">{{ 'Gründerzeit-Backstein.'|t }}<br><em>{{ 'Frisch saniert.'|t }}</em></h2>
+    <p class="oh-section__body">{{ 'openhuus ist kein Hotel und kein Coworking-Space. Es ist ein historisches Backsteinhaus aus der Gründerzeit — ca. 400 m², saniert mit Respekt vor der Substanz.'|t }}</p>
+    <div class="oh-facts">
+      <div class="oh-fact"><span class="oh-fact__num">9</span><span class="oh-fact__lbl">{{ 'Gästezimmer'|t }}</span></div>
+      <div class="oh-fact"><span class="oh-fact__num">400</span><span class="oh-fact__lbl">{{ 'Quadratmeter'|t }}</span></div>
+      <div class="oh-fact"><span class="oh-fact__num">☀️</span><span class="oh-fact__lbl">{{ 'Solaranlage'|t }}</span></div>
+      <div class="oh-fact"><span class="oh-fact__num">🔭</span><span class="oh-fact__lbl">{{ 'Teleskop'|t }}</span></div>
+    </div>
+    <div class="oh-kamin">
+      <span class="oh-kamin__ico">🔥</span>
+      <div>
+        <h3>{{ 'Mehrere Kaminöfen'|t }}</h3>
+        <p>{{ 'In den Gemeinschaftsräumen brennt abends Feuer. Kein Teambuilding-Event — einfach zusammensitzen und reden.'|t }}</p>
+      </div>
+    </div>
+    <blockquote class="oh-quote">
+      <p>{{ 'Das Haus war das erste Gebäude in Karrenzin — es leitete die Gründung des Dorfes ein. Die Fachwerkkirche von 1721 steht 100 Meter entfernt.'|t }}</p>
+    </blockquote>
+  </div>
+</section>
+
+{# ANGEBOTE #}
+<section class="oh-section" id="angebote">
+  <div class="oh-section__inner">
+    <p class="oh-eyebrow">{{ 'Was wir anbieten'|t }}</p>
+    <h2 class="oh-section__title">{{ 'Arbeiten. Schlafen.'|t }}<br><em>{{ 'Feiern.'|t }}</em></h2>
+    <div class="oh-grid oh-grid--2">
+      <div class="oh-angebot">
+        <div class="oh-angebot__ico" style="background:#1E1A16">⌨</div>
+        <div>
+          <h3>{{ 'Coworking & Übernachtung'|t }}</h3>
+          <p>{{ 'Einzelne Zimmer mit Desk, Tagesplätze und Wochenpauschalen. Mo–Fr.'|t }}</p>
+          <span class="oh-tag">{{ 'Montag – Freitag'|t }}</span>
+        </div>
+      </div>
+      <div class="oh-angebot">
+        <div class="oh-angebot__ico" style="background:#8B3A2A">🎉</div>
+        <div>
+          <h3>{{ 'Events & Feiern'|t }}</h3>
+          <p>{{ 'Das ganze Haus als Einheit — Geburtstage, Hochzeiten, Gruppenreisen. Bis 25 Personen.'|t }}</p>
+          <span class="oh-tag">{{ 'Samstag & Sonntag'|t }}</span>
+        </div>
+      </div>
+      <div class="oh-angebot">
+        <div class="oh-angebot__ico" style="background:#1A3A6A">⚡</div>
+        <div>
+          <h3>{{ 'Firmen-Offsite'|t }}</h3>
+          <p>{{ 'Design Sprints, Entwickler-Offsites, Strategieklausuren. Catering auf Anfrage.'|t }}</p>
+          <span class="oh-tag">{{ 'Flexibel buchbar'|t }}</span>
+        </div>
+      </div>
+      <div class="oh-angebot">
+        <div class="oh-angebot__ico" style="background:#4A7A3A">🔭</div>
+        <div>
+          <h3>{{ 'Teleskop-Abende'|t }}</h3>
+          <p>{{ 'Kaum Lichtverschmutzung, gute Sonnenuntergänge. Das Teleskop gegen Pfand ausleihbar.'|t }}</p>
+          <span class="oh-tag">{{ 'Nach Absprache'|t }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="oh-glasfaser">
+      <div class="oh-glasfaser__dot"></div>
+      <span><strong>1 Gbit/s {{ 'Glasfaser'|t }}</strong> — {{ 'direkt im Haus. Nicht im Dorf. Im Haus.'|t }}</span>
+    </div>
+    <div class="oh-cta-wrap">
+      <a href="{{ path('gaestehaus_booking.buchung_page') }}" class="oh-btn oh-btn--primary">{{ 'Jetzt buchen →'|t }}</a>
+    </div>
+  </div>
+</section>
+
+{# UMGEBUNG #}
+<section class="oh-section oh-section--night" id="umgebung">
+  <div class="oh-section__inner">
+    <p class="oh-eyebrow oh-eyebrow--amber">{{ 'Die Umgebung'|t }}</p>
+    <h2 class="oh-section__title oh-section__title--light">{{ 'Stille.'|t }}<br><em>{{ 'Weite. Sterne.'|t }}</em></h2>
+    <p class="oh-section__body oh-section__body--light">{{ 'Karrenzin liegt mitten in Westmecklenburg — Seenlandschaft, Wälder, wenig Lichtverschmutzung.'|t }}</p>
+    <div class="oh-sterne">
+      <span class="oh-sterne__ico">🔭</span>
+      <div>
+        <h3>{{ 'Sternenhimmel ohne Kompromisse'|t }}</h3>
+        <p>{{ 'Kaum Lichtverschmutzung. Das openhuus-Teleskop steht bereit — gegen Pfand ausleihbar.'|t }}</p>
+      </div>
+    </div>
+    <div class="oh-pills">
+      <span class="oh-pill">🏄 SUP</span>
+      <span class="oh-pill">🚴 {{ 'Fahrradtouren'|t }}</span>
+      <span class="oh-pill">🏊 {{ 'Schwimmen'|t }}</span>
+      <span class="oh-pill">🥾 {{ 'Wandern'|t }}</span>
+      <span class="oh-pill">🎭 {{ 'Kulturmühle Parchim'|t }}</span>
+      <span class="oh-pill">⛪ {{ 'Kirche von 1721'|t }}</span>
+      <span class="oh-pill">🌅 {{ 'Sonnenuntergänge'|t }}</span>
+    </div>
+    <div class="oh-ausflug-grid">
+      <div class="oh-ausflug"><div>🏰</div><h4>Schwerin</h4><p>{{ 'Schloss, Altstadt — 40 Min.'|t }}</p></div>
+      <div class="oh-ausflug"><div>🏛</div><h4>Wismar</h4><p>{{ 'UNESCO-Altstadt — 60 Min.'|t }}</p></div>
+      <div class="oh-ausflug"><div>🌊</div><h4>{{ 'Ostsee'|t }}</h4><p>{{ 'Strand — 90 Min.'|t }}</p></div>
+      <div class="oh-ausflug"><div>🦢</div><h4>Müritz</h4><p>{{ 'Seenplatte — 60 Min.'|t }}</p></div>
+    </div>
+    <div class="oh-hint">
+      <span>🚗</span>
+      <p><strong>{{ 'Wichtig:'|t }}</strong> {{ 'In Karrenzin gibt es keine Läden fußläufig. Ein Auto ist sinnvoll.'|t }}</p>
+    </div>
+  </div>
+</section>
+
+{# ANREISE #}
+<section class="oh-section oh-section--cream" id="anreise">
+  <div class="oh-section__inner">
+    <p class="oh-eyebrow">{{ 'Anreise'|t }}</p>
+    <h2 class="oh-section__title">{{ 'Ankommen in'|t }}<br><em>Karrenzin.</em></h2>
+    <p class="oh-section__body">Ringstraße 1 · 19288 Karrenzin</p>
+    <div class="oh-anreise">
+      <div class="oh-anreise__item">
+        <div class="oh-anreise__ico">🚂</div>
+        <div>
+          <h3>{{ 'Bahn bis Ludwigslust'|t }}</h3>
+          <p>{{ 'Direktverbindung Hamburg–Berlin. Von dort Rufbus oder Taxi (~15 Min.).'|t }}</p>
+        </div>
+      </div>
+      <div class="oh-rufbus">
+        🚌 <strong>{{ 'Rufbus vorher anmelden!'|t }}</strong> {{ 'Mind. 1 Stunde vor Abfahrt.'|t }}
+      </div>
+      <div class="oh-anreise__item">
+        <div class="oh-anreise__ico">🚗</div>
+        <div>
+          <h3>Auto</h3>
+          <p>{{ 'A24 Ausfahrt Neustadt-Glewe oder Ludwigslust. Parkplatz direkt am Haus, kostenlos.'|t }}</p>
+        </div>
+      </div>
+      <div class="oh-anreise__item">
+        <div class="oh-anreise__ico">🚲</div>
+        <div>
+          <h3>{{ 'Fahrrad & E-Bike'|t }}</h3>
+          <p>{{ 'Vom Bahnhof Ludwigslust ca. 12 km. E-Bike-Lademöglichkeit im Haus.'|t }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# CTA FINAL #}
+<section class="oh-cta-final">
+  <h2>{{ 'Eröffnung: 12. Oktober 2026.'|t }}</h2>
+  <p>{{ 'Jetzt vormerken — als Erste*r buchen.'|t }}</p>
+  <a href="#vormerk" class="oh-btn oh-btn--white">{{ 'Interesse anmelden'|t }}</a>
+</section>
+
+{# FOOTER #}
+<footer class="oh-footer">
+  <div class="oh-footer__inner">
+    <span class="oh-footer__logo">open<span>huus</span></span>
+    <p class="oh-footer__addr">Ringstraße 1 · 19288 Karrenzin · <a href="mailto:hallo@openhuus.de">hallo@openhuus.de</a></p>
+    <nav class="oh-footer__nav">
+      <a href="#">{{ 'Impressum'|t }}</a>
+      <a href="#">{{ 'Datenschutz'|t }}</a>
+      <a href="#">AGB</a>
+    </nav>
+    <p class="oh-footer__copy">© {{ "now"|date("Y") }} openhuus</p>
+  </div>
+</footer>
+
+{{ page_bottom }}
+
+<script>
+(function() {
+  // Countdown
+  function updateCd() {
+    var t = new Date('2026-10-12T09:00:00') - new Date();
+    if (t <= 0) { document.getElementById('oh-countdown').innerHTML = '<div style="color:#4AE880;font-weight:600;grid-column:1/-1">🎉 openhuus ist geöffnet!</div>'; return; }
+    var d=Math.floor(t/86400000), h=Math.floor(t%86400000/3600000), m=Math.floor(t%3600000/60000), s=Math.floor(t%60000/1000);
+    document.getElementById('cd-d').textContent=String(d).padStart(2,'0');
+    document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+  }
+  updateCd(); setInterval(updateCd, 1000);
+
+  // Nav scroll
+  window.addEventListener('scroll', function() {
+    document.getElementById('oh-nav').classList.toggle('oh-nav--scrolled', window.scrollY > 60);
+  });
+
+  // Vormerk
+  window.ohSubmitVormerk = function() {
+    var n = document.getElementById('oh-vn-name').value.trim();
+    var e = document.getElementById('oh-vn-email').value.trim();
+    if (!n || !e) { alert('{{ 'Bitte Name und E-Mail eintragen.'|t }}'); return; }
+    document.getElementById('oh-vormerk-form').style.display = 'none';
+    document.getElementById('oh-vormerk-success').hidden = false;
+  };
+})();
+</script>
+
+{{ scripts }}
+</body>
+</html>

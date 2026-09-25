@@ -1,0 +1,124 @@
+{#
+/**
+ * @file
+ * Buchungsseite openhuus.
+ */
+#}
+<div class="gh-booking-page" id="gh-app" data-api-base="/api/gaestehaus">
+
+  <div class="gh-mode-tabs">
+    <button class="gh-tab gh-tab--active" data-mode="weekday">
+      <span class="gh-tab__icon">⌨</span>
+      {{ 'Coworking & Übernachtung'|t }}
+      <span class="gh-tab__sub">{{ 'Montag – Freitag'|t }}</span>
+    </button>
+    <button class="gh-tab" data-mode="weekend">
+      <span class="gh-tab__icon">✦</span>
+      {{ 'Events & Feiern'|t }}
+      <span class="gh-tab__sub">{{ 'Samstag & Sonntag'|t }}</span>
+    </button>
+  </div>
+
+  <div class="gh-panel gh-panel--weekday gh-panel--active" data-panel="weekday">
+    <div class="gh-section-label">{{ 'Tarif wählen'|t }}</div>
+    <div class="gh-tariff-grid">
+      <button class="gh-tariff-card gh-tariff-card--active" data-tariff="tagesplatz">
+        <strong>{{ 'Tagesplatz'|t }}</strong>
+        <span>{{ 'Coworking-Desk ohne Übernachtung'|t }}</span>
+        <em data-price-key="tagesplatz">ab 20 € / Tag</em>
+      </button>
+      <button class="gh-tariff-card" data-tariff="zimmer_desk">
+        <strong>{{ 'Zimmer + Desk'|t }}</strong>
+        <span>{{ 'Übernachtung inkl. Coworking-Desk'|t }}</span>
+        <em data-price-key="zimmer_desk">ab 60 € / Nacht</em>
+      </button>
+      <button class="gh-tariff-card" data-tariff="woche">
+        <strong>{{ 'Wochenpauschale'|t }}</strong>
+        <span>{{ 'Mo–Fr, 5 Nächte, eine Nacht gratis'|t }}</span>
+        <em data-price-key="woche">4× Nachtpreis</em>
+      </button>
+    </div>
+
+    <div id="gh-room-chooser" hidden>
+      <div class="gh-section-label">{{ 'Zimmer wählen'|t }}</div>
+      <div class="gh-room-grid" id="gh-room-grid"></div>
+    </div>
+
+    <div class="gh-cal-layout">
+      <div>
+        <div class="gh-section-label">{{ 'Datum wählen'|t }}</div>
+        <div id="gh-cal-wd"></div>
+      </div>
+      <div>
+        <div class="gh-section-label">{{ 'Buchung'|t }}</div>
+        <div id="gh-form-wd">
+          <p class="gh-empty-hint">{{ '← Datum wählen'|t }}</p>
+          <div class="gh-booking-form" hidden>
+            <div class="gh-summary" id="gh-summary-wd"></div>
+            <div class="gh-warn" id="gh-warn-wd" hidden></div>
+            <div class="gh-field-row">
+              <div class="gh-field"><label>{{ 'Vorname'|t }} *</label><input id="gh-wd-fname" type="text" required></div>
+              <div class="gh-field"><label>{{ 'Nachname'|t }} *</label><input id="gh-wd-lname" type="text" required></div>
+            </div>
+            <div class="gh-field"><label>{{ 'E-Mail'|t }} *</label><input id="gh-wd-email" type="email" required></div>
+            <div class="gh-field-row">
+              <div class="gh-field"><label>{{ 'Telefon'|t }}</label><input id="gh-wd-phone" type="tel"></div>
+              <div class="gh-field"><label>{{ 'Personen'|t }}</label><select id="gh-wd-persons"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
+            </div>
+            <div class="gh-field"><label>{{ 'Nachricht'|t }}</label><textarea id="gh-wd-notes" rows="3"></textarea></div>
+            <div class="gh-field">
+              <label>{{ 'Rabattcode (optional)'|t }}</label>
+              <input type="text" id="gh-wd-code" placeholder="{{ 'z.B. FAMILIE2026'|t }}" autocomplete="off" style="text-transform:uppercase">
+              <span class="gh-field-hint">{{ 'Der Code wird beim Buchen geprüft.'|t }}</span>
+            </div>
+            <button type="button" id="gh-wd-submit" class="gh-book-btn">{{ 'Jetzt buchen'|t }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gh-panel" data-panel="weekend" hidden>
+    <div class="gh-cal-layout">
+      <div>
+        <div class="gh-section-label">{{ 'Samstag wählen'|t }}</div>
+        <div id="gh-cal-we"></div>
+      </div>
+      <div>
+        <div class="gh-section-label">{{ 'Buchung'|t }}</div>
+        <div id="gh-form-we">
+          <p class="gh-empty-hint">{{ '← Samstag wählen'|t }}</p>
+          <div class="gh-booking-form" hidden>
+            <div class="gh-summary" id="gh-summary-we"></div>
+            <div class="gh-field-row">
+              <div class="gh-field"><label>{{ 'Vorname'|t }} *</label><input id="gh-we-fname" type="text" required></div>
+              <div class="gh-field"><label>{{ 'Nachname'|t }} *</label><input id="gh-we-lname" type="text" required></div>
+            </div>
+            <div class="gh-field"><label>{{ 'E-Mail'|t }} *</label><input id="gh-we-email" type="email" required></div>
+            <div class="gh-field-row">
+              <div class="gh-field"><label>{{ 'Telefon'|t }}</label><input id="gh-we-phone" type="tel"></div>
+              <div class="gh-field"><label>{{ 'Personen'|t }}</label><select id="gh-we-persons"><option>5</option><option>10</option><option selected>15</option><option>20</option><option>25</option></select></div>
+            </div>
+            <div class="gh-field"><label>{{ 'Anlass'|t }}</label><input id="gh-we-anlass" type="text"></div>
+            <div class="gh-field"><label>{{ 'Nachricht'|t }}</label><textarea id="gh-we-notes" rows="3"></textarea></div>
+            <div class="gh-field">
+              <label>{{ 'Rabattcode (optional)'|t }}</label>
+              <input type="text" id="gh-we-code" placeholder="{{ 'z.B. FAMILIE2026'|t }}" autocomplete="off" style="text-transform:uppercase">
+              <span class="gh-field-hint">{{ 'Der Code wird beim Buchen geprüft.'|t }}</span>
+            </div>
+            <button type="button" id="gh-we-submit" class="gh-book-btn">{{ 'Wochenende buchen'|t }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gh-success" hidden>
+    <span>✉</span>
+    <h2>{{ 'Buchung bestätigt'|t }}</h2>
+    <p>{{ 'Bestätigung per E-Mail.'|t }}</p>
+    <code id="gh-success-id"></code>
+    <button type="button" id="gh-success-reset">{{ 'Weitere Buchung'|t }}</button>
+  </div>
+
+</div>

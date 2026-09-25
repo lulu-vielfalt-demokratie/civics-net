@@ -1,0 +1,11 @@
+uuid: fedc62ac-5d7a-461c-b42f-7c7137796446
+langcode: de
+status: true
+dependencies:
+  module:
+    - path_alias
+id: path_alias.token
+label: Token
+description: null
+targetEntityType: path_alias
+cache: true

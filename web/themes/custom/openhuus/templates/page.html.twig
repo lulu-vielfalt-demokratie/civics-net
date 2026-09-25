@@ -1,0 +1,60 @@
+{#
+/**
+ * @file
+ * openhuus base page template.
+ */
+#}
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{ head_title }}
+  {{ head }}
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body{{ attributes }}>
+  {{ page_top }}
+
+  <nav class="oh-nav" id="oh-nav">
+    <a href="{{ path('<front>') }}" class="oh-nav__logo">
+      open<span>huus</span>
+    </a>
+    <ul class="oh-nav__links">
+      <li><a href="#angebote">{{ 'Angebote'|t }}</a></li>
+      <li><a href="#haus">{{ 'Das Haus'|t }}</a></li>
+      <li><a href="#umgebung">{{ 'Umgebung'|t }}</a></li>
+      <li><a href="#anreise">{{ 'Anreise'|t }}</a></li>
+    </ul>
+    <a href="{{ path('gaestehaus_booking.buchung_page') }}" class="oh-nav__cta">
+      {{ 'Buchen'|t }}
+    </a>
+    <button class="oh-nav__burger" id="oh-burger" aria-label="{{ 'Menü'|t }}">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main role="main">
+    {{ page.content }}
+  </main>
+
+  <footer class="oh-footer">
+    <div class="oh-footer__inner">
+      <div class="oh-footer__brand">
+        <span class="oh-footer__logo">open<span>huus</span></span>
+        <p class="oh-footer__addr">Ringstraße 1 · 19288 Karrenzin</p>
+        <a href="mailto:hallo@openhuus.de" class="oh-footer__mail">hallo@openhuus.de</a>
+      </div>
+      <nav class="oh-footer__nav">
+        <a href="{{ path('entity.node.canonical', {'node': 1}) }}">{{ 'Impressum'|t }}</a>
+        <a href="{{ path('entity.node.canonical', {'node': 2}) }}">{{ 'Datenschutz'|t }}</a>
+        <a href="{{ path('gaestehaus_booking.buchung_page') }}">{{ 'Buchen'|t }}</a>
+      </nav>
+      <p class="oh-footer__copy">© {{ "now"|date("Y") }} openhuus</p>
+    </div>
+  </footer>
+
+  {{ page_bottom }}
+  {{ scripts }}
+</body>
+</html>

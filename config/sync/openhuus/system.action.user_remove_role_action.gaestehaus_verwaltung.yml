@@ -1,0 +1,14 @@
+uuid: 9e3ceb0b-5de7-4813-8ec8-36908e113ddf
+langcode: de
+status: true
+dependencies:
+  config:
+    - user.role.gaestehaus_verwaltung
+  module:
+    - user
+id: user_remove_role_action.gaestehaus_verwaltung
+label: 'Den ausgewählten Benutzern die Rolle openhuus Verwaltung entziehen'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: gaestehaus_verwaltung

@@ -1,0 +1,22 @@
+uuid: 79151394-428c-42e0-92f1-d8b05c186eca
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 9I7wt6J4BS8IeA5cWhUCzJnNS_Y4igtHk6Rw_b_FewA
+id: node.field_gh_max_persons
+field_name: field_gh_max_persons
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,22 @@
+uuid: 63f8d20e-4a1b-44ee-b72f-7845bcaba672
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: HaFC-TUhSUTyT2b9-6zeGd1VHAe1fj5fTr8B5FwHK0A
+id: node.field_gh_min_stay
+field_name: field_gh_min_stay
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

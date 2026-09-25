@@ -1,0 +1,21 @@
+uuid: bb22f954-850a-4a40-9f57-778a538db876
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gh_guest_email
+    - node.type.gh_buchung
+_core:
+  default_config_hash: BjfbafOkVnKjKmy5HBi-inxajgeEJb9zkj_bGKAKdpM
+id: node.gh_buchung.field_gh_guest_email
+field_name: field_gh_guest_email
+entity_type: node
+bundle: gh_buchung
+label: E-Mail
+description: 'Bei Direktbuchungen optional.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

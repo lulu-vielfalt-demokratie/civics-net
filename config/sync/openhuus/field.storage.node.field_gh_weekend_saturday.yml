@@ -1,0 +1,23 @@
+uuid: 9a1c96df-3ba6-419b-bade-4e70ee2b14f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: TterxeZIB5EUcSzJk2qJWka0TcXPaGkLfzoVUhpF_Bs
+id: node.field_gh_weekend_saturday
+field_name: field_gh_weekend_saturday
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

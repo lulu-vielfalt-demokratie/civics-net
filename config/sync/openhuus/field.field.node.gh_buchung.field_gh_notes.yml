@@ -1,0 +1,24 @@
+uuid: df4319a8-9583-49c5-b62a-5fa1679966e8
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gh_notes
+    - node.type.gh_buchung
+  module:
+    - text
+_core:
+  default_config_hash: IFqOorvFYgIXhYkbDPI8ujGyDFLw0AAwZ-l7Fkc9yyk
+id: node.gh_buchung.field_gh_notes
+field_name: field_gh_notes
+entity_type: node
+bundle: gh_buchung
+label: Notizen
+description: 'Intern, erscheint nicht im öffentlichen Kalender.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

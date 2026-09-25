@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: HlN7eAN2N4JIHsYv56V4E7sqC9bS609KwvGFjyD_mgk
+langcode: de
+uuid: 3e43f3a2-6d4c-465f-b594-0a15ee6fe4c5
+name: 'openhuus Staging'
+mail: openhuus@zynober.de
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node/1
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: de
+mail_notification: null

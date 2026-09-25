@@ -1,0 +1,6 @@
+
+gaestehaus_booking.list:
+  title: 'Buchungen'
+  route_name: gaestehaus_booking.list
+  parent: system.admin_content
+  weight: 5

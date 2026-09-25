@@ -1,0 +1,21 @@
+uuid: 911dfa37-b608-4afc-8faf-e38ea30ce061
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gh_date_start
+    - node.type.gh_buchung
+_core:
+  default_config_hash: 9sY25olbizwY6hDeLlCBv_UNiARQrl1jpX7AaSb7xig
+id: node.gh_buchung.field_gh_date_start
+field_name: field_gh_date_start
+entity_type: node
+bundle: gh_buchung
+label: Anreise
+description: 'Format JJJJ-MM-TT. Nicht bei Events.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

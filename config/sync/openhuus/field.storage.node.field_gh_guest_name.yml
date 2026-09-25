@@ -1,0 +1,23 @@
+uuid: 6cbdff36-4951-49f0-a892-aaaf76c40937
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: TUs3NBnlu82-2rOh2sNMecH6EjE8_dVwETdqdbzNHOU
+id: node.field_gh_guest_name
+field_name: field_gh_guest_name
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

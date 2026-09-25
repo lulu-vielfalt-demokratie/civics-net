@@ -1,0 +1,13 @@
+name: 'Gästehaus Booking'
+type: module
+description: 'Buchungssystem für openhuus'
+package: 'openhuus'
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:node
+  - drupal:field
+  - drupal:user
+  - drupal:datetime
+  - drupal:options
+  - drupal:text
+  - drupal:views

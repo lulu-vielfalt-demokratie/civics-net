@@ -1,0 +1,305 @@
+/* gaestehaus_booking — Buchungsseite CSS */
+:root {
+  --brick: #8B3A2A;
+  --brick2: #C46040;
+  --cream: #F7F2EA;
+  --white: #FDFCF9;
+  --warm: #F0E8D8;
+  --deep: #1E1A16;
+  --muted: #7A6A5A;
+  --border: #E0D8CC;
+  --amber: #E8A020;
+  --green: #4AE880;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--deep); }
+
+/* PAGE WRAPPER */
+.gh-booking-page {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 80px 20px 60px;
+}
+
+/* TABS */
+.gh-mode-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.gh-tab {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 14px;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  transition: all .2s;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.gh-tab--active {
+  border-color: var(--brick);
+  background: var(--warm);
+}
+.gh-tab__icon { font-size: 1.3rem; margin-bottom: 4px; }
+.gh-tab strong { font-size: .88rem; font-weight: 600; color: var(--deep); }
+.gh-tab__sub { font-size: .72rem; color: var(--muted); }
+
+/* PANELS */
+.gh-panel { display: none; }
+.gh-panel--active { display: block; }
+
+/* TARIFF GRID */
+.gh-section-label {
+  font-size: .65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--brick);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.gh-tariff-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.gh-tariff-card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: all .2s;
+  width: 100%;
+}
+.gh-tariff-card--active {
+  border-color: var(--brick);
+  background: var(--warm);
+}
+.gh-tariff-card strong { font-size: .9rem; font-weight: 600; }
+.gh-tariff-card span { font-size: .78rem; color: var(--muted); }
+.gh-tariff-card em { font-size: .75rem; color: var(--brick); font-style: normal; font-weight: 600; margin-top: 2px; }
+
+/* ROOM GRID */
+.gh-room-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.gh-room-btn {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  transition: all .2s;
+  min-width: 64px;
+}
+.gh-room-btn--active { border-color: var(--brick); background: var(--warm); }
+.gh-room-btn--taken { opacity: .4; cursor: not-allowed; }
+.gh-room-btn__num { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--brick); }
+.gh-room-btn__meta { font-size: .65rem; color: var(--muted); }
+
+/* CALENDAR */
+.gh-cal-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.gh-cal { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.gh-cal__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: var(--warm);
+  border-bottom: 1px solid var(--border);
+}
+.gh-cal__prev, .gh-cal__next {
+  background: none; border: none; cursor: pointer;
+  font-size: 1.2rem; color: var(--brick); padding: 4px 8px;
+  border-radius: 4px;
+}
+.gh-cal__prev:hover, .gh-cal__next:hover { background: var(--border); }
+.gh-cal__title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 600; }
+.gh-cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  padding: 10px;
+}
+.gh-cal__grid--head span {
+  text-align: center;
+  font-size: .65rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 0;
+}
+.gh-cal__grid--head .gh-we { color: var(--brick2); }
+.gh-cal__day {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: default;
+  font-size: .82rem;
+  position: relative;
+  transition: all .15s;
+}
+.gh-cal__day--empty { background: transparent; }
+.gh-cal__day--not-open { background: var(--cream); opacity: .5; }
+.gh-cal__day--past { background: var(--cream); opacity: .4; }
+.gh-cal__day--disabled { cursor: not-allowed; }
+.gh-cal__day--available { background: #E8F5E9; cursor: pointer; }
+.gh-cal__day--available:hover { background: #C8E6C9; }
+.gh-cal__day--weekend-avail { background: #FFF3E0; cursor: pointer; }
+.gh-cal__day--weekend-avail:hover { background: #FFE0B2; }
+.gh-cal__day--blocked { background: #FFEBEE; opacity: .6; }
+.gh-cal__day--we_blocked { background: #FFEBEE; opacity: .6; }
+.gh-cal__day--selected { background: var(--brick) !important; color: #fff; }
+.gh-cal__day--inrange { background: rgba(139,58,42,.15); }
+.gh-cal__day-num { font-size: .82rem; line-height: 1; }
+.gh-cal__day-price { font-size: .55rem; color: var(--brick); font-weight: 600; margin-top: 1px; }
+.gh-cal__day--selected .gh-cal__day-price { color: rgba(255,255,255,.8); }
+
+/* BOOKING FORM */
+.gh-empty-hint {
+  color: var(--muted);
+  font-size: .88rem;
+  padding: 20px;
+  text-align: center;
+  background: var(--white);
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+}
+.gh-booking-form {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.gh-summary {
+  background: var(--warm);
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+.gh-summary__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: .82rem;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border);
+}
+.gh-summary__row:last-child { border-bottom: none; }
+.gh-summary__row--total { font-weight: 700; font-size: .9rem; color: var(--brick); }
+.gh-discount { color: var(--green); font-weight: 600; }
+.gh-warn {
+  background: #FFF3E0;
+  border: 1px solid var(--amber);
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: .8rem;
+  color: var(--deep);
+  margin-bottom: 12px;
+}
+.gh-field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+.gh-field label { font-size: .78rem; font-weight: 600; color: var(--muted); }
+.gh-field input, .gh-field select, .gh-field textarea {
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  font-size: .9rem;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--deep);
+  transition: border-color .2s;
+}
+.gh-field input:focus, .gh-field select:focus, .gh-field textarea:focus {
+  outline: none;
+  border-color: var(--brick);
+}
+.gh-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.gh-book-btn {
+  width: 100%;
+  background: var(--brick);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background .2s;
+}
+.gh-book-btn:hover { background: var(--brick2); }
+.gh-book-btn:disabled { opacity: .6; cursor: not-allowed; }
+
+/* SUCCESS */
+#gh-success {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+#gh-success span { font-size: 3rem; display: block; margin-bottom: 16px; }
+#gh-success h2 { font-family: 'Fraunces', serif; font-size: 1.8rem; margin-bottom: 8px; }
+#gh-success p { color: var(--muted); margin-bottom: 16px; }
+#gh-success-id { display: block; font-size: .78rem; color: var(--muted); margin-bottom: 20px; }
+#gh-success-reset {
+  background: var(--brick); color: #fff; border: none; border-radius: 8px;
+  padding: 12px 24px; font-family: 'DM Sans', sans-serif; font-weight: 600; cursor: pointer;
+}
+
+/* DESKTOP */
+@media (min-width: 720px) {
+  .gh-tariff-grid { flex-direction: row; }
+  .gh-tariff-card { flex: 1; }
+  .gh-cal-layout { flex-direction: row; align-items: flex-start; }
+  .gh-cal-layout > div { flex: 1; }
+  .gh-booking-page { padding: 100px 40px 60px; }
+}
+
+/* Rabattcode */
+.gh-discount-input { display: flex; gap: 8px; }
+.gh-discount-input input { flex: 1; }
+.gh-code-btn {
+  background: var(--deep); color: #fff; border: none; border-radius: 7px;
+  padding: 0 16px; font-family: 'DM Sans', sans-serif; font-size: .82rem;
+  font-weight: 600; cursor: pointer; white-space: nowrap;
+}
+.gh-code-result {
+  display: block; margin-top: 6px; font-size: .78rem; font-weight: 600;
+  padding: 6px 10px; border-radius: 5px;
+}
+.gh-code-result--ok { background: #E8F5E9; color: #2E7D32; }
+.gh-code-result--err { background: #FFEBEE; color: #C62828; }
+.gh-field-hint { font-size: .72rem; color: var(--muted); margin-top: 3px; }

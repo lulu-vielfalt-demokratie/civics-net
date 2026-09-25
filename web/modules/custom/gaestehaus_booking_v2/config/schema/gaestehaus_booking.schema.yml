@@ -1,0 +1,34 @@
+gaestehaus_booking.settings:
+  type: config_object
+  label: 'openhuus Booking Einstellungen'
+  mapping:
+    opening_date:      { type: string,  label: 'Eröffnungsdatum (YYYY-MM-DD)' }
+    contact_email:     { type: email,   label: 'Kontakt-E-Mail' }
+    site_name:         { type: string,  label: 'Hausname' }
+    room_count:        { type: integer, label: 'Anzahl Gästezimmer' }
+    max_tagesplaetze:  { type: integer, label: 'Max. Tagesplätze' }
+    waitlist_enabled:  { type: boolean, label: 'Vormerkliste aktiv' }
+    pricing_rules:
+      type: mapping
+      label: 'Preisregeln'
+      mapping:
+        person_surcharge_pct: { type: integer, label: 'Personenaufschlag (%)' }
+        rounding_step:        { type: integer, label: 'Rundungsschritt (€)' }
+        lastminute_days:      { type: integer, label: 'Last-Minute-Schwelle (Tage)' }
+        lastminute_discount_pct: { type: integer, label: 'Last-Minute-Rabatt (%)' }
+        earlybird_days:       { type: integer, label: 'Frühbucher-Schwelle (Tage)' }
+        earlybird_discount_pct:  { type: integer, label: 'Frühbucher-Rabatt (%)' }
+    discount_codes:
+      type: sequence
+      label: 'Rabattcodes'
+      sequence:
+        type: mapping
+        label: 'Rabattcode'
+        mapping:
+          label:         { type: string,  label: 'Bezeichnung' }
+          discount_pct:  { type: integer, label: 'Rabatt (0-100%)' }
+          valid_from:    { type: string,  label: 'Gültig ab (YYYY-MM-DD)' }
+          valid_until:   { type: string,  label: 'Gültig bis (YYYY-MM-DD)' }
+          booking_types: { type: sequence, label: 'Buchungstypen', sequence: { type: string } }
+          single_use:    { type: boolean, label: 'Einmaliger Code' }
+          active:        { type: boolean, label: 'Aktiv' }

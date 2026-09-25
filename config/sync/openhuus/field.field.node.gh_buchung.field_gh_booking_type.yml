@@ -1,0 +1,23 @@
+uuid: f829f5c1-3f62-4e9e-bddd-668176522d6e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gh_booking_type
+    - node.type.gh_buchung
+  module:
+    - options
+_core:
+  default_config_hash: uvATiJzAkpP4bcuwEHdlMnqd9Ju86yCTM1eft3H2eH4
+id: node.gh_buchung.field_gh_booking_type
+field_name: field_gh_booking_type
+entity_type: node
+bundle: gh_buchung
+label: Buchungstyp
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

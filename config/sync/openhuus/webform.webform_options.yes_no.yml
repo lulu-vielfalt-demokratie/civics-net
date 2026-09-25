@@ -1,0 +1,16 @@
+uuid: cbb675db-2dee-4cff-8a9d-301572e62f41
+langcode: de
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: W88NYg31DbaVNQx1Uir_dwwXHVtF09QOq4VBGsH1Snk
+id: yes_no
+label: Ja/Nein
+category: Allgemein
+likert: false
+options: |
+  Ja: Ja
+  Nein: Nein

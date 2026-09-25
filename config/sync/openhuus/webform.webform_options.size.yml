@@ -1,0 +1,19 @@
+uuid: d4ab6ee4-98d9-40a6-9b8c-047ff486d10d
+langcode: de
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: RKkc6tf1VudvYiOtwPCf3Tp_EoA6fov6BFC34D7gMoQ
+id: size
+label: Größe
+category: Allgemein
+likert: false
+options: |
+  Extra klein: Extra klein
+  Klein: Klein
+  Mittel: Mittel
+  Groß: Groß
+  Extra groß: Extra groß

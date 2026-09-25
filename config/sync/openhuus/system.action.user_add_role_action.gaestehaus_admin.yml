@@ -1,0 +1,14 @@
+uuid: de442403-d532-4b90-94bf-41673596e75c
+langcode: de
+status: true
+dependencies:
+  config:
+    - user.role.gaestehaus_admin
+  module:
+    - user
+id: user_add_role_action.gaestehaus_admin
+label: 'Den ausgewählten Benutzern die Rolle openhuus Admin zuweisen'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: gaestehaus_admin

@@ -1,0 +1,16 @@
+name: openhuus
+type: theme
+description: 'openhuus Theme — Gründerzeit-Backstein, warm, mobile-first'
+package: openhuus
+core_version_requirement: ^11
+base theme: false
+libraries:
+  - openhuus/global
+libraries-override:
+  core/normalize: false
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  content: Content
+  sidebar: Sidebar
+  footer: Footer

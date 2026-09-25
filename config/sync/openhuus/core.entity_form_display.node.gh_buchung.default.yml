@@ -1,0 +1,194 @@
+uuid: f93278b4-ca5e-413f-b167-3826e38f3aca
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.gh_buchung.field_gh_booking_type
+    - field.field.node.gh_buchung.field_gh_date_end
+    - field.field.node.gh_buchung.field_gh_date_start
+    - field.field.node.gh_buchung.field_gh_discount_note
+    - field.field.node.gh_buchung.field_gh_guest_email
+    - field.field.node.gh_buchung.field_gh_guest_name
+    - field.field.node.gh_buchung.field_gh_guest_phone
+    - field.field.node.gh_buchung.field_gh_notes
+    - field.field.node.gh_buchung.field_gh_persons
+    - field.field.node.gh_buchung.field_gh_price_total
+    - field.field.node.gh_buchung.field_gh_room_number
+    - field.field.node.gh_buchung.field_gh_source
+    - field.field.node.gh_buchung.field_gh_status
+    - field.field.node.gh_buchung.field_gh_tariff
+    - field.field.node.gh_buchung.field_gh_weekend_saturday
+    - node.type.gh_buchung
+  module:
+    - path
+    - text
+id: node.gh_buchung.default
+targetEntityType: node
+bundle: gh_buchung
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_gh_booking_type:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_gh_date_end:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 20
+      placeholder: JJJJ-MM-TT
+    third_party_settings: {  }
+  field_gh_date_start:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 20
+      placeholder: JJJJ-MM-TT
+    third_party_settings: {  }
+  field_gh_discount_note:
+    type: string_textfield
+    weight: 14
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_gh_guest_email:
+    type: email_default
+    weight: 10
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_gh_guest_name:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_gh_guest_phone:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_gh_notes:
+    type: text_textarea
+    weight: 15
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_gh_persons:
+    type: number
+    weight: 8
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_gh_price_total:
+    type: number
+    weight: 13
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_gh_room_number:
+    type: number
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_gh_source:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 20
+      placeholder: direkt
+    third_party_settings: {  }
+  field_gh_status:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_gh_tariff:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_gh_weekend_saturday:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 20
+      placeholder: JJJJ-MM-TT
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 120
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  promote: true
+  sticky: true

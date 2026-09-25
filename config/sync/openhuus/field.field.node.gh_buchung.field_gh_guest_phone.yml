@@ -1,0 +1,21 @@
+uuid: 819df9b4-14e7-46b4-871e-145f49f7df08
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gh_guest_phone
+    - node.type.gh_buchung
+_core:
+  default_config_hash: sqazmCUgml_eUtiJwUBHewWIxW3D8LWo_AMBBpJdqt0
+id: node.gh_buchung.field_gh_guest_phone
+field_name: field_gh_guest_phone
+entity_type: node
+bundle: gh_buchung
+label: Telefon
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

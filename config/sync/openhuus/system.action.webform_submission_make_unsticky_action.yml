@@ -1,0 +1,13 @@
+uuid: 4e503ba2-ede2-41d5-a512-7b0f1267c0c1
+langcode: de
+status: true
+dependencies:
+  module:
+    - webform
+_core:
+  default_config_hash: n4gTFiUsdp7gw6yWUlDbKFEasZLCgXWWCmm7eJejay0
+id: webform_submission_make_unsticky_action
+label: 'Stern/Kennzeichnung entfernen'
+type: webform_submission
+plugin: webform_submission_make_unsticky_action
+configuration: {  }

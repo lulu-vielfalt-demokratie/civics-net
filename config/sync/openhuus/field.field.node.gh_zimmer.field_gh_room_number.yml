@@ -1,0 +1,25 @@
+uuid: 2cf02bf0-e065-4be0-b535-7fd864d9816f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gh_room_number
+    - node.type.gh_zimmer
+_core:
+  default_config_hash: YPWM05kgEPwOS8qF9Z8c55gxcuguFQkkwdhjtadH0uM
+id: node.gh_zimmer.field_gh_room_number
+field_name: field_gh_room_number
+entity_type: node
+bundle: gh_zimmer
+label: field_gh_room_number
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

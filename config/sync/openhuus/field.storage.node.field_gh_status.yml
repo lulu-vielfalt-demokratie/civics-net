@@ -1,0 +1,32 @@
+uuid: 4e0df182-edcf-4210-a4f2-c3809c9de0a3
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - options
+_core:
+  default_config_hash: Td3o4QbhKSzvtHq8rOMxGO7ieBqEAfg9mNuGN8A57Zo
+id: node.field_gh_status
+field_name: field_gh_status
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: confirmed
+      label: Bestätigt
+    -
+      value: pending
+      label: Offen
+    -
+      value: cancelled
+      label: Storniert
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

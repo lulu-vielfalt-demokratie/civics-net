@@ -1,0 +1,72 @@
+opening_date: '2026-10-12'
+contact_email: 'hallo@openhuus.de'
+site_name: 'openhuus'
+address:
+  street: 'Ringstraße 1'
+  zip: '19288'
+  city: 'Karrenzin'
+room_count: 9
+max_tagesplaetze: 8
+coworking_hours:
+  start: '07:00'
+  end: '18:00'
+weekday_days: [1, 2, 3, 4, 5]
+weekend_days: [6, 0]
+waitlist_enabled: true
+seasons:
+  sommer:
+    label: 'Saison (Mai-Oktober)'
+    months: [5, 6, 7, 8, 9, 10]
+    room_prices: {1: 75, 2: 75, 3: 80, 4: 85, 5: 85, 6: 90, 7: 95, 8: 95, 9: 85}
+    tagesplatz_price: 25
+    weekend_price: 1200
+  winter:
+    label: 'Nebensaison (Nov-Apr)'
+    months: [1, 2, 3, 4, 11, 12]
+    room_prices: {1: 60, 2: 60, 3: 65, 4: 70, 5: 70, 6: 75, 7: 80, 8: 80, 9: 70}
+    tagesplatz_price: 20
+    weekend_price: 950
+tariffs:
+  tagesplatz:
+    enabled: true
+    max_days: 4
+  zimmer_desk:
+    enabled: true
+    min_stay: 1
+    max_stay: 5
+  woche:
+    enabled: true
+    nights: 5
+    discount_nights: 1
+    must_start_monday: true
+  weekend:
+    enabled: true
+    max_persons: 25
+
+# ── Preisregeln ──────────────────────────────────────────────
+pricing_rules:
+  person_surcharge_pct: 35
+  rounding_step: 5
+  lastminute_days: 3
+  lastminute_discount_pct: 10
+  earlybird_days: 60
+  earlybird_discount_pct: 5
+
+# ── Rabattcodes ───────────────────────────────────────────────
+discount_codes:
+  FAMILIE2026:
+    label: 'Familie & Freunde'
+    discount_pct: 100
+    valid_from: '2026-10-12'
+    valid_until: '2027-12-31'
+    booking_types: ['zimmer_desk', 'woche', 'tagesplatz', 'weekend']
+    single_use: false
+    active: true
+
+# ── Zeiten und Reinigungspuffer je Buchungstyp ───────────────
+timing:
+  zimmer_desk: { checkin: '15:00', checkout: '10:00', buffer_hours: 4 }
+  woche:       { checkin: '15:00', checkout: '10:00', buffer_hours: 4 }
+  tagesplatz:  { checkin: '07:00', checkout: '18:00', buffer_hours: 0 }
+  weekend:     { checkin: '15:00', checkout: '14:00', buffer_hours: 16 }
+  haus:        { checkin: '15:00', checkout: '10:00', buffer_hours: 8 }

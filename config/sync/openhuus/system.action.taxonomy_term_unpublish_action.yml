@@ -1,0 +1,13 @@
+uuid: 6e0aa1d9-e27e-4dc0-b2da-4a9a3673656a
+langcode: de
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: z2sNRM3ECa7FPCGnSNje_9SmZJQgwhD_6fG_L4Mr8zI
+id: taxonomy_term_unpublish_action
+label: 'Veröffentlichung des Taxonomiebegriffs zurücknehmen'
+type: taxonomy_term
+plugin: 'entity:unpublish_action:taxonomy_term'
+configuration: {  }

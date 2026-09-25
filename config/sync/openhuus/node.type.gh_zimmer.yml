@@ -1,0 +1,13 @@
+uuid: 560b41ec-0b0a-4283-91fd-e267fcd0cd36
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: _AmCf1upTZqokWfaoywpRffAzw5DI2pBu9V8tGHMEE4
+name: Zimmer
+type: gh_zimmer
+description: 'openhuus Gästezimmer'
+help: null
+new_revision: false
+preview_mode: 0
+display_submitted: false

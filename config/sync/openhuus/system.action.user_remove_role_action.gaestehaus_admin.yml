@@ -1,0 +1,14 @@
+uuid: 10f1e556-6060-4e30-a0fe-2d75bc9868b5
+langcode: de
+status: true
+dependencies:
+  config:
+    - user.role.gaestehaus_admin
+  module:
+    - user
+id: user_remove_role_action.gaestehaus_admin
+label: 'Den ausgewählten Benutzern die Rolle openhuus Admin entziehen'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: gaestehaus_admin

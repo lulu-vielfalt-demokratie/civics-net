@@ -37,22 +37,28 @@ class PricingService {
     return $step > 0 ? round($price / $step) * $step : $price;
   }
 
-  public function getDynamicFactor(\DateTime $checkIn): float {
-    $rules  = $this->getPricingRules();
-    $today  = new \DateTime('today');
-    $daysTo = (int)$today->diff($checkIn)->days;
+  public function getDynamicFactor(\DateTime $checkIn, string $type = 'zimmer_desk'): float {
+    $rules = $this->getPricingRules();
+    $today = new \DateTime('today');
     if ($checkIn <= $today) return 1.0;
-    if ($daysTo <= ($rules['lastminute_days'] ?? 3))
+    $daysTo = (int) $today->diff($checkIn)->days;
+
+    $lastminuteTypes = $rules['lastminute_booking_types'] ?? ['zimmer_desk', 'woche'];
+    if (in_array($type, $lastminuteTypes, TRUE) && $daysTo <= ($rules['lastminute_days'] ?? 3)) {
       return 1 - (($rules['lastminute_discount_pct'] ?? 10) / 100);
-    if ($daysTo >= ($rules['earlybird_days'] ?? 60))
+    }
+    // Frühbucher nur für die konfigurierten Typen – Events sind ausgenommen.
+    $earlybirdTypes = $rules['earlybird_booking_types'] ?? ['zimmer_desk', 'woche', 'tagesplatz'];
+    if (in_array($type, $earlybirdTypes, TRUE) && $daysTo >= ($rules['earlybird_days'] ?? 60)) {
       return 1 - (($rules['earlybird_discount_pct'] ?? 5) / 100);
+    }
     return 1.0;
   }
 
-  public function getRoomPriceWithPersons(int $room, \DateTime $date, int $persons = 1): float {
+  public function getRoomPriceWithPersons(int $room, \DateTime $date, int $persons = 1, string $tariff = 'zimmer_desk'): float {
     $rules     = $this->getPricingRules();
     $base      = $this->getRoomPriceForDate($room, $date);
-    $factor    = $this->getDynamicFactor($date);
+    $factor    = $this->getDynamicFactor($date, $tariff);
     $surcharge = $persons > 1 ? ($persons - 1) * (($rules['person_surcharge_pct'] ?? 35) / 100) * $base : 0;
     return $this->roundPrice(($base + $surcharge) * $factor);
   }
@@ -76,22 +82,26 @@ class PricingService {
     $total = 0.0; $nights = 0; $discount = 0.0;
     $cur = clone $start;
     while ($cur < $end) {
-      $total += $this->getRoomPriceWithPersons($room, $cur, $persons);
+      $total += $this->getRoomPriceWithPersons($room, $cur, $persons, $tariff);
       $nights++;
       $cur->modify('+1 day');
     }
     $tariffs = $this->config->get('tariffs') ?? [];
     if ($tariff === 'woche' && $nights === ($tariffs['woche']['nights'] ?? 5)) {
-      $discount = $this->getRoomPriceWithPersons($room, $start, $persons);
+      $discount = $this->getRoomPriceWithPersons($room, $start, $persons, $tariff);
       $total -= $discount;
     }
     return ['nights' => $nights, 'total' => $total, 'discount' => $discount];
   }
 
   public function calcTagesplatzTotal(\DateTime $start, \DateTime $end): float {
-    $total = 0.0; $cur = clone $start;
-    while ($cur < $end) { $total += $this->getTagesplatzPriceForDate($cur); $cur->modify('+1 day'); }
-    return $total;
+    $total = 0.0;
+    $cur = clone $start;
+    while ($cur < $end) {
+      $total += $this->getTagesplatzPriceForDate($cur) * $this->getDynamicFactor($cur, 'tagesplatz');
+      $cur->modify('+1 day');
+    }
+    return round($total, 2);
   }
 
   /**

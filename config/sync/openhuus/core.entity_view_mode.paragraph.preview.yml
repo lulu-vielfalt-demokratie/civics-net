@@ -1,0 +1,13 @@
+uuid: f958e4b2-0a8c-4409-aca0-1ad1ad5eab3e
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: h3BeHVei4Lnyqbkao3YiF4KqoY-DhRvUNfEgKG8Rgjg
+id: paragraph.preview
+label: Vorschau
+description: null
+targetEntityType: paragraph
+cache: true

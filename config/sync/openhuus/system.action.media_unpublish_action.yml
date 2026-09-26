@@ -1,0 +1,13 @@
+uuid: 59b3bf42-0669-47d9-bd9d-1e96e0f9452a
+langcode: de
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: CsK6TseQ2DatEbZgbd30swOlZ28_HHwAESU2LvEnWq0
+id: media_unpublish_action
+label: 'Veröffentlichung von Medien zurücknehmen'
+type: media
+plugin: 'entity:unpublish_action:media'
+configuration: {  }

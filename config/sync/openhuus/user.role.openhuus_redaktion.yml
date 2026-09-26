@@ -1,0 +1,31 @@
+uuid: 2ccccbf0-6269-45bd-ba4c-5ad80abe271c
+langcode: de
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - media.type.image
+    - node.type.page
+  module:
+    - filter
+    - media
+    - node
+    - system
+    - toolbar
+id: openhuus_redaktion
+label: 'openhuus Redaktion'
+weight: 4
+is_admin: false
+permissions:
+  - 'access content overview'
+  - 'access media overview'
+  - 'access toolbar'
+  - 'create image media'
+  - 'create page content'
+  - 'delete any image media'
+  - 'delete any page content'
+  - 'edit any image media'
+  - 'edit any page content'
+  - 'use text format basic_html'
+  - 'view own unpublished content'
+  - 'view the administration theme'

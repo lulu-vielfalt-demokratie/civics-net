@@ -1,0 +1,21 @@
+uuid: a8ca18a6-2996-4eab-9438-eac81fd7d7ca
+langcode: de
+status: true
+dependencies: {  }
+name: oh_galerie_gross
+label: 'openhuus – Galerie Großansicht'
+effects:
+  7d42fd88-8624-4df4-b4c9-b8a7d68acb5f:
+    uuid: 7d42fd88-8624-4df4-b4c9-b8a7d68acb5f
+    id: image_scale
+    weight: 1
+    data:
+      width: 1920
+      height: 1920
+      upscale: false
+  a9eae779-73b7-4955-8a4a-720b9f121237:
+    uuid: a9eae779-73b7-4955-8a4a-720b9f121237
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

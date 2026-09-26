@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Theme-Funktionen für openhuus.
+ */
+
+use Drupal\Core\Site\Settings;
+
+/**
+ * Implements hook_preprocess_html().
+ *
+ * Bindet Umami (selbst gehostet, cookielos) ein – nur wenn in der settings.php
+ * der Site eine Website-ID gesetzt ist (Prod), nie auf Staging.
+ */
+function openhuus_preprocess_html(array &$variables): void {
+  $id = Settings::get('openhuus_umami_website_id');
+  if (!$id) {
+    return;
+  }
+  $variables['#attached']['html_head'][] = [[
+    '#tag' => 'script',
+    '#attributes' => [
+      'defer' => TRUE,
+      'src' => Settings::get('openhuus_umami_script', 'https://analytics.civicos.de/script.js'),
+      'data-website-id' => $id,
+    ],
+  ], 'openhuus_umami'];
+}

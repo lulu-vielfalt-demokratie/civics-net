@@ -1,0 +1,14 @@
+uuid: 56a3b3e7-8b50-4c86-a424-bff9dd76b58e
+langcode: de
+status: true
+dependencies:
+  config:
+    - user.role.openhuus_redaktion
+  module:
+    - user
+id: user_remove_role_action.openhuus_redaktion
+label: 'Den ausgewählten Benutzern die Rolle openhuus Redaktion entziehen'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: openhuus_redaktion

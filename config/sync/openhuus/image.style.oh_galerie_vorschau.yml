@@ -1,0 +1,21 @@
+uuid: be03f284-8685-4bef-81ef-ac1513fe8a01
+langcode: de
+status: true
+dependencies: {  }
+name: oh_galerie_vorschau
+label: 'openhuus – Galerie Vorschau (4:3)'
+effects:
+  a65d775f-0c25-4fac-8ef7-441b8cf12a94:
+    uuid: a65d775f-0c25-4fac-8ef7-441b8cf12a94
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 800
+      height: 600
+      anchor: center-center
+  a0d25d52-afc3-486f-ba8d-9dbd4b5c564e:
+    uuid: a0d25d52-afc3-486f-ba8d-9dbd4b5c564e
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

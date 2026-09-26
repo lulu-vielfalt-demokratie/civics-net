@@ -1,0 +1,10 @@
+{#
+  Einfache Textseite (Impressum, Datenschutz): nur Titel und Inhalt,
+  ohne Autor, Datum oder Feldbezeichnungen.
+#}
+<article{{ attributes.addClass('oh-textpage') }}>
+  <h1 class="oh-textpage__title">{{ label }}</h1>
+  <div class="oh-textpage__body">
+    {{ content.field_inhalt }}
+  </div>
+</article>

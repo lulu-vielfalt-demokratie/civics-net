@@ -1,0 +1,14 @@
+uuid: 49d5cdcf-4785-4219-a8ef-a0bc52b95b3b
+langcode: de
+status: true
+dependencies:
+  config:
+    - user.role.openhuus_redaktion
+  module:
+    - user
+id: user_add_role_action.openhuus_redaktion
+label: 'Den ausgewählten Benutzern die Rolle openhuus Redaktion zuweisen'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: openhuus_redaktion

@@ -1,0 +1,21 @@
+uuid: 7ae0a404-e4cd-4f70-ac35-4bcabe1f9c75
+langcode: de
+status: true
+dependencies: {  }
+name: oh_hero
+label: 'openhuus – Hero (16:9)'
+effects:
+  9975882b-f8ef-41aa-8c69-4b8bf7a0734d:
+    uuid: 9975882b-f8ef-41aa-8c69-4b8bf7a0734d
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1920
+      height: 1080
+      anchor: center-center
+  7faecf8e-88d3-4c50-a1c7-4b56d48925bb:
+    uuid: 7faecf8e-88d3-4c50-a1c7-4b56d48925bb
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

@@ -10,6 +10,7 @@ module:
   contextual: 0
   datetime: 0
   editor: 0
+  entity_reference_revisions: 0
   field: 0
   field_ui: 0
   file: 0
@@ -24,15 +25,19 @@ module:
   mailer_override: 0
   mailer_policy: 0
   mailer_transport: 0
+  media: 0
+  media_library: 0
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
   mysql: 0
   node: 0
+  openhuus_structure: 0
   options: 0
   path: 0
   path_alias: 0
   redirect: 0
+  responsive_image: 0
   symfony_mailer: 0
   system: 0
   taxonomy: 0
@@ -45,6 +50,7 @@ module:
   webform: 0
   pathauto: 1
   views: 10
+  paragraphs: 11
   civicos_gaestehaus: 1000
 theme:
   olivero: 0

@@ -1,0 +1,24 @@
+uuid: cb44449f-176c-42e3-87a4-1227dde973de
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_inhalt
+    - filter.format.basic_html
+    - node.type.page
+  module:
+    - text
+id: node.page.field_inhalt
+field_name: field_inhalt
+entity_type: node
+bundle: page
+label: Inhalt
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

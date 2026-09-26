@@ -42,7 +42,7 @@ class BookingController extends ControllerBase {
           if ($sat->format('w') !== '6') return new JsonResponse(['error' => 'Kein Samstag'], 400);
           if (!$this->av->isWeekendAvailable($sat)) return new JsonResponse(['error' => 'Wochenende belegt'], 409);
           $sun = (clone $sat)->modify('+1 day');
-          $price = $this->pr->getWeekendPrice($sat) + $this->pr->getWeekendPrice($sun);
+          $price = $this->pr->getWeekendPrice($sat); // Pauschale pro Wochenende (Sa–So)
           $node = $this->bs->createBooking(array_merge($body, ['price_total' => $price]));
           break;
         case 'tagesplatz':

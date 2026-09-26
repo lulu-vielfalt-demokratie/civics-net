@@ -2,7 +2,11 @@ uuid: 9834febe-ce1d-45d8-873d-c613eee3e245
 langcode: de
 status: true
 dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.ckeditor5
   module:
+    - filter
     - gaestehaus_booking
     - system
 id: gaestehaus_admin
@@ -12,4 +16,6 @@ is_admin: false
 permissions:
   - 'access content'
   - 'administer gaestehaus bookings'
+  - 'use text format basic_html'
+  - 'use text format ckeditor5'
   - 'view gaestehaus bookings'

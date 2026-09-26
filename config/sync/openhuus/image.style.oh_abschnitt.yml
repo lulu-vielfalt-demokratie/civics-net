@@ -1,0 +1,21 @@
+uuid: 12851280-5d32-4d23-9dbe-f8b83bea1031
+langcode: de
+status: true
+dependencies: {  }
+name: oh_abschnitt
+label: 'openhuus – Abschnittsbild'
+effects:
+  44a92aef-ae45-4f15-80f7-a3f94796315f:
+    uuid: 44a92aef-ae45-4f15-80f7-a3f94796315f
+    id: image_scale
+    weight: 1
+    data:
+      width: 1200
+      height: 1200
+      upscale: false
+  6104f5b2-4a2d-4bb0-875f-6603b37644fd:
+    uuid: 6104f5b2-4a2d-4bb0-875f-6603b37644fd
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

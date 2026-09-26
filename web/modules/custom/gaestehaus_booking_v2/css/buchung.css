@@ -114,7 +114,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 }
 .gh-room-btn--active { border-color: var(--brick); background: var(--warm); }
 .gh-room-btn--taken { opacity: .4; cursor: not-allowed; }
-.gh-room-btn__num { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--brick); }
+.gh-room-btn__num { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--brick); }
 .gh-room-btn__meta { font-size: .65rem; color: var(--muted); }
 
 /* CALENDAR */
@@ -138,7 +138,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
   border-radius: 4px;
 }
 .gh-cal__prev:hover, .gh-cal__next:hover { background: var(--border); }
-.gh-cal__title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 600; }
+.gh-cal__title { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1rem; font-weight: 600; }
 .gh-cal__grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -271,7 +271,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
   border-radius: 12px;
 }
 #gh-success span { font-size: 3rem; display: block; margin-bottom: 16px; }
-#gh-success h2 { font-family: 'Fraunces', serif; font-size: 1.8rem; margin-bottom: 8px; }
+#gh-success h2 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1.8rem; margin-bottom: 8px; }
 #gh-success p { color: var(--muted); margin-bottom: 16px; }
 #gh-success-id { display: block; font-size: .78rem; color: var(--muted); margin-bottom: 20px; }
 #gh-success-reset {

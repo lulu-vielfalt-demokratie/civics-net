@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.startseite.field_abschnitte
     - node.type.startseite
   module:
+    - entity_reference_revisions
     - user
 id: node.startseite.default
 targetEntityType: node
@@ -15,7 +16,9 @@ content:
   field_abschnitte:
     type: entity_reference_revisions_entity_view
     label: hidden
-    settings: {  }
+    settings:
+      view_mode: default
+      link: ''
     third_party_settings: {  }
     weight: 10
     region: content

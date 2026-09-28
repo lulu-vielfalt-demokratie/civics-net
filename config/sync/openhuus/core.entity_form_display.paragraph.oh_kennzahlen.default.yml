@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.paragraph.oh_kennzahlen.field_oh_eintraege
     - paragraphs.paragraphs_type.oh_kennzahlen
+  module:
+    - paragraphs
 id: paragraph.oh_kennzahlen.default
 targetEntityType: paragraph
 bundle: oh_kennzahlen

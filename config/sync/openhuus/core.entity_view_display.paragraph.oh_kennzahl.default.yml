@@ -7,6 +7,8 @@ dependencies:
     - field.field.paragraph.oh_kennzahl.field_oh_titel
     - field.field.paragraph.oh_kennzahl.field_oh_wert
     - paragraphs.paragraphs_type.oh_kennzahl
+  module:
+    - options
 id: paragraph.oh_kennzahl.default
 targetEntityType: paragraph
 bundle: oh_kennzahl
@@ -22,14 +24,18 @@ content:
   field_oh_titel:
     type: string
     label: hidden
-    settings: {  }
+    settings:
+      link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
     weight: 12
     region: content
   field_oh_wert:
     type: string
     label: hidden
-    settings: {  }
+    settings:
+      link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
     weight: 10
     region: content

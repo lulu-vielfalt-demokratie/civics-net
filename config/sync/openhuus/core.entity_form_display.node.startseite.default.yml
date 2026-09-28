@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.startseite.field_abschnitte
     - node.type.startseite
   module:
+    - paragraphs
     - path
 id: node.startseite.default
 targetEntityType: node

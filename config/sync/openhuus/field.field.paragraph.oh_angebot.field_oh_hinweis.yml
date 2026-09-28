@@ -1,0 +1,19 @@
+uuid: 3f49ab4a-2c52-4c17-bc83-b079fc7ef7d0
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_hinweis
+    - paragraphs.paragraphs_type.oh_angebot
+id: paragraph.oh_angebot.field_oh_hinweis
+field_name: field_oh_hinweis
+entity_type: paragraph
+bundle: oh_angebot
+label: 'Etikett (z. B. Montag – Freitag)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -7,6 +7,8 @@ dependencies:
     - field.field.paragraph.oh_schluss.field_oh_text_kurz
     - field.field.paragraph.oh_schluss.field_oh_titel
     - paragraphs.paragraphs_type.oh_schluss
+  module:
+    - link
 id: paragraph.oh_schluss.default
 targetEntityType: paragraph
 bundle: oh_schluss

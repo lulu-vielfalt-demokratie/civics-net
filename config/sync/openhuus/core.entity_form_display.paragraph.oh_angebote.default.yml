@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.paragraph.oh_angebote.field_oh_eintraege
     - paragraphs.paragraphs_type.oh_angebote
+  module:
+    - paragraphs
 id: paragraph.oh_angebote.default
 targetEntityType: paragraph
 bundle: oh_angebote

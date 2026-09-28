@@ -3,6 +3,7 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.paragraph.oh_textabschnitt.field_oh_anker
     - field.field.paragraph.oh_textabschnitt.field_oh_bausteine
     - field.field.paragraph.oh_textabschnitt.field_oh_hervorhebung
     - field.field.paragraph.oh_textabschnitt.field_oh_hintergrund
@@ -11,22 +12,38 @@ dependencies:
     - field.field.paragraph.oh_textabschnitt.field_oh_text
     - field.field.paragraph.oh_textabschnitt.field_oh_titel
     - paragraphs.paragraphs_type.oh_textabschnitt
+  module:
+    - entity_reference_revisions
+    - link
+    - options
+    - text
 id: paragraph.oh_textabschnitt.default
 targetEntityType: paragraph
 bundle: oh_textabschnitt
 mode: default
 content:
-  field_oh_bausteine:
-    type: entity_reference_revisions_entity_view
+  field_oh_anker:
+    type: string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 16
+    weight: 15
+    region: content
+  field_oh_bausteine:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 17
     region: content
   field_oh_hervorhebung:
     type: string
     label: hidden
-    settings: {  }
+    settings:
+      link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
     weight: 12
     region: content
@@ -40,16 +57,23 @@ content:
   field_oh_kicker:
     type: string
     label: hidden
-    settings: {  }
+    settings:
+      link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
     weight: 10
     region: content
   field_oh_link:
     type: link
     label: hidden
-    settings: {  }
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
     third_party_settings: {  }
-    weight: 15
+    weight: 16
     region: content
   field_oh_text:
     type: text_default
@@ -61,7 +85,9 @@ content:
   field_oh_titel:
     type: string
     label: hidden
-    settings: {  }
+    settings:
+      link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
     weight: 11
     region: content

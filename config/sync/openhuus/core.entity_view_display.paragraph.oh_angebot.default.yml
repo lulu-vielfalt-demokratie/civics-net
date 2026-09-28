@@ -4,11 +4,15 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.oh_angebot.field_oh_farbe
+    - field.field.paragraph.oh_angebot.field_oh_hinweis
     - field.field.paragraph.oh_angebot.field_oh_link
     - field.field.paragraph.oh_angebot.field_oh_symbol
     - field.field.paragraph.oh_angebot.field_oh_text_kurz
     - field.field.paragraph.oh_angebot.field_oh_titel
     - paragraphs.paragraphs_type.oh_angebot
+  module:
+    - link
+    - options
 id: paragraph.oh_angebot.default
 targetEntityType: paragraph
 bundle: oh_angebot
@@ -21,12 +25,24 @@ content:
     third_party_settings: {  }
     weight: 11
     region: content
-  field_oh_link:
-    type: link
+  field_oh_hinweis:
+    type: string
     label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 14
+    region: content
+  field_oh_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 15
     region: content
   field_oh_symbol:
     type: list_key
@@ -45,7 +61,9 @@ content:
   field_oh_titel:
     type: string
     label: hidden
-    settings: {  }
+    settings:
+      link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
     weight: 12
     region: content

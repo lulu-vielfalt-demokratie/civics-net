@@ -1,0 +1,19 @@
+uuid: 7d9872c8-5295-48e0-b063-1fadc7ace411
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_anker
+    - paragraphs.paragraphs_type.oh_vormerk
+id: paragraph.oh_vormerk.field_oh_anker
+field_name: field_oh_anker
+entity_type: paragraph
+bundle: oh_vormerk
+label: 'Sprungmarke (z. B. vormerk)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

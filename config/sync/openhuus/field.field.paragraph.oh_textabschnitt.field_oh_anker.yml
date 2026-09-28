@@ -1,0 +1,19 @@
+uuid: 200f3401-e0b9-43d1-a828-b091e0a6423d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_anker
+    - paragraphs.paragraphs_type.oh_textabschnitt
+id: paragraph.oh_textabschnitt.field_oh_anker
+field_name: field_oh_anker
+entity_type: paragraph
+bundle: oh_textabschnitt
+label: 'Sprungmarke (z. B. haus – für Links wie #haus)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

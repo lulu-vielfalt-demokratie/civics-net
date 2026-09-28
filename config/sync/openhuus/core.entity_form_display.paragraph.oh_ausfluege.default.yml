@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.paragraph.oh_ausfluege.field_oh_eintraege
     - paragraphs.paragraphs_type.oh_ausfluege
+  module:
+    - paragraphs
 id: paragraph.oh_ausfluege.default
 targetEntityType: paragraph
 bundle: oh_ausfluege

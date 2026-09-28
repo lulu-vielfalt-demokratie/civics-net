@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.paragraph.oh_stichworte.field_oh_eintraege
     - paragraphs.paragraphs_type.oh_stichworte
+  module:
+    - paragraphs
 id: paragraph.oh_stichworte.default
 targetEntityType: paragraph
 bundle: oh_stichworte

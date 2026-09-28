@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.paragraph.oh_liste.field_oh_eintraege
     - paragraphs.paragraphs_type.oh_liste
+  module:
+    - paragraphs
 id: paragraph.oh_liste.default
 targetEntityType: paragraph
 bundle: oh_liste

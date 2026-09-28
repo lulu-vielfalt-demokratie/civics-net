@@ -8,6 +8,8 @@ dependencies:
     - field.field.paragraph.oh_hinweisbox.field_oh_titel
     - field.field.paragraph.oh_hinweisbox.field_oh_variante
     - paragraphs.paragraphs_type.oh_hinweisbox
+  module:
+    - options
 id: paragraph.oh_hinweisbox.default
 targetEntityType: paragraph
 bundle: oh_hinweisbox
@@ -30,7 +32,9 @@ content:
   field_oh_titel:
     type: string
     label: hidden
-    settings: {  }
+    settings:
+      link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
     weight: 11
     region: content

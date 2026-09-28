@@ -20,6 +20,9 @@ settings:
     -
       value: dunkel
       label: Dunkel
+    -
+      value: status
+      label: 'Statuszeile (grüner Punkt)'
   allowed_values_function: ''
 module: options
 locked: false

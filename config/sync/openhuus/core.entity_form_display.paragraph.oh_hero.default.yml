@@ -13,6 +13,9 @@ dependencies:
     - field.field.paragraph.oh_hero.field_oh_text_kurz
     - field.field.paragraph.oh_hero.field_oh_titel
     - paragraphs.paragraphs_type.oh_hero
+  module:
+    - link
+    - media_library
 id: paragraph.oh_hero.default
 targetEntityType: paragraph
 bundle: oh_hero

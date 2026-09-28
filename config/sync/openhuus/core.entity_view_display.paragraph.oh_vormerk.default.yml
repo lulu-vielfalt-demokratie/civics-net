@@ -3,6 +3,7 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.paragraph.oh_vormerk.field_oh_anker
     - field.field.paragraph.oh_vormerk.field_oh_hinweis
     - field.field.paragraph.oh_vormerk.field_oh_kicker
     - field.field.paragraph.oh_vormerk.field_oh_text_kurz
@@ -13,17 +14,28 @@ targetEntityType: paragraph
 bundle: oh_vormerk
 mode: default
 content:
-  field_oh_hinweis:
+  field_oh_anker:
     type: string
     label: hidden
     settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_oh_hinweis:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
     weight: 13
     region: content
   field_oh_kicker:
     type: string
     label: hidden
-    settings: {  }
+    settings:
+      link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
     weight: 10
     region: content
@@ -37,7 +49,9 @@ content:
   field_oh_titel:
     type: string
     label: hidden
-    settings: {  }
+    settings:
+      link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
     weight: 11
     region: content

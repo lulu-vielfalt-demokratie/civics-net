@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.paragraph.oh_leiste.field_oh_eintraege
     - paragraphs.paragraphs_type.oh_leiste
+  module:
+    - paragraphs
 id: paragraph.oh_leiste.default
 targetEntityType: paragraph
 bundle: oh_leiste

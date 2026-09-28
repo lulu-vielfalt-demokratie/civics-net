@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.paragraph.oh_stichworte.field_oh_eintraege
     - paragraphs.paragraphs_type.oh_stichworte
+  module:
+    - entity_reference_revisions
 id: paragraph.oh_stichworte.default
 targetEntityType: paragraph
 bundle: oh_stichworte
@@ -13,7 +15,9 @@ content:
   field_oh_eintraege:
     type: entity_reference_revisions_entity_view
     label: hidden
-    settings: {  }
+    settings:
+      view_mode: default
+      link: ''
     third_party_settings: {  }
     weight: 10
     region: content

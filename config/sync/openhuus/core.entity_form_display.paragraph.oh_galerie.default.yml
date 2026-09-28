@@ -6,6 +6,8 @@ dependencies:
     - field.field.paragraph.oh_galerie.field_oh_bilder
     - field.field.paragraph.oh_galerie.field_oh_titel
     - paragraphs.paragraphs_type.oh_galerie
+  module:
+    - media_library
 id: paragraph.oh_galerie.default
 targetEntityType: paragraph
 bundle: oh_galerie

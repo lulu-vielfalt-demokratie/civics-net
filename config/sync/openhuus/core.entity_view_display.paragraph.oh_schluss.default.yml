@@ -7,6 +7,8 @@ dependencies:
     - field.field.paragraph.oh_schluss.field_oh_text_kurz
     - field.field.paragraph.oh_schluss.field_oh_titel
     - paragraphs.paragraphs_type.oh_schluss
+  module:
+    - link
 id: paragraph.oh_schluss.default
 targetEntityType: paragraph
 bundle: oh_schluss
@@ -15,7 +17,12 @@ content:
   field_oh_link:
     type: link
     label: hidden
-    settings: {  }
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
     third_party_settings: {  }
     weight: 12
     region: content
@@ -29,7 +36,9 @@ content:
   field_oh_titel:
     type: string
     label: hidden
-    settings: {  }
+    settings:
+      link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
     weight: 10
     region: content

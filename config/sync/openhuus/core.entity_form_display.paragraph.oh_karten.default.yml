@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.paragraph.oh_karten.field_oh_eintraege
     - paragraphs.paragraphs_type.oh_karten
+  module:
+    - paragraphs
 id: paragraph.oh_karten.default
 targetEntityType: paragraph
 bundle: oh_karten

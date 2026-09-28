@@ -6,6 +6,8 @@ dependencies:
     - field.field.paragraph.oh_stichwort.field_oh_symbol
     - field.field.paragraph.oh_stichwort.field_oh_titel
     - paragraphs.paragraphs_type.oh_stichwort
+  module:
+    - options
 id: paragraph.oh_stichwort.default
 targetEntityType: paragraph
 bundle: oh_stichwort
@@ -21,7 +23,9 @@ content:
   field_oh_titel:
     type: string
     label: hidden
-    settings: {  }
+    settings:
+      link_to_entity: false
+      link_rel: canonical
     third_party_settings: {  }
     weight: 11
     region: content

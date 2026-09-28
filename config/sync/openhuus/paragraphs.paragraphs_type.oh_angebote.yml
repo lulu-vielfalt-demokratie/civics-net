@@ -1,0 +1,10 @@
+uuid: 92ef295f-8f93-4cd5-b6a1-645ce9682e60
+langcode: de
+status: true
+dependencies: {  }
+id: oh_angebote
+label: Angebote
+icon_uuid: null
+icon_default: null
+description: 'Angebotskacheln mit farbigem Symbol'
+behavior_plugins: {  }

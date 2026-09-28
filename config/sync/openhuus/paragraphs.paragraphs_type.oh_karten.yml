@@ -1,0 +1,10 @@
+uuid: e3914877-83b6-4ebc-80cc-3f3bad130ba2
+langcode: de
+status: true
+dependencies: {  }
+id: oh_karten
+label: Karten
+icon_uuid: null
+icon_default: null
+description: 'Karten mit Symbol, Titel und Text'
+behavior_plugins: {  }

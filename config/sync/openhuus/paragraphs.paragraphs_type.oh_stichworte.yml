@@ -1,0 +1,10 @@
+uuid: ca09825a-f175-4276-9090-38d791f381fa
+langcode: de
+status: true
+dependencies: {  }
+id: oh_stichworte
+label: Stichworte
+icon_uuid: null
+icon_default: null
+description: 'Kleine Etiketten, z. B. SUP, Wandern'
+behavior_plugins: {  }

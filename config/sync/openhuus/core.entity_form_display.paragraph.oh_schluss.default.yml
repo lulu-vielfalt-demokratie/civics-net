@@ -1,0 +1,41 @@
+uuid: 409ec099-22a9-493e-8764-9210d5298fa8
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_schluss.field_oh_link
+    - field.field.paragraph.oh_schluss.field_oh_text_kurz
+    - field.field.paragraph.oh_schluss.field_oh_titel
+    - paragraphs.paragraphs_type.oh_schluss
+id: paragraph.oh_schluss.default
+targetEntityType: paragraph
+bundle: oh_schluss
+mode: default
+content:
+  field_oh_link:
+    type: link_default
+    weight: 12
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_oh_text_kurz:
+    type: string_textarea
+    weight: 11
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_oh_titel:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

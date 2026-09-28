@@ -1,0 +1,55 @@
+uuid: b54363f3-8d64-41cd-89a7-d8838e0bb966
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_angebot.field_oh_farbe
+    - field.field.paragraph.oh_angebot.field_oh_link
+    - field.field.paragraph.oh_angebot.field_oh_symbol
+    - field.field.paragraph.oh_angebot.field_oh_text_kurz
+    - field.field.paragraph.oh_angebot.field_oh_titel
+    - paragraphs.paragraphs_type.oh_angebot
+id: paragraph.oh_angebot.default
+targetEntityType: paragraph
+bundle: oh_angebot
+mode: default
+content:
+  field_oh_farbe:
+    type: options_select
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_oh_link:
+    type: link_default
+    weight: 14
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_oh_symbol:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_oh_text_kurz:
+    type: string_textarea
+    weight: 13
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_oh_titel:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

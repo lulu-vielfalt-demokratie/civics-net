@@ -1,0 +1,15 @@
+{% set p = paragraph %}
+<section class="oh-section oh-section--brick"{% if p.field_oh_anker.value %} id="{{ p.field_oh_anker.value|clean_class }}"{% endif %}>
+  <div class="oh-section__inner">
+    {% if p.field_oh_kicker.value %}<p class="oh-eyebrow">{{ p.field_oh_kicker.value }}</p>{% endif %}
+    <h2 class="oh-section__title">{{ p.field_oh_titel.value }}</h2>
+    {% if p.field_oh_text_kurz.value %}<p class="oh-section__body">{{ p.field_oh_text_kurz.value }}</p>{% endif %}
+    <div class="oh-vormerk" id="oh-vormerk-form">
+      <input type="text" id="oh-vn-name" placeholder="{{ 'Dein Name'|t }}" autocomplete="given-name">
+      <input type="email" id="oh-vn-email" placeholder="{{ 'Deine E-Mail'|t }}" autocomplete="email">
+      <button type="button" onclick="ohSubmitVormerk()" class="oh-btn oh-btn--white">{{ 'Vormerken'|t }}</button>
+    </div>
+    <div class="oh-vormerk__success" id="oh-vormerk-success" hidden>✓ {{ 'Super — wir melden uns!'|t }}</div>
+    {% if p.field_oh_hinweis.value %}<p class="oh-vormerk__note">{{ p.field_oh_hinweis.value }}</p>{% endif %}
+  </div>
+</section>

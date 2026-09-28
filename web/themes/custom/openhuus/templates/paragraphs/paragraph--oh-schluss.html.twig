@@ -1,0 +1,6 @@
+{% set p = paragraph %}
+<section class="oh-cta-final">
+  <h2>{{ p.field_oh_titel.value }}</h2>
+  {% if p.field_oh_text_kurz.value %}<p>{{ p.field_oh_text_kurz.value }}</p>{% endif %}
+  {% include '@openhuus/includes/oh-button.html.twig' with {link: p.field_oh_link, klasse: 'oh-btn--white'} only %}
+</section>

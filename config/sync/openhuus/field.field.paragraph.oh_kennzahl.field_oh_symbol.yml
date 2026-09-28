@@ -1,0 +1,21 @@
+uuid: 04f489c5-0073-4f46-a450-a0f8cd07fd63
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_symbol
+    - paragraphs.paragraphs_type.oh_kennzahl
+  module:
+    - options
+id: paragraph.oh_kennzahl.field_oh_symbol
+field_name: field_oh_symbol
+entity_type: paragraph
+bundle: oh_kennzahl
+label: '… oder Symbol statt Wert'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

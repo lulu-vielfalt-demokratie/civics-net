@@ -1,0 +1,33 @@
+uuid: 279758c5-d5c0-4948-b181-b61f6e66d13e
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_oh_farbe
+field_name: field_oh_farbe
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: schiefer
+      label: Schiefer
+    -
+      value: senf
+      label: Senf
+    -
+      value: blau
+      label: Blau
+    -
+      value: gruen
+      label: Grün
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

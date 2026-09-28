@@ -1,0 +1,10 @@
+uuid: 42f69395-70ce-4191-813f-12dc95c58574
+langcode: de
+status: true
+dependencies: {  }
+id: oh_vormerk
+label: Vormerkliste
+icon_uuid: null
+icon_default: null
+description: 'Abschnitt mit dem Formular zur Vormerkliste'
+behavior_plugins: {  }

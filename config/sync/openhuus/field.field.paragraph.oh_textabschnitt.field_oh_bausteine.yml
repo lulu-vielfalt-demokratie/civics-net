@@ -1,0 +1,43 @@
+uuid: aab462ab-da0b-4aad-9a62-8901e762d68b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_bausteine
+    - paragraphs.paragraphs_type.oh_angebote
+    - paragraphs.paragraphs_type.oh_ausfluege
+    - paragraphs.paragraphs_type.oh_galerie
+    - paragraphs.paragraphs_type.oh_hinweisbox
+    - paragraphs.paragraphs_type.oh_karten
+    - paragraphs.paragraphs_type.oh_kennzahlen
+    - paragraphs.paragraphs_type.oh_liste
+    - paragraphs.paragraphs_type.oh_stichworte
+    - paragraphs.paragraphs_type.oh_textabschnitt
+    - paragraphs.paragraphs_type.oh_zitat
+  module:
+    - entity_reference_revisions
+id: paragraph.oh_textabschnitt.field_oh_bausteine
+field_name: field_oh_bausteine
+entity_type: paragraph
+bundle: oh_textabschnitt
+label: Bausteine
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      oh_kennzahlen: oh_kennzahlen
+      oh_karten: oh_karten
+      oh_angebote: oh_angebote
+      oh_hinweisbox: oh_hinweisbox
+      oh_stichworte: oh_stichworte
+      oh_ausfluege: oh_ausfluege
+      oh_liste: oh_liste
+      oh_zitat: oh_zitat
+      oh_galerie: oh_galerie
+    negate: 0
+field_type: entity_reference_revisions

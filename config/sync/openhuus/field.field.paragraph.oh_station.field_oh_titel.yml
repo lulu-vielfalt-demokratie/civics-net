@@ -1,0 +1,19 @@
+uuid: bc0a3514-5c8e-4588-aa10-9036bc34746f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_titel
+    - paragraphs.paragraphs_type.oh_station
+id: paragraph.oh_station.field_oh_titel
+field_name: field_oh_titel
+entity_type: paragraph
+bundle: oh_station
+label: Name
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,85 @@
+uuid: 28f2c613-2d9f-4a30-b978-e4401ff5893b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_textabschnitt.field_oh_bausteine
+    - field.field.paragraph.oh_textabschnitt.field_oh_hervorhebung
+    - field.field.paragraph.oh_textabschnitt.field_oh_hintergrund
+    - field.field.paragraph.oh_textabschnitt.field_oh_kicker
+    - field.field.paragraph.oh_textabschnitt.field_oh_link
+    - field.field.paragraph.oh_textabschnitt.field_oh_text
+    - field.field.paragraph.oh_textabschnitt.field_oh_titel
+    - paragraphs.paragraphs_type.oh_textabschnitt
+id: paragraph.oh_textabschnitt.default
+targetEntityType: paragraph
+bundle: oh_textabschnitt
+mode: default
+content:
+  field_oh_bausteine:
+    type: paragraphs
+    weight: 16
+    region: content
+    settings:
+      title: Eintrag
+      title_plural: Eintrag
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_oh_hervorhebung:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_oh_hintergrund:
+    type: options_select
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_oh_kicker:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_oh_link:
+    type: link_default
+    weight: 15
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_oh_text:
+    type: text_textarea
+    weight: 13
+    region: content
+    settings:
+      rows: 6
+      placeholder: ''
+    third_party_settings: {  }
+  field_oh_titel:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

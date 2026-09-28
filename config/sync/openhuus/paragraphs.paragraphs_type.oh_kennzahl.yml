@@ -1,0 +1,10 @@
+uuid: f3ca5d1e-5ead-4c1a-8543-397ab329bc53
+langcode: de
+status: true
+dependencies: {  }
+id: oh_kennzahl
+label: Kennzahl
+icon_uuid: null
+icon_default: null
+description: 'Eintrag der Kennzahlen'
+behavior_plugins: {  }

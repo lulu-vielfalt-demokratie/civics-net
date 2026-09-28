@@ -1,0 +1,5 @@
+{# Button aus einem Link-Feld. Variablen: link (Feld), klasse #}
+{% if link.uri %}
+  {% set url = link.0.url %}
+  <a href="{{ url.toString }}" class="oh-btn {{ klasse }}"{% if url.isExternal %} target="_blank" rel="noopener"{% endif %}>{{ link.title ?: url.toString }}</a>
+{% endif %}

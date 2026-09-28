@@ -1,0 +1,23 @@
+uuid: a85ffa2c-debb-48bb-916e-59843a096278
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_station.field_oh_titel
+    - paragraphs.paragraphs_type.oh_station
+id: paragraph.oh_station.default
+targetEntityType: paragraph
+bundle: oh_station
+mode: default
+content:
+  field_oh_titel:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

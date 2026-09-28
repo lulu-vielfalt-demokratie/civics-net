@@ -4,7 +4,10 @@ description: 'Inhaltsstruktur für openhuus (Medien, Bildstile, Redaktion, Start
 package: openhuus
 core_version_requirement: ^11
 dependencies:
+  - drupal:node
   - drupal:image
+  - drupal:link
+  - drupal:options
   - drupal:media
   - drupal:media_library
   - paragraphs:paragraphs

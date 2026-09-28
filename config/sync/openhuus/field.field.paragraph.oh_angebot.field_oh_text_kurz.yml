@@ -1,0 +1,19 @@
+uuid: 1b09dcae-2b02-411b-a62f-87a2d320919b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_text_kurz
+    - paragraphs.paragraphs_type.oh_angebot
+id: paragraph.oh_angebot.field_oh_text_kurz
+field_name: field_oh_text_kurz
+entity_type: paragraph
+bundle: oh_angebot
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

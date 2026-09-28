@@ -1,0 +1,10 @@
+uuid: ff2a7734-56be-4449-969b-7a931ed2346f
+langcode: de
+status: true
+dependencies: {  }
+id: oh_kennzahlen
+label: Kennzahlen
+icon_uuid: null
+icon_default: null
+description: 'Kästchen mit Zahl oder Symbol, z. B. 9 Gästezimmer'
+behavior_plugins: {  }

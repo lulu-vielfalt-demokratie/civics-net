@@ -1,0 +1,10 @@
+uuid: aa16a799-b13c-4bc5-b124-dfd7335b9995
+langcode: de
+status: true
+dependencies: {  }
+id: oh_textabschnitt
+label: Textabschnitt
+icon_uuid: null
+icon_default: null
+description: 'Überschrift, Text und beliebige Bausteine'
+behavior_plugins: {  }

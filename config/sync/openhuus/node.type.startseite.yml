@@ -1,0 +1,11 @@
+uuid: be5e66ff-679d-4be4-8e40-481607c4e793
+langcode: de
+status: true
+dependencies: {  }
+name: Startseite
+type: startseite
+description: 'Die Startseite von openhuus, aus Abschnitten zusammengesetzt.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

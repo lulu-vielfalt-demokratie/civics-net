@@ -1,0 +1,20 @@
+uuid: 4afe7fc1-c25a-4c5b-b1fb-c8f80766a63f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_kennzahlen.field_oh_eintraege
+    - paragraphs.paragraphs_type.oh_kennzahlen
+id: paragraph.oh_kennzahlen.default
+targetEntityType: paragraph
+bundle: oh_kennzahlen
+mode: default
+content:
+  field_oh_eintraege:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+hidden: {  }

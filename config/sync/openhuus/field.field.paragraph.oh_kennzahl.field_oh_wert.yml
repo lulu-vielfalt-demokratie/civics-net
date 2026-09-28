@@ -1,0 +1,19 @@
+uuid: 7691d5da-0c33-451f-b0eb-ab12e40716ba
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_wert
+    - paragraphs.paragraphs_type.oh_kennzahl
+id: paragraph.oh_kennzahl.field_oh_wert
+field_name: field_oh_wert
+entity_type: paragraph
+bundle: oh_kennzahl
+label: 'Wert (z. B. 9 oder 400)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

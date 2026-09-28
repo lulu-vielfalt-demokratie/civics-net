@@ -1,0 +1,36 @@
+uuid: 19401deb-31bf-454d-a75a-5780afdfc1f6
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_listeneintrag.field_oh_symbol
+    - field.field.paragraph.oh_listeneintrag.field_oh_text_kurz
+    - field.field.paragraph.oh_listeneintrag.field_oh_titel
+    - paragraphs.paragraphs_type.oh_listeneintrag
+id: paragraph.oh_listeneintrag.default
+targetEntityType: paragraph
+bundle: oh_listeneintrag
+mode: default
+content:
+  field_oh_symbol:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_oh_text_kurz:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_oh_titel:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+hidden: {  }

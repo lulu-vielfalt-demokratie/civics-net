@@ -1,0 +1,19 @@
+uuid: 138d4045-75d3-45cc-bf4b-7c9293a9f73f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_hervorhebung
+    - paragraphs.paragraphs_type.oh_hero
+id: paragraph.oh_hero.field_oh_hervorhebung
+field_name: field_oh_hervorhebung
+entity_type: paragraph
+bundle: oh_hero
+label: 'Hervorhebung (kursive zweite Zeile)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

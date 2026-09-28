@@ -1,0 +1,13 @@
+<div class="oh-galerie">
+  {% if paragraph.field_oh_titel.value %}<h3 class="oh-galerie__titel">{{ paragraph.field_oh_titel.value }}</h3>{% endif %}
+  <div class="oh-galerie__grid">
+    {% for item in paragraph.field_oh_bilder %}
+      {% set bild = item.entity.field_media_image %}
+      {% if bild.entity %}
+        <a class="oh-galerie__item" href="{{ bild.entity.uri.value|image_style('oh_galerie_gross') }}" data-oh-lightbox>
+          <img src="{{ bild.entity.uri.value|image_style('oh_galerie_vorschau') }}" alt="{{ bild.alt }}" width="800" height="600" loading="lazy">
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

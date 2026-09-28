@@ -1,0 +1,19 @@
+uuid: 1fafac9b-bfba-4fd2-b6df-3eece3a42bb1
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_hervorhebung
+    - paragraphs.paragraphs_type.oh_textabschnitt
+id: paragraph.oh_textabschnitt.field_oh_hervorhebung
+field_name: field_oh_hervorhebung
+entity_type: paragraph
+bundle: oh_textabschnitt
+label: 'Hervorhebung (kursive zweite Zeile)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

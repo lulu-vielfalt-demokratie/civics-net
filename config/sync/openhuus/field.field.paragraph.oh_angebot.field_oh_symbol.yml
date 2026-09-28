@@ -1,0 +1,21 @@
+uuid: 02275245-dfa4-49ac-89cb-cb13136a3d2c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_symbol
+    - paragraphs.paragraphs_type.oh_angebot
+  module:
+    - options
+id: paragraph.oh_angebot.field_oh_symbol
+field_name: field_oh_symbol
+entity_type: paragraph
+bundle: oh_angebot
+label: Symbol
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

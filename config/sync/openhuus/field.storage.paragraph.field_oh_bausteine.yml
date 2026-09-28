@@ -1,0 +1,20 @@
+uuid: d4f7dcc5-064d-4f27-ad3b-552d6147c772
+langcode: de
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+id: paragraph.field_oh_bausteine
+field_name: field_oh_bausteine
+entity_type: paragraph
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

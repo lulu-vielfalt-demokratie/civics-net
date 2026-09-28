@@ -1,0 +1,19 @@
+uuid: 12fb925c-d3a8-4c7a-ac18-09ed98d131ea
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_titel
+    - paragraphs.paragraphs_type.oh_karte
+id: paragraph.oh_karte.field_oh_titel
+field_name: field_oh_titel
+entity_type: paragraph
+bundle: oh_karte
+label: Titel
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

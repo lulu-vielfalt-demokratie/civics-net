@@ -1,0 +1,27 @@
+uuid: c753c647-e268-486e-ba7d-5aa568ac1a07
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_eintraege
+    - paragraphs.paragraphs_type.oh_kennzahl
+    - paragraphs.paragraphs_type.oh_kennzahlen
+  module:
+    - entity_reference_revisions
+id: paragraph.oh_kennzahlen.field_oh_eintraege
+field_name: field_oh_eintraege
+entity_type: paragraph
+bundle: oh_kennzahlen
+label: Kennzahlen
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      oh_kennzahl: oh_kennzahl
+    negate: 0
+field_type: entity_reference_revisions

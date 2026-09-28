@@ -1,0 +1,9 @@
+<div class="oh-ausflug-grid">
+  {% for item in paragraph.field_oh_eintraege %}{% set e = item.entity %}
+    <div class="oh-ausflug">
+      <div>{% include '@openhuus/includes/oh-icon.html.twig' with {name: e.field_oh_symbol.value} only %}</div>
+      <h4>{{ e.field_oh_titel.value }}</h4>
+      {% if e.field_oh_text_kurz.value %}<p>{{ e.field_oh_text_kurz.value }}</p>{% endif %}
+    </div>
+  {% endfor %}
+</div>

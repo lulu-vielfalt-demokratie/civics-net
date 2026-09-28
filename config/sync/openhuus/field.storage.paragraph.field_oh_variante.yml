@@ -1,0 +1,30 @@
+uuid: 513b3142-14e7-4d33-b741-eed95d9349dc
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_oh_variante
+field_name: field_oh_variante
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: normal
+      label: Normal
+    -
+      value: hervorgehoben
+      label: 'Hervorgehoben (Senf)'
+    -
+      value: dunkel
+      label: Dunkel
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

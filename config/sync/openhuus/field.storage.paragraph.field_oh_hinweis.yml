@@ -1,0 +1,21 @@
+uuid: 39e3a02f-e439-4c9a-a01e-f8a08a40ec16
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_oh_hinweis
+field_name: field_oh_hinweis
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

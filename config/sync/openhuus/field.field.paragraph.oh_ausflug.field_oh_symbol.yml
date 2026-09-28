@@ -1,0 +1,21 @@
+uuid: 6c28d67a-c70d-46c0-8bd8-dcc267d20681
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_symbol
+    - paragraphs.paragraphs_type.oh_ausflug
+  module:
+    - options
+id: paragraph.oh_ausflug.field_oh_symbol
+field_name: field_oh_symbol
+entity_type: paragraph
+bundle: oh_ausflug
+label: Symbol
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

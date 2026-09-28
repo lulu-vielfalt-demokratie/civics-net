@@ -1,0 +1,35 @@
+uuid: 4b81eb19-b80c-4050-9a61-f07982a9eb1c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_abschnitte
+    - node.type.startseite
+    - paragraphs.paragraphs_type.oh_hero
+    - paragraphs.paragraphs_type.oh_leiste
+    - paragraphs.paragraphs_type.oh_schluss
+    - paragraphs.paragraphs_type.oh_textabschnitt
+    - paragraphs.paragraphs_type.oh_vormerk
+  module:
+    - entity_reference_revisions
+id: node.startseite.field_abschnitte
+field_name: field_abschnitte
+entity_type: node
+bundle: startseite
+label: Abschnitte
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      oh_hero: oh_hero
+      oh_leiste: oh_leiste
+      oh_vormerk: oh_vormerk
+      oh_textabschnitt: oh_textabschnitt
+      oh_schluss: oh_schluss
+    negate: 0
+field_type: entity_reference_revisions

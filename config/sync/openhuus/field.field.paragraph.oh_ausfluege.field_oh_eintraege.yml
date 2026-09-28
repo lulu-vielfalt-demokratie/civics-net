@@ -1,0 +1,27 @@
+uuid: f27ab55e-709c-44fa-a9de-60b32d9f1ef7
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_eintraege
+    - paragraphs.paragraphs_type.oh_ausfluege
+    - paragraphs.paragraphs_type.oh_ausflug
+  module:
+    - entity_reference_revisions
+id: paragraph.oh_ausfluege.field_oh_eintraege
+field_name: field_oh_eintraege
+entity_type: paragraph
+bundle: oh_ausfluege
+label: Ausflugsziele
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      oh_ausflug: oh_ausflug
+    negate: 0
+field_type: entity_reference_revisions

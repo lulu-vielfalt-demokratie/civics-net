@@ -1,0 +1,23 @@
+uuid: b6277901-ca5b-4ec4-8b0d-76b260624870
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_link
+    - paragraphs.paragraphs_type.oh_textabschnitt
+  module:
+    - link
+id: paragraph.oh_textabschnitt.field_oh_link
+field_name: field_oh_link
+entity_type: paragraph
+bundle: oh_textabschnitt
+label: 'Link (z. B. „Route planen“)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

@@ -1,0 +1,10 @@
+uuid: e79bff73-83eb-40a0-941e-e705c1005f09
+langcode: de
+status: true
+dependencies: {  }
+id: oh_stichwort
+label: Stichwort
+icon_uuid: null
+icon_default: null
+description: 'Eintrag der Stichworte'
+behavior_plugins: {  }

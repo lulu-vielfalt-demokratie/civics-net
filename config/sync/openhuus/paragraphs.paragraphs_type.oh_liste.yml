@@ -1,0 +1,10 @@
+uuid: 67ae194d-0c24-4934-a192-09c5f33ca55f
+langcode: de
+status: true
+dependencies: {  }
+id: oh_liste
+label: 'Liste mit Symbolen'
+icon_uuid: null
+icon_default: null
+description: 'Einträge untereinander, z. B. Anreise'
+behavior_plugins: {  }

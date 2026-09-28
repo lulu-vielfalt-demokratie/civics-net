@@ -1,0 +1,10 @@
+uuid: 6254a67a-3b7d-4fe3-abf4-740ab91432c2
+langcode: de
+status: true
+dependencies: {  }
+id: oh_ausflug
+label: Ausflugsziel
+icon_uuid: null
+icon_default: null
+description: 'Eintrag der Ausflugsziele'
+behavior_plugins: {  }

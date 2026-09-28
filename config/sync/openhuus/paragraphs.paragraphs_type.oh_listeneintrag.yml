@@ -1,0 +1,10 @@
+uuid: 8b793c3a-edce-4bed-93c2-cafdbec63ed4
+langcode: de
+status: true
+dependencies: {  }
+id: oh_listeneintrag
+label: Listeneintrag
+icon_uuid: null
+icon_default: null
+description: 'Eintrag der Liste mit Symbolen'
+behavior_plugins: {  }

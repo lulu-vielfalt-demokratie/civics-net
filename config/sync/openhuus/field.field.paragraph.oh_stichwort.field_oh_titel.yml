@@ -1,0 +1,19 @@
+uuid: 13c39e45-280f-49a7-9d2a-640a5c68cedb
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_titel
+    - paragraphs.paragraphs_type.oh_stichwort
+id: paragraph.oh_stichwort.field_oh_titel
+field_name: field_oh_titel
+entity_type: paragraph
+bundle: oh_stichwort
+label: Text
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

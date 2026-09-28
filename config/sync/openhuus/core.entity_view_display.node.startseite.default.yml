@@ -1,0 +1,28 @@
+uuid: 99571d87-9eeb-44fa-bc52-620c7cbc1302
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.startseite.field_abschnitte
+    - node.type.startseite
+  module:
+    - user
+id: node.startseite.default
+targetEntityType: node
+bundle: startseite
+mode: default
+content:
+  field_abschnitte:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

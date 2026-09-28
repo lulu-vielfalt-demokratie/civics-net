@@ -1,0 +1,10 @@
+uuid: af40ce6a-838f-49eb-b15d-b3dc57ba39ef
+langcode: de
+status: true
+dependencies: {  }
+id: oh_angebot
+label: Angebot
+icon_uuid: null
+icon_default: null
+description: 'Eintrag der Angebote'
+behavior_plugins: {  }

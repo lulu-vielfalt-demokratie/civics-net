@@ -1,0 +1,19 @@
+uuid: 3614d308-3ed2-4acb-9df3-1f41bdfd83f3
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_text_kurz
+    - paragraphs.paragraphs_type.oh_listeneintrag
+id: paragraph.oh_listeneintrag.field_oh_text_kurz
+field_name: field_oh_text_kurz
+entity_type: paragraph
+bundle: oh_listeneintrag
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

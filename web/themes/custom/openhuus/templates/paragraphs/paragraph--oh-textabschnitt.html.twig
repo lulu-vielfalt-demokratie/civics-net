@@ -1,0 +1,18 @@
+{% set p = paragraph %}
+{% set hg = p.field_oh_hintergrund.value ?: 'hell' %}
+{% set dunkel = hg in ['dunkel', 'nacht'] %}
+{% set klassen = {'hell': '', 'getoent': 'oh-section--cream', 'dunkel': 'oh-section--brick', 'nacht': 'oh-section--night'} %}
+<section class="oh-section {{ klassen[hg] }}"{% if p.field_oh_anker.value %} id="{{ p.field_oh_anker.value|clean_class }}"{% endif %}>
+  <div class="oh-section__inner">
+    {% if p.field_oh_kicker.value %}<p class="oh-eyebrow{{ hg == 'nacht' ? ' oh-eyebrow--amber' }}">{{ p.field_oh_kicker.value }}</p>{% endif %}
+    <h2 class="oh-section__title{{ dunkel ? ' oh-section__title--light' }}">{{ p.field_oh_titel.value }}{% if p.field_oh_hervorhebung.value %}<br><em>{{ p.field_oh_hervorhebung.value }}</em>{% endif %}</h2>
+    {% if p.field_oh_text.value %}<div class="oh-section__body{{ dunkel ? ' oh-section__body--light' }}">{{ content.field_oh_text }}</div>{% endif %}
+    {{ content.field_oh_bausteine }}
+    {% if p.field_oh_link.uri %}
+      <div class="oh-cta-wrap">
+        {% include '@openhuus/includes/oh-button.html.twig' with {link: p.field_oh_link, klasse: 'oh-btn--primary'} only %}
+        {% if p.field_oh_link.0.url.isExternal %}<span class="oh-route-link__note">{{ 'Öffnet in einem neuen Fenster.'|t }}</span>{% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>

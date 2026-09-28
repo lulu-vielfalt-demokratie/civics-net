@@ -1,0 +1,19 @@
+uuid: adc65e0e-65c2-436a-b4bd-60eeae5694a4
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_hinweis
+    - paragraphs.paragraphs_type.oh_vormerk
+id: paragraph.oh_vormerk.field_oh_hinweis
+field_name: field_oh_hinweis
+entity_type: paragraph
+bundle: oh_vormerk
+label: 'Hinweis unter dem Formular'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -27,3 +27,36 @@ function openhuus_preprocess_html(array &$variables): void {
     ],
   ], 'openhuus_umami'];
 }
+
+/**
+ * Implements hook_preprocess_page().
+ *
+ * Startseite: zeigt die neueste veröffentlichte „Startseite“ (unabhängig von
+ * Node-IDs) und übergibt das Eröffnungsdatum an das JavaScript.
+ */
+function openhuus_preprocess_page(array &$variables): void {
+  if (!\Drupal::service('path.matcher')->isFrontPage()) {
+    return;
+  }
+  $variables['page']['#cache']['tags'][] = 'node_list:startseite';
+  $variables['page']['#cache']['contexts'][] = 'user.permissions';
+  $variables['page']['#attached']['drupalSettings']['openhuus']['opening'] =
+    \Drupal::config('gaestehaus_booking.settings')->get('opening_date') ?: '2026-10-12';
+
+  $storage = \Drupal::entityTypeManager()->getStorage('node');
+  $ids = $storage->getQuery()
+    ->accessCheck(TRUE)
+    ->condition('type', 'startseite')
+    ->condition('status', 1)
+    ->sort('changed', 'DESC')
+    ->range(0, 1)
+    ->execute();
+  if (!$ids) {
+    return;
+  }
+  $node = $storage->load(reset($ids));
+  $variables['startseite'] = \Drupal::entityTypeManager()->getViewBuilder('node')->view($node, 'full');
+  if ($node->access('update')) {
+    $variables['startseite_edit_url'] = $node->toUrl('edit-form')->toString();
+  }
+}

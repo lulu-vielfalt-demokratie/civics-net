@@ -1,0 +1,9 @@
+<div class="oh-route">
+  {% for item in paragraph.field_oh_eintraege %}
+    {% set e = item.entity %}
+    {% if not loop.first %}<div class="oh-route__dot"></div>{% endif %}
+    {% if loop.last and not loop.first and e.field_oh_wert.value %}<span>{{ e.field_oh_wert.value }}</span>{% endif %}
+    <strong>{{ e.field_oh_titel.value }}</strong>
+    {% if not loop.last and e.field_oh_wert.value %}<span>{{ e.field_oh_wert.value }}</span>{% endif %}
+  {% endfor %}
+</div>

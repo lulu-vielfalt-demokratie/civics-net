@@ -1,0 +1,10 @@
+uuid: a98cd9b9-769a-4750-9082-5c976a4594a4
+langcode: de
+status: true
+dependencies: {  }
+id: oh_hinweisbox
+label: Hinweisbox
+icon_uuid: null
+icon_default: null
+description: 'Kasten mit Symbol, z. B. Kaminöfen oder Rufbus'
+behavior_plugins: {  }

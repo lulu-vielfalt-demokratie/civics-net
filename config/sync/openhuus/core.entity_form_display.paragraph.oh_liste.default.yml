@@ -1,0 +1,33 @@
+uuid: a366778b-f448-4b7f-adf2-5dbafc0eda22
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_liste.field_oh_eintraege
+    - paragraphs.paragraphs_type.oh_liste
+id: paragraph.oh_liste.default
+targetEntityType: paragraph
+bundle: oh_liste
+mode: default
+content:
+  field_oh_eintraege:
+    type: paragraphs
+    weight: 10
+    region: content
+    settings:
+      title: Eintrag
+      title_plural: Eintrag
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,20 @@
+uuid: 4ae0833b-5ec5-4705-86fc-cecc35f959e2
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_zitat.field_oh_text_kurz
+    - paragraphs.paragraphs_type.oh_zitat
+id: paragraph.oh_zitat.default
+targetEntityType: paragraph
+bundle: oh_zitat
+mode: default
+content:
+  field_oh_text_kurz:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+hidden: {  }

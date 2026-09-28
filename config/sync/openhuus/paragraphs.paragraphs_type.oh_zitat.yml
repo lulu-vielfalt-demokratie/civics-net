@@ -1,0 +1,10 @@
+uuid: 9d086172-f0b9-4d6d-8503-7daf2156f2cb
+langcode: de
+status: true
+dependencies: {  }
+id: oh_zitat
+label: Zitat
+icon_uuid: null
+icon_default: null
+description: 'Hervorgehobenes Zitat'
+behavior_plugins: {  }

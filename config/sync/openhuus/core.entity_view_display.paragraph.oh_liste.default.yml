@@ -1,0 +1,20 @@
+uuid: 9a9e75eb-6ec8-4276-8db8-516df3b04ba5
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_liste.field_oh_eintraege
+    - paragraphs.paragraphs_type.oh_liste
+id: paragraph.oh_liste.default
+targetEntityType: paragraph
+bundle: oh_liste
+mode: default
+content:
+  field_oh_eintraege:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+hidden: {  }

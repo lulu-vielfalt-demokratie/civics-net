@@ -1,0 +1,10 @@
+uuid: 49d31d94-38a7-4acf-b1ec-28e1d8752ecc
+langcode: de
+status: true
+dependencies: {  }
+id: oh_hero
+label: Hero
+icon_uuid: null
+icon_default: null
+description: 'Großer Einstieg ganz oben'
+behavior_plugins: {  }

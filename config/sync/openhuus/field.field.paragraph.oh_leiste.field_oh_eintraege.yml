@@ -1,0 +1,27 @@
+uuid: 3e9ebd0d-9c0e-4a24-8e92-9dd52ccdd498
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_eintraege
+    - paragraphs.paragraphs_type.oh_leiste
+    - paragraphs.paragraphs_type.oh_station
+  module:
+    - entity_reference_revisions
+id: paragraph.oh_leiste.field_oh_eintraege
+field_name: field_oh_eintraege
+entity_type: paragraph
+bundle: oh_leiste
+label: Stationen
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      oh_station: oh_station
+    negate: 0
+field_type: entity_reference_revisions

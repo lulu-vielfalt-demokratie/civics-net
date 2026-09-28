@@ -1,0 +1,19 @@
+uuid: 7f23a3ac-8f37-40cd-aea9-a6e3c59f1452
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_text_kurz
+    - paragraphs.paragraphs_type.oh_hero
+id: paragraph.oh_hero.field_oh_text_kurz
+field_name: field_oh_text_kurz
+entity_type: paragraph
+bundle: oh_hero
+label: Untertitel
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,28 @@
+uuid: dde17ea6-1d71-42d4-9f34-1f4133914044
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_galerie.field_oh_bilder
+    - field.field.paragraph.oh_galerie.field_oh_titel
+    - paragraphs.paragraphs_type.oh_galerie
+id: paragraph.oh_galerie.default
+targetEntityType: paragraph
+bundle: oh_galerie
+mode: default
+content:
+  field_oh_bilder:
+    type: entity_reference_entity_view
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_oh_titel:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+hidden: {  }

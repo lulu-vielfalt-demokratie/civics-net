@@ -1,0 +1,10 @@
+uuid: 0a8c272a-8f5c-4226-99a3-1b0ddcb3a148
+langcode: de
+status: true
+dependencies: {  }
+id: oh_station
+label: Station
+icon_uuid: null
+icon_default: null
+description: 'Eintrag der Hinweisleiste'
+behavior_plugins: {  }

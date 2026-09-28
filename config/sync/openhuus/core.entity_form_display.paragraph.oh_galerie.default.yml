@@ -1,0 +1,31 @@
+uuid: ab361acc-9a51-41cd-8e9c-69661597800f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_galerie.field_oh_bilder
+    - field.field.paragraph.oh_galerie.field_oh_titel
+    - paragraphs.paragraphs_type.oh_galerie
+id: paragraph.oh_galerie.default
+targetEntityType: paragraph
+bundle: oh_galerie
+mode: default
+content:
+  field_oh_bilder:
+    type: media_library_widget
+    weight: 11
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_oh_titel:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,27 @@
+uuid: 91eb53ff-91cf-4e1c-8127-04e3e6102df4
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_eintraege
+    - paragraphs.paragraphs_type.oh_liste
+    - paragraphs.paragraphs_type.oh_listeneintrag
+  module:
+    - entity_reference_revisions
+id: paragraph.oh_liste.field_oh_eintraege
+field_name: field_oh_eintraege
+entity_type: paragraph
+bundle: oh_liste
+label: Einträge
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      oh_listeneintrag: oh_listeneintrag
+    negate: 0
+field_type: entity_reference_revisions

@@ -6,6 +6,7 @@ dependencies:
     - filter.format.basic_html
     - media.type.image
     - node.type.page
+    - node.type.startseite
   module:
     - filter
     - media
@@ -26,6 +27,7 @@ permissions:
   - 'delete any page content'
   - 'edit any image media'
   - 'edit any page content'
+  - 'edit any startseite content'
   - 'use text format basic_html'
   - 'view own unpublished content'
   - 'view the administration theme'

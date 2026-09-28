@@ -1,0 +1,24 @@
+uuid: af446175-40fa-47ee-9240-2154510274e5
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_bild
+    - media.type.image
+    - paragraphs.paragraphs_type.oh_hero
+id: paragraph.oh_hero.field_oh_bild
+field_name: field_oh_bild
+entity_type: paragraph
+bundle: oh_hero
+label: Hintergrundbild
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

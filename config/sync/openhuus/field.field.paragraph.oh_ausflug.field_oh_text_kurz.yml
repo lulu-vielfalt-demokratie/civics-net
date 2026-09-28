@@ -1,0 +1,19 @@
+uuid: f2347e2e-c98a-4612-b086-c1076eb33480
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_text_kurz
+    - paragraphs.paragraphs_type.oh_ausflug
+id: paragraph.oh_ausflug.field_oh_text_kurz
+field_name: field_oh_text_kurz
+entity_type: paragraph
+bundle: oh_ausflug
+label: 'Beschreibung und Fahrzeit'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

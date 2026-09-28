@@ -1,0 +1,30 @@
+uuid: c4c882e3-7cb5-43d9-96a0-6319a9e4e40d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_stichwort.field_oh_symbol
+    - field.field.paragraph.oh_stichwort.field_oh_titel
+    - paragraphs.paragraphs_type.oh_stichwort
+id: paragraph.oh_stichwort.default
+targetEntityType: paragraph
+bundle: oh_stichwort
+mode: default
+content:
+  field_oh_symbol:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_oh_titel:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

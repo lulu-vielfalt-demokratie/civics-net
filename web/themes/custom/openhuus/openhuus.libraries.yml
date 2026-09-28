@@ -6,6 +6,7 @@ global:
     js/openhuus.js: {}
   dependencies:
     - core/drupal
+    - core/drupalSettings
 
 buchung:
   css:

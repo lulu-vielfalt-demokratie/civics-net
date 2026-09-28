@@ -1,0 +1,21 @@
+uuid: e9ac8daa-f863-4012-ad4b-9501636be5bf
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_symbol
+    - paragraphs.paragraphs_type.oh_karte
+  module:
+    - options
+id: paragraph.oh_karte.field_oh_symbol
+field_name: field_oh_symbol
+entity_type: paragraph
+bundle: oh_karte
+label: Symbol
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

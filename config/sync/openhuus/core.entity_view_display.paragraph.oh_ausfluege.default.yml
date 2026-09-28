@@ -1,0 +1,20 @@
+uuid: a1d38314-a9a1-47f7-9c11-752716e58a14
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_ausfluege.field_oh_eintraege
+    - paragraphs.paragraphs_type.oh_ausfluege
+id: paragraph.oh_ausfluege.default
+targetEntityType: paragraph
+bundle: oh_ausfluege
+mode: default
+content:
+  field_oh_eintraege:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+hidden: {  }

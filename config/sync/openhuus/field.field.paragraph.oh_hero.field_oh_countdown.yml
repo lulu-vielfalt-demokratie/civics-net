@@ -1,0 +1,23 @@
+uuid: 5f1a39ed-7a14-4194-8cc3-854036bda8c7
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_countdown
+    - paragraphs.paragraphs_type.oh_hero
+id: paragraph.oh_hero.field_oh_countdown
+field_name: field_oh_countdown
+entity_type: paragraph
+bundle: oh_hero
+label: 'Countdown bis zur Eröffnung anzeigen'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

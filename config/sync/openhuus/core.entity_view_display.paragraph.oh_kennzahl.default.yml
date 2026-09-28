@@ -1,0 +1,36 @@
+uuid: e8bb129e-ac3f-4848-a7c5-b35f240c7d2d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_kennzahl.field_oh_symbol
+    - field.field.paragraph.oh_kennzahl.field_oh_titel
+    - field.field.paragraph.oh_kennzahl.field_oh_wert
+    - paragraphs.paragraphs_type.oh_kennzahl
+id: paragraph.oh_kennzahl.default
+targetEntityType: paragraph
+bundle: oh_kennzahl
+mode: default
+content:
+  field_oh_symbol:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_oh_titel:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_oh_wert:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+hidden: {  }

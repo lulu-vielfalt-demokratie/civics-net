@@ -1,0 +1,21 @@
+uuid: 784e9dff-35f7-4114-bd3c-68859789cf4a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_symbol
+    - paragraphs.paragraphs_type.oh_hinweisbox
+  module:
+    - options
+id: paragraph.oh_hinweisbox.field_oh_symbol
+field_name: field_oh_symbol
+entity_type: paragraph
+bundle: oh_hinweisbox
+label: Symbol
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,27 @@
+uuid: 202af26c-abb5-42e9-9eb3-0d984dca2c62
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_eintraege
+    - paragraphs.paragraphs_type.oh_karte
+    - paragraphs.paragraphs_type.oh_karten
+  module:
+    - entity_reference_revisions
+id: paragraph.oh_karten.field_oh_eintraege
+field_name: field_oh_eintraege
+entity_type: paragraph
+bundle: oh_karten
+label: Karten
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      oh_karte: oh_karte
+    negate: 0
+field_type: entity_reference_revisions

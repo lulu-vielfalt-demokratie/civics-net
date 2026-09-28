@@ -1,0 +1,44 @@
+uuid: f6e8eebd-b304-44b8-a5d4-e50046d8555e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_vormerk.field_oh_hinweis
+    - field.field.paragraph.oh_vormerk.field_oh_kicker
+    - field.field.paragraph.oh_vormerk.field_oh_text_kurz
+    - field.field.paragraph.oh_vormerk.field_oh_titel
+    - paragraphs.paragraphs_type.oh_vormerk
+id: paragraph.oh_vormerk.default
+targetEntityType: paragraph
+bundle: oh_vormerk
+mode: default
+content:
+  field_oh_hinweis:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_oh_kicker:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_oh_text_kurz:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_oh_titel:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+hidden: {  }

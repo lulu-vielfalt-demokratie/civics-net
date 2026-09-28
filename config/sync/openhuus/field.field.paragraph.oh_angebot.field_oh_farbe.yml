@@ -1,0 +1,23 @@
+uuid: 4c182b62-8f76-43c6-b2cf-0402ef9f15f1
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_farbe
+    - paragraphs.paragraphs_type.oh_angebot
+  module:
+    - options
+id: paragraph.oh_angebot.field_oh_farbe
+field_name: field_oh_farbe
+entity_type: paragraph
+bundle: oh_angebot
+label: 'Farbe des Symbols'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: schiefer
+default_value_callback: ''
+settings: {  }
+field_type: list_string

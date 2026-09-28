@@ -1,0 +1,93 @@
+uuid: dfa4f582-bfdf-424d-8cf0-e2a737d57427
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_hero.field_oh_bild
+    - field.field.paragraph.oh_hero.field_oh_countdown
+    - field.field.paragraph.oh_hero.field_oh_hervorhebung
+    - field.field.paragraph.oh_hero.field_oh_kicker
+    - field.field.paragraph.oh_hero.field_oh_link
+    - field.field.paragraph.oh_hero.field_oh_link2
+    - field.field.paragraph.oh_hero.field_oh_ort
+    - field.field.paragraph.oh_hero.field_oh_text_kurz
+    - field.field.paragraph.oh_hero.field_oh_titel
+    - paragraphs.paragraphs_type.oh_hero
+id: paragraph.oh_hero.default
+targetEntityType: paragraph
+bundle: oh_hero
+mode: default
+content:
+  field_oh_bild:
+    type: media_library_widget
+    weight: 18
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_oh_countdown:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_oh_hervorhebung:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_oh_kicker:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_oh_link:
+    type: link_default
+    weight: 16
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_oh_link2:
+    type: link_default
+    weight: 17
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_oh_ort:
+    type: string_textfield
+    weight: 14
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_oh_text_kurz:
+    type: string_textarea
+    weight: 13
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_oh_titel:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

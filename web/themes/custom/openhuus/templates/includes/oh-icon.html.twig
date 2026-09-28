@@ -1,0 +1,2 @@
+{# Symbol aus templates/icons. Variable: name #}
+{% if name %}<span class="oh-ico" aria-hidden="true">{{ source('@openhuus/icons/' ~ name ~ '.svg', ignore_missing = true) }}</span>{% endif %}

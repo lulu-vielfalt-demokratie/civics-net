@@ -1,0 +1,27 @@
+uuid: 1bd32fc0-7f02-44ca-a329-6a1ac915e61f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_eintraege
+    - paragraphs.paragraphs_type.oh_stichwort
+    - paragraphs.paragraphs_type.oh_stichworte
+  module:
+    - entity_reference_revisions
+id: paragraph.oh_stichworte.field_oh_eintraege
+field_name: field_oh_eintraege
+entity_type: paragraph
+bundle: oh_stichworte
+label: Stichworte
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      oh_stichwort: oh_stichwort
+    negate: 0
+field_type: entity_reference_revisions

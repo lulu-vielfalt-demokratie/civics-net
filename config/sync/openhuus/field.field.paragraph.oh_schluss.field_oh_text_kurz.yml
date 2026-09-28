@@ -1,0 +1,19 @@
+uuid: d760f994-2607-4bd3-b1db-1ee3cd60afa7
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_text_kurz
+    - paragraphs.paragraphs_type.oh_schluss
+id: paragraph.oh_schluss.field_oh_text_kurz
+field_name: field_oh_text_kurz
+entity_type: paragraph
+bundle: oh_schluss
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

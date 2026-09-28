@@ -2,7 +2,7 @@
 :root {
   --brick: #2B3440;
   --brick2: #D9A21B;
-  --cream: #F4F6F7;
+  --cream: #EAEEF1;
   --white: #FFFFFF;
   --warm: #E9EDF0;
   --deep: #1F2630;
@@ -278,3 +278,48 @@ body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(
 .oh-textpage__body ul, .oh-textpage__body ol { margin: 0 0 1rem 1.25rem; }
 .oh-textpage__body a { color: var(--brick); text-decoration: underline; text-underline-offset: 2px; }
 .oh-textpage__body a:hover { color: #8C6508; }
+
+/* Karten auf getöntem Grund: weiß, damit sie sich abheben */
+.oh-section--cream .oh-card { background: var(--white); }
+
+/* Kennzahlen und Zitat: auf weißem Grund getönt, auf getöntem Grund weiß */
+.oh-fact, .oh-quote { background: var(--cream); }
+.oh-section--cream .oh-fact,
+.oh-section--cream .oh-quote { background: var(--white); }
+.oh-quote { border-left-color: var(--amber); }
+
+/* ── Startseite aus Abschnitten ─────────────────────────── */
+.oh-ico { display: inline-flex; line-height: 1; vertical-align: -.125em; }
+.oh-ico svg { width: 1em; height: 1em; }
+.oh-angebot__ico { color: #fff; }
+.oh-angebot__ico--senf { color: var(--deep); }
+.oh-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.oh-cd__open { color: #4AE880; font-weight: 600; grid-column: 1 / -1; }
+.oh-section__body p { margin: 0 0 .8rem; }
+
+/* Hinweisboxen auf hellem Grund lesbar machen */
+.oh-section:not(.oh-section--night):not(.oh-section--brick) .oh-sterne { background: var(--cream); border-color: var(--border); }
+.oh-section--cream .oh-sterne { background: var(--white); }
+.oh-section:not(.oh-section--night):not(.oh-section--brick) .oh-sterne h3 { color: var(--deep); }
+.oh-section:not(.oh-section--night):not(.oh-section--brick) .oh-sterne p { color: var(--muted); }
+.oh-section:not(.oh-section--night):not(.oh-section--brick) .oh-hint p { color: var(--deep); }
+.oh-section:not(.oh-section--night):not(.oh-section--brick) .oh-hint strong { color: #8C6508; }
+
+/* Galerie */
+.oh-galerie { margin: 24px 0; }
+.oh-galerie__titel { font-size: 1rem; font-weight: 700; margin-bottom: 12px; }
+.oh-galerie__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+@media (min-width: 720px) { .oh-galerie__grid { grid-template-columns: repeat(3, 1fr); } }
+.oh-galerie__item { display: block; border-radius: 10px; overflow: hidden; aspect-ratio: 4 / 3; background: var(--border); }
+.oh-galerie__item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+.oh-galerie__item:hover img, .oh-galerie__item:focus-visible img { transform: scale(1.03); }
+.oh-lightbox { border: 0; padding: 0; background: transparent; max-width: 95vw; max-height: 95vh; overflow: visible; }
+.oh-lightbox::backdrop { background: rgba(15, 20, 28, .92); }
+.oh-lightbox img { display: block; max-width: 95vw; max-height: 88vh; border-radius: 6px; }
+.oh-lightbox button { position: fixed; width: 44px; height: 44px; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .14); color: #fff; font-size: 1.6rem; line-height: 1; cursor: pointer; }
+.oh-lightbox__close { top: 16px; right: 16px; }
+.oh-lightbox__prev { left: 16px; top: 50%; transform: translateY(-50%); }
+.oh-lightbox__next { right: 16px; top: 50%; transform: translateY(-50%); }
+
+/* Schnellzugang für die Redaktion */
+.oh-edit-link { position: fixed; right: 16px; bottom: 16px; z-index: 300; background: var(--amber); color: var(--deep); padding: 10px 16px; border-radius: 999px; font-weight: 600; text-decoration: none; box-shadow: 0 4px 14px rgba(0, 0, 0, .2); }

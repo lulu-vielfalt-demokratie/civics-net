@@ -1,0 +1,12 @@
+{% set p = paragraph %}
+{% set v = p.field_oh_variante.value ?: 'normal' %}
+{% set icon %}{% include '@openhuus/includes/oh-icon.html.twig' with {name: p.field_oh_symbol.value} only %}{% endset %}
+{% if v == 'dunkel' %}
+  <div class="oh-kamin"><span class="oh-kamin__ico">{{ icon }}</span><div>{% if p.field_oh_titel.value %}<h3>{{ p.field_oh_titel.value }}</h3>{% endif %}<p>{{ p.field_oh_text_kurz.value }}</p></div></div>
+{% elseif v == 'hervorgehoben' %}
+  <div class="oh-hint"><span>{{ icon }}</span><p>{% if p.field_oh_titel.value %}<strong>{{ p.field_oh_titel.value }}</strong> {% endif %}{{ p.field_oh_text_kurz.value }}</p></div>
+{% elseif v == 'status' %}
+  <div class="oh-glasfaser"><div class="oh-glasfaser__dot"></div><span>{% if p.field_oh_titel.value %}<strong>{{ p.field_oh_titel.value }}</strong> — {% endif %}{{ p.field_oh_text_kurz.value }}</span></div>
+{% else %}
+  <div class="oh-sterne"><span class="oh-sterne__ico">{{ icon }}</span><div>{% if p.field_oh_titel.value %}<h3>{{ p.field_oh_titel.value }}</h3>{% endif %}<p>{{ p.field_oh_text_kurz.value }}</p></div></div>
+{% endif %}

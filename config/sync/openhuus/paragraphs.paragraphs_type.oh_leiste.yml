@@ -1,0 +1,10 @@
+uuid: e9ea6da4-6b8e-4929-a56c-5b4d6db87ffc
+langcode: de
+status: true
+dependencies: {  }
+id: oh_leiste
+label: Hinweisleiste
+icon_uuid: null
+icon_default: null
+description: 'Schmale Leiste, z. B. Berlin – Karrenzin – Hamburg'
+behavior_plugins: {  }

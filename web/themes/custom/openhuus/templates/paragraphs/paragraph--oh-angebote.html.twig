@@ -1,0 +1,14 @@
+{% set farben = {'schiefer': '#2B3440', 'senf': '#D9A21B', 'blau': '#1A3A6A', 'gruen': '#4A7A3A'} %}
+<div class="oh-grid oh-grid--2">
+  {% for item in paragraph.field_oh_eintraege %}{% set e = item.entity %}
+    {% set farbe = e.field_oh_farbe.value ?: 'schiefer' %}
+    <div class="oh-angebot">
+      <div class="oh-angebot__ico oh-angebot__ico--{{ farbe }}" style="background:{{ farben[farbe] ?? '#2B3440' }}">{% include '@openhuus/includes/oh-icon.html.twig' with {name: e.field_oh_symbol.value} only %}</div>
+      <div>
+        <h3>{% if e.field_oh_link.uri %}<a href="{{ e.field_oh_link.0.url.toString }}">{{ e.field_oh_titel.value }}</a>{% else %}{{ e.field_oh_titel.value }}{% endif %}</h3>
+        {% if e.field_oh_text_kurz.value %}<p>{{ e.field_oh_text_kurz.value }}</p>{% endif %}
+        {% if e.field_oh_hinweis.value %}<span class="oh-tag">{{ e.field_oh_hinweis.value }}</span>{% endif %}
+      </div>
+    </div>
+  {% endfor %}
+</div>

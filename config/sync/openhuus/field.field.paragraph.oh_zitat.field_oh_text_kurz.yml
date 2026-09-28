@@ -1,0 +1,19 @@
+uuid: ef2d3cc0-04f0-4e0b-ba3a-2a39de635520
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_text_kurz
+    - paragraphs.paragraphs_type.oh_zitat
+id: paragraph.oh_zitat.field_oh_text_kurz
+field_name: field_oh_text_kurz
+entity_type: paragraph
+bundle: oh_zitat
+label: Zitat
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

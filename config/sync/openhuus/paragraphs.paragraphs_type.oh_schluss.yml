@@ -1,0 +1,10 @@
+uuid: e00d0def-7b34-4a2e-91ea-81fbd0ca3efe
+langcode: de
+status: true
+dependencies: {  }
+id: oh_schluss
+label: Schlussaufruf
+icon_uuid: null
+icon_default: null
+description: 'Abschluss mit Button, z. B. Eröffnungstermin'
+behavior_plugins: {  }

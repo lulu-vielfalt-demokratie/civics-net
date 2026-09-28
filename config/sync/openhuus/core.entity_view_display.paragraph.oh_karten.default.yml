@@ -1,0 +1,20 @@
+uuid: c3b010f7-ba26-4be3-9b41-83876ce9a506
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_karten.field_oh_eintraege
+    - paragraphs.paragraphs_type.oh_karten
+id: paragraph.oh_karten.default
+targetEntityType: paragraph
+bundle: oh_karten
+mode: default
+content:
+  field_oh_eintraege:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+hidden: {  }

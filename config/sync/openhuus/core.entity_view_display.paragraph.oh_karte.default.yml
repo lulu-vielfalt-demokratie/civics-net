@@ -1,0 +1,36 @@
+uuid: 2e3691be-7e88-4a73-93fa-76a365fea81c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_karte.field_oh_symbol
+    - field.field.paragraph.oh_karte.field_oh_text_kurz
+    - field.field.paragraph.oh_karte.field_oh_titel
+    - paragraphs.paragraphs_type.oh_karte
+id: paragraph.oh_karte.default
+targetEntityType: paragraph
+bundle: oh_karte
+mode: default
+content:
+  field_oh_symbol:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_oh_text_kurz:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_oh_titel:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+hidden: {  }

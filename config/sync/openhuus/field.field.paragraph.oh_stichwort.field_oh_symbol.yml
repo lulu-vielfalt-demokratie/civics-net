@@ -1,0 +1,21 @@
+uuid: 40760600-5ebd-4b91-8545-82fc878643c4
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_symbol
+    - paragraphs.paragraphs_type.oh_stichwort
+  module:
+    - options
+id: paragraph.oh_stichwort.field_oh_symbol
+field_name: field_oh_symbol
+entity_type: paragraph
+bundle: oh_stichwort
+label: Symbol
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,5 @@
+<div class="oh-pills">
+  {% for item in paragraph.field_oh_eintraege %}{% set e = item.entity %}
+    <span class="oh-pill">{% include '@openhuus/includes/oh-icon.html.twig' with {name: e.field_oh_symbol.value} only %} {{ e.field_oh_titel.value }}</span>
+  {% endfor %}
+</div>

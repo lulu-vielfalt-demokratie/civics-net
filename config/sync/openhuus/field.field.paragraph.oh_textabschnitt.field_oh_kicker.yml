@@ -1,0 +1,19 @@
+uuid: c3977339-a1ea-4ebd-b7a4-72c289d472f7
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_kicker
+    - paragraphs.paragraphs_type.oh_textabschnitt
+id: paragraph.oh_textabschnitt.field_oh_kicker
+field_name: field_oh_kicker
+entity_type: paragraph
+bundle: oh_textabschnitt
+label: Kicker
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

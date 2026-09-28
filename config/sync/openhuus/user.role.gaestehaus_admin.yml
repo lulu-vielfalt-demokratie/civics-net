@@ -5,9 +5,11 @@ dependencies:
   config:
     - filter.format.basic_html
     - filter.format.ckeditor5
+    - node.type.startseite
   module:
     - filter
     - gaestehaus_booking
+    - node
     - system
 id: gaestehaus_admin
 label: 'openhuus Admin'
@@ -16,6 +18,8 @@ is_admin: false
 permissions:
   - 'access content'
   - 'administer gaestehaus bookings'
+  - 'create startseite content'
+  - 'edit any startseite content'
   - 'use text format basic_html'
   - 'use text format ckeditor5'
   - 'view gaestehaus bookings'

@@ -1,0 +1,52 @@
+uuid: 05e88d13-76e8-4455-8cc3-f1fa268d5bd5
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_angebot.field_oh_farbe
+    - field.field.paragraph.oh_angebot.field_oh_link
+    - field.field.paragraph.oh_angebot.field_oh_symbol
+    - field.field.paragraph.oh_angebot.field_oh_text_kurz
+    - field.field.paragraph.oh_angebot.field_oh_titel
+    - paragraphs.paragraphs_type.oh_angebot
+id: paragraph.oh_angebot.default
+targetEntityType: paragraph
+bundle: oh_angebot
+mode: default
+content:
+  field_oh_farbe:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_oh_link:
+    type: link
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_oh_symbol:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_oh_text_kurz:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_oh_titel:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+hidden: {  }

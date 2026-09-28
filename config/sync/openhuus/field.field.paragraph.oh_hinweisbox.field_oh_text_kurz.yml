@@ -1,0 +1,19 @@
+uuid: 85f4faf8-60fa-4a77-9ebe-a11c65b90f97
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_text_kurz
+    - paragraphs.paragraphs_type.oh_hinweisbox
+id: paragraph.oh_hinweisbox.field_oh_text_kurz
+field_name: field_oh_text_kurz
+entity_type: paragraph
+bundle: oh_hinweisbox
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

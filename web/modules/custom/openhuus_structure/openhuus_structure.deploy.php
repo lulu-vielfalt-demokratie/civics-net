@@ -143,3 +143,60 @@ function openhuus_structure_deploy_0004_textformat(): string {
   }
   return implode('; ', $done) . '.';
 }
+
+/**
+ * Startseite: Abschnitte, Bausteine, Einträge (Paragraphs) und Inhaltstyp.
+ */
+function openhuus_structure_deploy_0005_startseite(): string {
+  \Drupal::moduleHandler()->loadInclude('openhuus_structure', 'inc', 'openhuus_structure.startseite');
+  $neu = _openhuus_structure_startseite_anlegen();
+
+  // Rechte: nur vergeben, was es bereits gibt (sonst verweigert Drupal das Speichern).
+  $available = array_keys(\Drupal::service('user.permissions')->getPermissions());
+  $fehlt = [];
+  $rechte = [
+    'openhuus_redaktion' => ['edit any startseite content'],
+    'gaestehaus_admin' => ['create startseite content', 'edit any startseite content'],
+  ];
+  foreach ($rechte as $rid => $perms) {
+    if ($role = Role::load($rid)) {
+      foreach ($perms as $perm) {
+        in_array($perm, $available, TRUE) ? $role->grantPermission($perm) : $fehlt[] = "$rid: $perm";
+      }
+      $role->save();
+    }
+  }
+
+  return ($neu ? count($neu) . ' neu angelegt.' : 'Struktur bereits vorhanden.')
+    . ($fehlt ? ' Rechte folgen beim nächsten Lauf: ' . implode(', ', $fehlt) : ' Rechte vergeben.');
+}
+
+/**
+ * Startseite: Sprungmarken, Fahrzeit, Etikett, Statuszeile; Rechte nachziehen.
+ */
+function openhuus_structure_deploy_0006_startseite_ergaenzungen(): string {
+  \Drupal::moduleHandler()->loadInclude('openhuus_structure', 'inc', 'openhuus_structure.startseite');
+  $speicher = _openhuus_structure_speicher();
+  if ($storage = \Drupal\field\Entity\FieldStorageConfig::loadByName('paragraph', 'field_oh_variante')) {
+    $storage->setSetting('allowed_values', $speicher['field_oh_variante'][1]['allowed_values']);
+    $storage->save();
+  }
+  $neu = _openhuus_structure_startseite_anlegen();
+
+  $available = array_keys(\Drupal::service('user.permissions')->getPermissions());
+  $fehlt = [];
+  $rechte = [
+    'openhuus_redaktion' => ['edit any startseite content'],
+    'gaestehaus_admin' => ['create startseite content', 'edit any startseite content'],
+  ];
+  foreach ($rechte as $rid => $perms) {
+    if ($role = Role::load($rid)) {
+      foreach ($perms as $perm) {
+        in_array($perm, $available, TRUE) ? $role->grantPermission($perm) : $fehlt[] = "$rid: $perm";
+      }
+      $role->save();
+    }
+  }
+  return ($neu ? 'Neu: ' . implode(', ', $neu) . '.' : 'Keine neuen Elemente.')
+    . ($fehlt ? ' Fehlende Rechte: ' . implode(', ', $fehlt) : ' Rechte vergeben.');
+}

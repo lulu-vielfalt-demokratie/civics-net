@@ -1,0 +1,10 @@
+uuid: 96cb9cd6-322e-485b-a44d-e35179778273
+langcode: de
+status: true
+dependencies: {  }
+id: oh_ausfluege
+label: Ausflugsziele
+icon_uuid: null
+icon_default: null
+description: 'Raster mit Zielen und Fahrzeit'
+behavior_plugins: {  }

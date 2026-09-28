@@ -1,0 +1,68 @@
+uuid: 07e00748-fb67-4d78-a4f8-08a29f75b122
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_textabschnitt.field_oh_bausteine
+    - field.field.paragraph.oh_textabschnitt.field_oh_hervorhebung
+    - field.field.paragraph.oh_textabschnitt.field_oh_hintergrund
+    - field.field.paragraph.oh_textabschnitt.field_oh_kicker
+    - field.field.paragraph.oh_textabschnitt.field_oh_link
+    - field.field.paragraph.oh_textabschnitt.field_oh_text
+    - field.field.paragraph.oh_textabschnitt.field_oh_titel
+    - paragraphs.paragraphs_type.oh_textabschnitt
+id: paragraph.oh_textabschnitt.default
+targetEntityType: paragraph
+bundle: oh_textabschnitt
+mode: default
+content:
+  field_oh_bausteine:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  field_oh_hervorhebung:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_oh_hintergrund:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_oh_kicker:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_oh_link:
+    type: link
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_oh_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_oh_titel:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+hidden: {  }

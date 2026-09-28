@@ -1,0 +1,23 @@
+uuid: 6c6ae489-a0e9-454d-b265-2fb51bdb9f18
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_zitat.field_oh_text_kurz
+    - paragraphs.paragraphs_type.oh_zitat
+id: paragraph.oh_zitat.default
+targetEntityType: paragraph
+bundle: oh_zitat
+mode: default
+content:
+  field_oh_text_kurz:
+    type: string_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,19 @@
+uuid: 0d92c2fa-e179-4d94-884c-0269d6425f47
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_oh_titel
+    - paragraphs.paragraphs_type.oh_schluss
+id: paragraph.oh_schluss.field_oh_titel
+field_name: field_oh_titel
+entity_type: paragraph
+bundle: oh_schluss
+label: Titel
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,36 @@
+{% set p = paragraph %}
+{% set bild = p.field_oh_bild.entity.field_media_image %}
+<section class="oh-hero">
+  {% if bild.entity %}
+    <img class="oh-hero__img" src="{{ bild.entity.uri.value|image_style('oh_hero') }}" alt="{{ bild.alt }}">
+  {% else %}
+    <div class="oh-hero__brick"></div>
+  {% endif %}
+  <div class="oh-hero__overlay"></div>
+  <div class="oh-hero__glow"></div>
+  <div class="oh-hero__content">
+    {% if p.field_oh_kicker.value %}
+      <div class="oh-badge"><span class="oh-badge__dot"></span>{{ p.field_oh_kicker.value }}</div>
+    {% endif %}
+    <h1 class="oh-hero__title">{{ p.field_oh_titel.value }}{% if p.field_oh_hervorhebung.value %}<br><em>{{ p.field_oh_hervorhebung.value }}</em>{% endif %}</h1>
+    {% if p.field_oh_text_kurz.value %}<p class="oh-hero__sub">{{ p.field_oh_text_kurz.value }}</p>{% endif %}
+    {% if p.field_oh_ort.value %}
+      {% set teile = p.field_oh_ort.value|split(',', 2) %}
+      <p class="oh-hero__loc">{% include '@openhuus/includes/oh-icon.html.twig' with {name: 'map-pin'} only %} <strong>{{ teile[0] }}</strong>{% if teile[1] is defined %},{{ teile[1] }}{% endif %}</p>
+    {% endif %}
+    {% if p.field_oh_countdown.value %}
+      <div class="oh-countdown" id="oh-countdown">
+        <div class="oh-cd"><span class="oh-cd__num" id="cd-d">--</span><span class="oh-cd__lbl">{{ 'Tage'|t }}</span></div>
+        <div class="oh-cd"><span class="oh-cd__num" id="cd-h">--</span><span class="oh-cd__lbl">{{ 'Std.'|t }}</span></div>
+        <div class="oh-cd"><span class="oh-cd__num" id="cd-m">--</span><span class="oh-cd__lbl">{{ 'Min.'|t }}</span></div>
+        <div class="oh-cd"><span class="oh-cd__num" id="cd-s">--</span><span class="oh-cd__lbl">{{ 'Sek.'|t }}</span></div>
+      </div>
+    {% endif %}
+    {% if p.field_oh_link.uri or p.field_oh_link2.uri %}
+      <div class="oh-hero__actions">
+        {% include '@openhuus/includes/oh-button.html.twig' with {link: p.field_oh_link, klasse: 'oh-btn--primary'} only %}
+        {% include '@openhuus/includes/oh-button.html.twig' with {link: p.field_oh_link2, klasse: 'oh-btn--ghost'} only %}
+      </div>
+    {% endif %}
+  </div>
+</section>

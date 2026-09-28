@@ -1,0 +1,10 @@
+uuid: 7c1d2ea7-79f0-46c5-b7e2-7637cb23fb3d
+langcode: de
+status: true
+dependencies: {  }
+id: oh_galerie
+label: Galerie
+icon_uuid: null
+icon_default: null
+description: 'Bildergalerie mit Großansicht'
+behavior_plugins: {  }

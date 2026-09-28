@@ -1,0 +1,39 @@
+uuid: e0752fe5-a850-4939-bd34-efe62c1b798d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.oh_ausflug.field_oh_symbol
+    - field.field.paragraph.oh_ausflug.field_oh_text_kurz
+    - field.field.paragraph.oh_ausflug.field_oh_titel
+    - paragraphs.paragraphs_type.oh_ausflug
+id: paragraph.oh_ausflug.default
+targetEntityType: paragraph
+bundle: oh_ausflug
+mode: default
+content:
+  field_oh_symbol:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_oh_text_kurz:
+    type: string_textarea
+    weight: 12
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_oh_titel:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

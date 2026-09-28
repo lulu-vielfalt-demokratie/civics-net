@@ -1,0 +1,33 @@
+uuid: 7ea03f72-f836-4438-b200-31e87b2f05ed
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_oh_hintergrund
+field_name: field_oh_hintergrund
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: hell
+      label: 'Hell (weiß)'
+    -
+      value: getoent
+      label: 'Getönt (hellgrau)'
+    -
+      value: dunkel
+      label: 'Dunkel (Schiefer)'
+    -
+      value: nacht
+      label: 'Nacht (dunkelblau)'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

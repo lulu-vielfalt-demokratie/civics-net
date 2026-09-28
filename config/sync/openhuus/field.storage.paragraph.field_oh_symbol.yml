@@ -1,0 +1,105 @@
+uuid: 30cbc5db-1a83-4f84-b383-a9cd71b07358
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_oh_symbol
+field_name: field_oh_symbol
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: home
+      label: Haus
+    -
+      value: users
+      label: Gemeinschaft
+    -
+      value: brain
+      label: Konzentration
+    -
+      value: leaf
+      label: Natur
+    -
+      value: keyboard
+      label: Arbeiten
+    -
+      value: bed-double
+      label: Schlafen
+    -
+      value: party-popper
+      label: Feiern
+    -
+      value: zap
+      label: 'Glasfaser / Strom'
+    -
+      value: wifi
+      label: WLAN
+    -
+      value: telescope
+      label: Teleskop
+    -
+      value: sun
+      label: 'Sonne / Solar'
+    -
+      value: flame
+      label: Kaminfeuer
+    -
+      value: star
+      label: Stern
+    -
+      value: coffee
+      label: Kaffee
+    -
+      value: train-front
+      label: Bahn
+    -
+      value: bus
+      label: Bus
+    -
+      value: car
+      label: Auto
+    -
+      value: bike
+      label: Fahrrad
+    -
+      value: waves
+      label: 'Wasser / See'
+    -
+      value: footprints
+      label: Wandern
+    -
+      value: castle
+      label: Schloss
+    -
+      value: landmark
+      label: 'Altstadt / Bauwerk'
+    -
+      value: church
+      label: Kirche
+    -
+      value: drama
+      label: Kultur
+    -
+      value: bird
+      label: Vogel
+    -
+      value: sunset
+      label: Sonnenuntergang
+    -
+      value: map-pin
+      label: Ort
+    -
+      value: info
+      label: Hinweis
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

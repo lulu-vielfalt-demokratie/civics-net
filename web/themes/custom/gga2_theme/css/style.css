@@ -353,7 +353,7 @@ a:focus-visible, button:focus-visible {
 .text-image-inner .body p { margin: 0; }
 
 /* ===== CTA ===== */
-.cta-section { padding: 100px 24px; background: var(--orange); text-align: center; }
+.cta-section { padding: 100px 24px; background: var(--orange); }
 .cta-inner { max-width: 800px; margin: 0 auto; }
 
 .cta-inner h2 {
@@ -622,7 +622,8 @@ body.toolbar-tray-open.toolbar-fixed .site-header {
   color: var(--purple);
 }
 
-.page-body ul, .page-body ol {
+.page-body ul, .page-body ol,
+.cta-inner .body ul, .cta-inner .body ol {
   margin: 0 0 20px 24px;
   line-height: 1.8;
 }
@@ -1175,3 +1176,19 @@ img {
 .field--name-field-paragraphs > div:first-child .info-stripe-section {
   padding-top: 120px;
 }
+
+/* ===== CKEDITOR TEXT-ALIGN ===== */
+.text-align-left    { text-align: left; }
+.text-align-center  { text-align: center; }
+.text-align-right   { text-align: right; }
+.text-align-justify { text-align: justify; }
+
+/* ===== CTA: Ausrichtung folgt dem Editor-Text ===== */
+.cta-inner .cta-links { justify-content: flex-start; }
+.cta-inner:has(.body [class*="text-align-"]) h2 { text-align: inherit; }
+
+.cta-inner:has(.body .text-align-center) { text-align: center; }
+.cta-inner:has(.body .text-align-center) .cta-links { justify-content: center; }
+
+.cta-inner:has(.body .text-align-right) { text-align: right; }
+.cta-inner:has(.body .text-align-right) .cta-links { justify-content: flex-end; }

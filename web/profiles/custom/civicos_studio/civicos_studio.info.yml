@@ -1,0 +1,44 @@
+name: 'CivicOS Studio'
+type: profile
+description: 'Studio-Tenant für 360°-Rundgänge (kommrein): Medien, Paragraphs, Olivero als Basis, Gin als Verwaltung.'
+core_version_requirement: ^11
+install:
+  - automated_cron
+  - big_pipe
+  - block
+  - breakpoint
+  - ckeditor5
+  - config
+  - contextual
+  - dblog
+  - dynamic_page_cache
+  - editor
+  - field
+  - field_ui
+  - file
+  - filter
+  - image
+  - link
+  - menu_link_content
+  - menu_ui
+  - node
+  - options
+  - page_cache
+  - path
+  - taxonomy
+  - text
+  - user
+  - views
+  - views_ui
+  # Contrib (bereits im CivicOS-Codebase vorhanden)
+  - admin_toolbar
+  - entity_reference_revisions
+  - paragraphs
+  - metatag
+  - pathauto
+  - redirect
+  - token
+themes:
+  - olivero
+  - claro
+  - gin
